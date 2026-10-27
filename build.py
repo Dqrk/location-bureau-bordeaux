@@ -845,9 +845,9 @@ page(slug="mentions-legales", nav=None,
      corps="""
 <section class="section"><div class="conteneur prose">
 <h2>Éditeur du site</h2>
-<p>Le site location-bureau-bordeaux.fr est édité par <strong>Shared Values</strong>, dont le siège est situé {nom}, {adresse}, {cp} {ville}, France.<br>Capital social : [à compléter]. RCS Bordeaux : [à compléter]. Numéro de TVA intracommunautaire : [à compléter].<br>Téléphone : <a href="tel:{tel_intl}">{tel}</a>. E-mail : <a href="mailto:{email}">{email}</a>.</p>
+<p>Le site location-bureau-bordeaux.fr est édité par <strong>Shared Values</strong>, société à responsabilité limitée au capital de 52 384 €, dont le siège est situé {adresse}, {cp} {ville}, France.<br>RCS Bordeaux 751 479 585. SIREN : 751 479 585. Numéro de TVA intracommunautaire : FR75751479585. Code APE : 6420Z.<br>Téléphone : <a href="tel:{tel_intl}">{tel}</a>. E-mail : <a href="mailto:{email}">{email}</a>.</p>
 <h2>Directeur de la publication</h2>
-<p>[Nom du directeur de la publication à compléter], en qualité de gérant.</p>
+<p>Romain Jannekeyn-Vauquier, en qualité de gérant.</p>
 <h2>Hébergement</h2>
 <p>OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</p>
 <h2>Conception et réalisation</h2>
