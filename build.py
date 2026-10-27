@@ -113,7 +113,7 @@ def jsonld_org(abs_url):
         "logo": abs_url("assets/logo.svg"),
         "address": {"@type": "PostalAddress", "streetAddress": ADRESSE, "postalCode": CP, "addressLocality": VILLE, "addressRegion": "Nouvelle-Aquitaine", "addressCountry": "FR"},
         "areaServed": {"@type": "City", "name": "Bordeaux"},
-        "parentOrganization": {"@type": "Organization", "name": "Shared Values"},
+        "parentOrganization": {"@type": "Organization", "name": "Shared Values", "url": "https://www.shared-values.fr/"},
         "knowsAbout": ["location de bureaux", "coworking", "salles de réunion", "domiciliation d'équipe"],
         "makesOffer": [
             {"@type": "Offer", "name": "Poste de travail équipé en open space", "price": "350", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "350", "priceCurrency": "EUR", "unitText": "mois HT, premier poste", "valueAddedTaxIncluded": False}},
@@ -522,7 +522,7 @@ page(slug="chartrons-business-center", nav="Le lieu",
      title="Le lieu et l'accès | Chartrons Business Center, Bordeaux",
      description="Immeuble d'architecte, 9 rue André Darbon, Bordeaux Chartrons : open space de 700 m², parking couvert, ascenseur, tram B et C. Plan d'accès.",
      h1="Le Chartrons Business Center, à Bordeaux",
-     chapo="Le Chartrons Business Center est situé au 9 rue André Darbon, à Bordeaux, dans le quartier des Chartrons, à deux pas des Bassins à flot. L'immeuble, conçu par un architecte et livré en 2007, appartient à Shared Values et abrite un incubateur éco-créatif de jeunes entreprises du numérique.",
+     chapo="Le Chartrons Business Center est situé au 9 rue André Darbon, à Bordeaux, dans le quartier des Chartrons, à deux pas des Bassins à flot. L'immeuble, conçu par un architecte et livré en 2007, appartient à <a href="https://www.shared-values.fr/" target="_blank" rel="noopener">Shared Values</a> et abrite un incubateur éco-créatif de jeunes entreprises du numérique.",
      corps="""
 <section class="section">
   <div class="conteneur deux-colonnes">
@@ -845,13 +845,13 @@ page(slug="mentions-legales", nav=None,
      corps="""
 <section class="section"><div class="conteneur prose">
 <h2>Éditeur du site</h2>
-<p>Le site location-bureau-bordeaux.fr est édité par <strong>Shared Values</strong>, société à responsabilité limitée au capital de 52 384 €, dont le siège est situé {adresse}, {cp} {ville}, France.<br>RCS Bordeaux 751 479 585. SIREN : 751 479 585. Numéro de TVA intracommunautaire : FR75751479585. Code APE : 6420Z.<br>Téléphone : <a href="tel:{tel_intl}">{tel}</a>. E-mail : <a href="mailto:{email}">{email}</a>.</p>
+<p>Le site location-bureau-bordeaux.fr est édité par <strong><a href="https://www.shared-values.fr/" target="_blank" rel="noopener">Shared Values</a></strong>, société à responsabilité limitée au capital de 52 384 €, dont le siège est situé {adresse}, {cp} {ville}, France.<br>RCS Bordeaux 751 479 585. SIREN : 751 479 585. Numéro de TVA intracommunautaire : FR75751479585. Code APE : 6420Z.<br>Téléphone : <a href="tel:{tel_intl}">{tel}</a>. E-mail : <a href="mailto:{email}">{email}</a>.</p>
 <h2>Directeur de la publication</h2>
 <p>Romain Jannekeyn-Vauquier, en qualité de gérant.</p>
 <h2>Hébergement</h2>
 <p>OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</p>
 <h2>Conception et réalisation</h2>
-<p>Shared Values, {adresse}, {cp} {ville}.</p>
+<p><a href="https://www.shared-values.fr/" target="_blank" rel="noopener">Shared Values</a>, {adresse}, {cp} {ville}.</p>
 <h2>Propriété intellectuelle</h2>
 <p>L'ensemble des contenus du site (textes, visuels, logos, structure) est protégé par le droit d'auteur. Toute reproduction, même partielle, sans autorisation écrite de l'éditeur est interdite.</p>
 <h2>Données personnelles et cookies</h2>
@@ -868,7 +868,7 @@ page(slug="politique-de-confidentialite", nav=None,
 <section class="section"><div class="conteneur prose">
 <p class="meta">Dernière mise à jour : {date_fr}.</p>
 <h2>Responsable du traitement</h2>
-<p>Shared Values, {adresse}, {cp} {ville}. Contact : <a href="mailto:{email}">{email}</a>.</p>
+<p><a href="https://www.shared-values.fr/" target="_blank" rel="noopener">Shared Values</a>, {adresse}, {cp} {ville}. Contact : <a href="mailto:{email}">{email}</a>.</p>
 <h2>Données collectées</h2>
 <p>Lorsque vous utilisez le formulaire de contact, nous collectons votre nom, votre adresse e-mail, et, si vous les renseignez, le nom de votre entreprise, votre numéro de téléphone et le contenu de votre message. Ces données servent uniquement à répondre à votre demande de visite, de devis ou d'information. La base légale est votre consentement, recueilli par la case à cocher du formulaire.</p>
 <h2>Durée de conservation</h2>
@@ -1093,12 +1093,12 @@ def rendre(mode):
 </main>
 <footer class="pied"><div class="conteneur">
   <div class="grille">
-    <div><a class="logo" href="{u("")}"><img class="logo-img" src="{A}img/logo-blanc.webp" width="200" height="64" alt="Coworking Bordeaux Chartrons, retour à l'accueil"></a><p>Location de bureaux équipés, coworking et salles de réunion dans un open space de 700 m² au cœur des Chartrons, à Bordeaux. Un espace Shared Values.</p></div>
+    <div><a class="logo" href="{u("")}"><img class="logo-img" src="{A}img/logo-blanc.webp" width="200" height="64" alt="Coworking Bordeaux Chartrons, retour à l'accueil"></a><p>Location de bureaux équipés, coworking et salles de réunion dans un open space de 700 m² au cœur des Chartrons, à Bordeaux. Un espace <a href="https://www.shared-values.fr/" target="_blank" rel="noopener">Shared Values</a>.</p></div>
     <div><p class="titre-pied">Nos espaces</p><ul><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés</a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking</a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion</a></li><li><a href="{u("services")}">Services inclus</a></li><li><a href="{u("tarifs")}">Tarifs</a></li></ul></div>
     <div><p class="titre-pied">Informations</p><ul><li><a href="{u("chartrons-business-center")}">Le lieu et l'accès</a></li><li><a href="{u("temoignages")}">Témoignages</a></li><li><a href="{u("faq")}">Questions fréquentes</a></li><li><a href="{u("guide")}">Guide</a></li><li><a href="{u("contact")}">Contact et visite</a></li></ul></div>
     <div><p class="titre-pied">Contact</p><address>{NOM}<br>{ADRESSE}<br>{CP} {VILLE}<br><a href="tel:{TEL_INTL}">{TEL}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
   </div>
-  <div class="pied-bas"><p>© {DATE_MAJ[:4]} Shared Values. Tous droits réservés.</p><ul><li><a href="{u("mentions-legales")}">Mentions légales</a></li><li><a href="{u("politique-de-confidentialite")}">Confidentialité</a></li><li><a href="{u("plan-du-site")}">Plan du site</a></li></ul></div>
+  <div class="pied-bas"><p>© {DATE_MAJ[:4]} <a href="https://www.shared-values.fr/" target="_blank" rel="noopener">Shared Values</a>. Tous droits réservés.</p><ul><li><a href="{u("mentions-legales")}">Mentions légales</a></li><li><a href="{u("politique-de-confidentialite")}">Confidentialité</a></li><li><a href="{u("plan-du-site")}">Plan du site</a></li></ul></div>
 </div></footer>
 <script>
 (function(){{
