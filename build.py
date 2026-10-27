@@ -522,7 +522,7 @@ page(slug="chartrons-business-center", nav="Le lieu",
      title="Le lieu et l'accès | Chartrons Business Center, Bordeaux",
      description="Immeuble d'architecte, 9 rue André Darbon, Bordeaux Chartrons : open space de 700 m², parking couvert, ascenseur, tram B et C. Plan d'accès.",
      h1="Le Chartrons Business Center, à Bordeaux",
-     chapo="Le Chartrons Business Center est situé au 9 rue André Darbon, à Bordeaux, dans le quartier des Chartrons, à deux pas des Bassins à flot. L'immeuble, conçu par un architecte et livré en 2007, appartient à <a href="https://www.shared-values.fr/" target="_blank" rel="noopener">Shared Values</a> et abrite un incubateur éco-créatif de jeunes entreprises du numérique.",
+     chapo="Le Chartrons Business Center est situé au 9 rue André Darbon, à Bordeaux, dans le quartier des Chartrons, à deux pas des Bassins à flot. L'immeuble, conçu par un architecte et livré en 2007, appartient à <a href=\"https://www.shared-values.fr/\" target=\"_blank\" rel=\"noopener\">Shared Values</a> et abrite un incubateur éco-créatif de jeunes entreprises du numérique.",
      corps="""
 <section class="section">
   <div class="conteneur deux-colonnes">
