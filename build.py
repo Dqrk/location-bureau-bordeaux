@@ -915,10 +915,10 @@ FAQ += [
 ]
 TEMOIGNAGES = [
  ("Julien Pellegrain", "Les Horaires", "Ces bureaux modernes, spacieux et lumineux sont idéaux pour les travailleurs indépendants."),
- ("Sophie Pallas", "Oenopia", "Un peu réticente par principe aux espaces ouverts et à la cohabitation, j'ai pourtant essayé le coworking chez Shared Values. Et j'y suis restée."),
+ ("Sophie Pallas", "Oenopia", "Un peu réticente par principe aux espaces ouverts et à la cohabitation, j'ai pourtant essayé le coworking au Chartrons Business Center. Et j'y suis restée."),
  ("Christian Perron", "CRC, entrepreneur", "Plus qu'un bureau, c'est un vrai cadre de vie digne d'une start-up qui s'offre à vous."),
  ("Mariette Brenier", "Studio Malette Graphique", "J'apprécie notamment la salle de repos qui permet d'échanger autour d'un thé ou d'un café."),
- ("Benoît Droulin", "Azendoo", "Shared Values a su nous offrir des conditions idéales pour accueillir notre start-up."),
+ ("Benoît Droulin", "Azendoo", "Le Chartrons Business Center a su nous offrir des conditions idéales pour accueillir notre start-up."),
  ("Robert Gough", "Mevia, Alumn Force", "Le midi on voit du monde, ça permet de s'aérer la tête et de rencontrer des gens."),
  ("Sophie Brillaud", "Fimco", "C'est toute l'énergie que ça diffuse, l'échange avec des personnes qui ont des métiers complètement différents."),
 ]
