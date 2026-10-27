@@ -1,0 +1,5 @@
+[build]
+  publish = "site"
+  command = ""
+
+# Préprod : branche main, protégée par noindex (voir site/_headers et site/robots.txt)

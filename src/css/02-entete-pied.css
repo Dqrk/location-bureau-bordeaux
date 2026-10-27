@@ -1,0 +1,65 @@
+/* En-tête */
+.barre-haute{display:none}
+.entete{position:sticky;top:0;z-index:50;background:#fff;border-bottom:3px solid var(--noir)}
+.entete .conteneur{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:86px}
+.logo{flex:none;display:flex;align-items:center;text-decoration:none}
+.logo-img{display:block;width:190px;max-width:none;height:auto}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.1rem;align-items:center}
+.nav a{display:block;padding:.6rem .7rem;color:var(--noir);text-decoration:none;font-weight:700;font-size:.82rem;letter-spacing:.02em;border-bottom:3px solid transparent;white-space:nowrap}
+.nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--rouge)}
+.nav .nav-secondaire,.nav .nav-mobile-cta{display:none}
+.entete-actions{display:flex;align-items:center;gap:1rem;flex:none}
+.tel-cta{display:flex;align-items:center;gap:.55rem;text-decoration:none;color:var(--noir);font-family:var(--police-titre);font-weight:900;font-size:1.15rem;letter-spacing:-.01em;white-space:nowrap}
+.tel-cta svg{width:34px;height:34px;padding:7px;background:var(--rouge);color:#fff;border-radius:50%;flex:none}
+.tel-cta span{display:flex;flex-direction:column;line-height:1.05}
+.tel-cta small{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rouge)}
+.tel-cta:hover{color:var(--rouge)}
+.btn-cta{padding:.95rem 1.4rem;box-shadow:0 6px 18px rgba(217,21,28,.3)}
+.tel-mobile{display:none;width:44px;height:44px;border-radius:50%;background:var(--rouge);color:#fff;align-items:center;justify-content:center}
+.tel-mobile svg{width:22px;height:22px}
+.menu-btn{display:none;background:none;border:2px solid var(--noir);border-radius:6px;padding:.55rem .8rem;font:inherit;font-weight:700;font-size:.85rem;color:var(--noir);cursor:pointer;align-items:center;gap:.5rem}
+.burger{width:18px;height:2px;background:var(--noir);position:relative;display:inline-block}
+.burger::before,.burger::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--noir)}
+.burger::before{top:-6px}.burger::after{top:6px}
+@media (max-width:1180px){
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:3px solid var(--noir);box-shadow:var(--ombre);padding:.6rem 20px 1.4rem;max-height:calc(100vh - 90px);overflow:auto}
+  .nav.ouvert{display:block}
+  .nav ul{flex-direction:column;align-items:stretch;gap:0}
+  .nav a{padding:.8rem .4rem;font-size:1rem;border-bottom:1px solid var(--ligne)}
+  .nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--rouge)}
+  .nav .nav-secondaire{display:block;margin-top:.6rem}
+  .nav .nav-secondaire a{font-weight:600;font-size:.9rem;color:var(--texte-doux);padding:.6rem .4rem;border-bottom:0}
+  .nav .nav-mobile-cta{display:flex;flex-direction:column;gap:.8rem;margin-top:1.2rem}
+  .nav .nav-mobile-cta a{border-bottom:0;text-align:center;justify-content:center}
+  .nav .nav-mobile-cta .btn{color:#fff}
+  .nav .nav-mobile-cta .tel-cta{display:flex;flex-direction:row;gap:.6rem;align-items:center;padding:.4rem;font-size:1.3rem}
+  .entete-actions .tel-cta,.entete-actions .btn-cta{display:none}
+  .tel-mobile,.menu-btn{display:inline-flex}
+}
+@media (max-width:620px){.logo-img{width:150px}.entete .conteneur{min-height:72px}}
+
+/* Boutons */
+.btn{display:inline-block;background:var(--rouge);color:#fff;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:.9rem 1.6rem;border-radius:4px;text-decoration:none;border:2px solid var(--bleu);transition:background .2s,transform .2s;font-family:var(--police-titre);font-size:.95rem;cursor:pointer}
+.btn:hover{background:var(--bleu-fonce);border-color:var(--bleu-fonce);color:#fff;transform:translateY(-1px)}
+.btn-secondaire{background:transparent;color:var(--noir);border-color:var(--noir)}
+.btn-secondaire:hover{background:var(--noir);border-color:var(--noir);color:#fff}
+.btn-blanc{background:#fff;color:var(--noir);border-color:#fff}
+.btn-blanc:hover{background:var(--rouge);border-color:var(--rouge);color:#fff}
+.btn-groupe{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem}
+
+/* Pied de page */
+.pied{background:var(--noir);color:#bdbdbd;padding:4rem 0 2rem;font-size:.95rem}
+.pied .grille{grid-template-columns:1.4fr 1fr 1fr 1fr}
+@media (max-width:860px){.pied .grille{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.pied .grille{grid-template-columns:1fr}}
+.pied .titre-pied{margin:0 0 1rem;font-family:var(--police-titre);font-weight:700;color:#fff;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;border-left:3px solid var(--rouge);padding-left:.6rem}
+.pied ul{list-style:none;padding:0;margin:0}
+.pied a{color:#bdbdbd;text-decoration:none}
+.pied a:hover{color:#fff;text-decoration:underline}
+.pied .logo{color:#fff;margin-bottom:1rem}
+.pied address{font-style:normal}
+.pied-bas{border-top:1px solid rgba(255,255,255,.12);margin-top:2.5rem;padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.85rem}
+.pied-bas ul{display:flex;gap:1.2rem;flex-wrap:wrap}
+
+
+@media (max-width:620px){.barre-haute .conteneur>span:first-child{display:none}.barre-haute .conteneur{justify-content:center}}
