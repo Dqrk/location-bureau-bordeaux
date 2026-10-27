@@ -9,7 +9,7 @@ NOM = "Coworking Bordeaux Chartrons"
 MARQUE = "Location Bureau Bordeaux"
 TEL = "09 72 12 57 78"
 TEL_INTL = "+33972125778"
-EMAIL = "contact@kaizen-marketing.fr"
+EMAIL = "contact@shared-values.fr"
 ADRESSE = "9 rue André Darbon"
 CP = "33300"
 VILLE = "Bordeaux"
@@ -113,12 +113,12 @@ def jsonld_org(abs_url):
         "logo": abs_url("assets/logo.svg"),
         "address": {"@type": "PostalAddress", "streetAddress": ADRESSE, "postalCode": CP, "addressLocality": VILLE, "addressRegion": "Nouvelle-Aquitaine", "addressCountry": "FR"},
         "areaServed": {"@type": "City", "name": "Bordeaux"},
-        "parentOrganization": {"@type": "Organization", "name": "Kaizen Marketing Group"},
+        "parentOrganization": {"@type": "Organization", "name": "Shared Values"},
         "knowsAbout": ["location de bureaux", "coworking", "salles de réunion", "domiciliation d'équipe"],
         "makesOffer": [
             {"@type": "Offer", "name": "Poste de travail équipé en open space", "price": "350", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "350", "priceCurrency": "EUR", "unitText": "mois HT, premier poste", "valueAddedTaxIncluded": False}},
             {"@type": "Offer", "name": "Poste supplémentaire", "price": "300", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "300", "priceCurrency": "EUR", "unitText": "mois HT par poste", "valueAddedTaxIncluded": False}},
-            {"@type": "Offer", "name": "Place de parking en garage couvert", "price": "72", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "72", "priceCurrency": "EUR", "unitText": "mois HT", "valueAddedTaxIncluded": False}},
+            {"@type": "Offer", "name": "Place de parking en garage couvert", "price": "130", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "130", "priceCurrency": "EUR", "unitText": "mois HT", "valueAddedTaxIncluded": False}},
         ],
         "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": n, "value": True} for n in ["Fibre optique", "Salles de réunion", "Parking couvert", "Local vélos", "Ascenseur et accès PMR", "Climatisation réversible", "Espace détente"]],
     }
@@ -201,7 +201,7 @@ page(slug="", nav="Accueil",
     <div class="grille grille-3">
       <div class="tarif"><h3>Premier poste</h3><p class="prix">350 € <small>HT</small></p><p class="unite">par mois, poste de travail équipé</p><ul class="liste-coches"><li>Bureau 160 × 80 cm et fauteuil ergonomique</li><li>Fibre, Wi-Fi, impression et scan</li><li>Salles de réunion et espace détente</li></ul><a class="btn" href="{u:contact}">Demander un devis</a></div>
       <div class="tarif mis-en-avant"><span class="badge">Équipes</span><h3>Postes supplémentaires</h3><p class="prix">300 € <small>HT</small></p><p class="unite">par mois et par poste, dès le deuxième</p><ul class="liste-coches"><li>Mêmes prestations que le premier poste</li><li>Postes regroupés pour votre équipe</li><li>Idéal de 2 à 10 collaborateurs</li></ul><a class="btn" href="{u:contact}">Installer mon équipe</a></div>
-      <div class="tarif"><h3>Options à l'usage</h3><p class="prix">dès 10 € <small>HT</small></p><p class="unite">par mois, selon l'option</p><ul class="liste-coches"><li>Téléphone IP fixe : 10 € ou 20 € HT / mois</li><li>Parking en garage couvert : 72 € HT / mois</li><li>Impression : 0,04 € HT (noir) ou 0,12 € HT (couleur) la page</li></ul><a class="btn btn-secondaire" href="{u:tarifs}">Voir le détail des tarifs</a></div>
+      <div class="tarif"><h3>Options à l'usage</h3><p class="prix">dès 10 € <small>HT</small></p><p class="unite">par mois, selon l'option</p><ul class="liste-coches"><li>Téléphone IP fixe : 10 € ou 20 € HT / mois</li><li>Parking en garage couvert : 130 € HT / mois</li><li>Impression : 0,04 € HT (noir) ou 0,12 € HT (couleur) la page</li></ul><a class="btn btn-secondaire" href="{u:tarifs}">Voir le détail des tarifs</a></div>
     </div>
   </div>
 </section>
@@ -363,7 +363,7 @@ page(slug="coworking-bordeaux-chartrons", nav="Coworking",
 
 <section class="section section-gris">
   <div class="conteneur">
-    <div class="en-tete-section"><span class="etiquette">Tarif</span><h2>Combien coûte un poste en coworking aux Chartrons ?</h2><p class="intro">Le poste de coworking est facturé 350 € HT par mois, charges, fibre, salles de réunion et espace détente compris. À partir du deuxième poste, chaque poste supplémentaire revient à 300 € HT par mois. Une place de parking couvert s'ajoute en option pour 72 € HT par mois.</p></div>
+    <div class="en-tete-section"><span class="etiquette">Tarif</span><h2>Combien coûte un poste en coworking aux Chartrons ?</h2><p class="intro">Le poste de coworking est facturé 350 € HT par mois, charges, fibre, salles de réunion et espace détente compris. À partir du deuxième poste, chaque poste supplémentaire revient à 300 € HT par mois. Une place de parking couvert s'ajoute en option pour 130 € HT par mois.</p></div>
     <div class="btn-groupe"><a class="btn" href="{u:tarifs}">Voir tous les tarifs</a><a class="btn btn-secondaire" href="{u:location-bureaux-bordeaux}">Voir les bureaux pour les équipes</a></div>
   </div>
 </section>
@@ -441,7 +441,7 @@ page(slug="services", nav="Services",
       <div class="carte"><div class="icone">{impression}</div><h3>Impression et scan</h3><p>Imprimante haute définition partagée, scan vers e-mail gratuit. Les impressions sont facturées à la page : 0,04 € HT en noir et blanc, 0,12 € HT en couleur.</p></div>
       <div class="carte"><div class="icone">{cafe}</div><h3>Espace détente</h3><p>Une salle de vie avec babyfoot, thé et café, où les résidents se retrouvent le midi. C'est là que naissent la plupart des collaborations entre voisins de bureau.</p></div>
       <div class="carte"><div class="icone">{tram}</div><h3>Proche du tramway</h3><p>Tram B à l'arrêt Chartrons, tram C à l'arrêt Camille Godard, bus 4 et 15 à l'arrêt Picard. La gare Saint-Jean est à 20 minutes en tram.</p><a class="lien" href="{u:chartrons-business-center}">Voir l'accès</a></div>
-      <div class="carte"><div class="icone">{parking}</div><h3>Parking, vélos et deux-roues</h3><p>Place de parking en garage couvert en option (72 € HT par mois). Local sécurisé pour les vélos, scooters et motos, inclus.</p></div>
+      <div class="carte"><div class="icone">{parking}</div><h3>Parking, vélos et deux-roues</h3><p>Place de parking en garage couvert en option (130 € HT par mois). Local sécurisé pour les vélos, scooters et motos, inclus.</p></div>
       <div class="carte"><div class="icone">{pmr}</div><h3>Accès handicapés et PMR</h3><p>L'immeuble dispose d'un ascenseur desservant l'open space au troisième étage et de circulations adaptées aux personnes à mobilité réduite.</p></div>
       <div class="carte"><div class="icone">{clim}</div><h3>Climatisation et sécurité</h3><p>Climatisation réversible dans tout l'espace, contrôle d'accès et systèmes de sécurité modernes dans un immeuble d'architecte livré en 2007.</p></div>
     </div>
@@ -461,7 +461,7 @@ page(slug="services", nav="Services",
         <tr><td data-label="Prestation">Scan vers e-mail, espace détente, local vélos</td><td data-label="Statut">Inclus</td><td data-label="Tarif" class="prix">0 €</td></tr>
         <tr><td data-label="Prestation">Téléphone IP, appels illimités vers les fixes</td><td data-label="Statut">Option</td><td data-label="Tarif" class="prix">10 € HT / mois</td></tr>
         <tr><td data-label="Prestation">Téléphone IP, appels illimités fixes et mobiles</td><td data-label="Statut">Option</td><td data-label="Tarif" class="prix">20 € HT / mois</td></tr>
-        <tr><td data-label="Prestation">Place de parking en garage couvert</td><td data-label="Statut">Option</td><td data-label="Tarif" class="prix">72 € HT / mois</td></tr>
+        <tr><td data-label="Prestation">Place de parking en garage couvert</td><td data-label="Statut">Option</td><td data-label="Tarif" class="prix">130 € HT / mois</td></tr>
         <tr><td data-label="Prestation">Impression noir et blanc / couleur</td><td data-label="Statut">À l'usage</td><td data-label="Tarif" class="prix">0,04 € / 0,12 € HT la page</td></tr>
       </tbody>
     </table>
@@ -474,7 +474,7 @@ page(slug="services", nav="Services",
 # ----- Tarifs
 page(slug="tarifs", nav="Tarifs",
      title="Tarifs bureaux et coworking à Bordeaux dès 350 € HT",
-     description="Premier poste équipé 350 € HT par mois, postes suivants 300 € HT, parking 72 € HT, téléphonie dès 10 € HT. Sans frais de dossier. Demandez un devis.",
+     description="Premier poste équipé 350 € HT par mois, postes suivants 300 € HT, parking 130 € HT, téléphonie dès 10 € HT. Sans frais de dossier. Demandez un devis.",
      h1="Tarifs des bureaux et du coworking aux Chartrons",
      chapo="Un seul tarif par poste de travail équipé en open space, dégressif dès le deuxième poste. Le loyer comprend le mobilier, la fibre, les salles de réunion et l'espace détente. Les prix sont indiqués hors taxes.",
      corps="""
@@ -499,10 +499,9 @@ page(slug="tarifs", nav="Tarifs",
       <tbody>
         <tr><td data-label="Option">Téléphone IP, formule fixes</td><td data-label="Détail">Poste Thomson ST2030, appels illimités vers les fixes en France, aux États-Unis et dans de nombreux pays d'Europe, conférence téléphonique</td><td data-label="Prix" class="prix">10 € HT / mois</td></tr>
         <tr><td data-label="Option">Téléphone IP, formule fixes et mobiles</td><td data-label="Détail">Appels illimités vers les fixes et les mobiles en France, aux États-Unis et dans de nombreux pays d'Europe</td><td data-label="Prix" class="prix">20 € HT / mois</td></tr>
-        <tr><td data-label="Option">Place de parking</td><td data-label="Détail">Garage couvert et sécurisé dans l'immeuble</td><td data-label="Prix" class="prix">72 € HT / mois</td></tr>
+        <tr><td data-label="Option">Place de parking</td><td data-label="Détail">Garage couvert et sécurisé dans l'immeuble</td><td data-label="Prix" class="prix">130 € HT / mois</td></tr>
         <tr><td data-label="Option">Impression noir et blanc</td><td data-label="Détail">Imprimante haute définition partagée</td><td data-label="Prix" class="prix">0,04 € HT la page</td></tr>
         <tr><td data-label="Option">Impression couleur</td><td data-label="Détail">Imprimante haute définition partagée</td><td data-label="Prix" class="prix">0,12 € HT la page</td></tr>
-        <tr><td data-label="Option">Séance d'ostéopathie</td><td data-label="Détail">15 à 45 minutes avec des ostéopathes diplômés, en partenariat avec le COS, sur place</td><td data-label="Prix" class="prix">5 € TTC la séance</td></tr>
       </tbody>
     </table>
     <p class="meta">Tarifs en vigueur au {date_fr}. Les prix sont exprimés hors taxes, TVA de 20 % en sus. Devis personnalisé sur demande pour les équipes de plus de cinq postes et pour la location ponctuelle de salles. Pour comparer un prix au poste et un loyer au m², lisez <a href="{u:guide-prix-bureau-bordeaux}">Combien coûte un bureau à Bordeaux ?</a></p>
@@ -523,7 +522,7 @@ page(slug="chartrons-business-center", nav="Le lieu",
      title="Le lieu et l'accès | Chartrons Business Center, Bordeaux",
      description="Immeuble d'architecte, 9 rue André Darbon, Bordeaux Chartrons : open space de 700 m², parking couvert, ascenseur, tram B et C. Plan d'accès.",
      h1="Le Chartrons Business Center, à Bordeaux",
-     chapo="Le Chartrons Business Center est situé au 9 rue André Darbon, à Bordeaux, dans le quartier des Chartrons, à deux pas des Bassins à flot. L'immeuble, conçu par un architecte et livré en 2007, fait partie du Kaizen Business Center et abrite un incubateur éco-créatif de jeunes entreprises du numérique.",
+     chapo="Le Chartrons Business Center est situé au 9 rue André Darbon, à Bordeaux, dans le quartier des Chartrons, à deux pas des Bassins à flot. L'immeuble, conçu par un architecte et livré en 2007, appartient à Shared Values et abrite un incubateur éco-créatif de jeunes entreprises du numérique.",
      corps="""
 <section class="section">
   <div class="conteneur deux-colonnes">
@@ -548,7 +547,7 @@ page(slug="chartrons-business-center", nav="Le lieu",
     <div class="en-tete-section"><span class="etiquette">Accès</span><h2>Comment venir au 9 rue André Darbon ?</h2></div>
     <div class="grille grille-3">
       <div class="carte"><div class="icone">{tram}</div><h3>En tramway et en bus</h3><ul><li><strong>Tram B</strong>, arrêt Chartrons</li><li><strong>Tram C</strong>, arrêt Camille Godard</li><li><strong>Bus 4 et 15</strong>, arrêt Picard</li></ul><p>Depuis la gare Saint-Jean, comptez une vingtaine de minutes en tram C direction Bassins à flot (horaires sur <a href="https://www.infotbm.com/" rel="noopener">infotbm.com</a>).</p></div>
-      <div class="carte"><div class="icone">{parking}</div><h3>En voiture</h3><p>Accès par les boulevards ou par les quais (quai de Bacalan). Place de parking en garage couvert sur abonnement (72 € HT par mois) et stationnement visiteurs possible dans le quartier.</p></div>
+      <div class="carte"><div class="icone">{parking}</div><h3>En voiture</h3><p>Accès par les boulevards ou par les quais (quai de Bacalan). Place de parking en garage couvert sur abonnement (130 € HT par mois) et stationnement visiteurs possible dans le quartier.</p></div>
       <div class="carte"><div class="icone">{pin}</div><h3>À vélo</h3><p>Pistes cyclables sur les quais jusqu'aux Bassins à flot, local vélos sécurisé dans l'immeuble, stations V³ à proximité.</p></div>
     </div>
     <div style="margin-top:2rem">
@@ -681,7 +680,7 @@ ARTICLES = [
 <p>Une adresse aux Chartrons dit quelque chose de votre entreprise : un quartier créatif, central, reconnu des Bordelais, sans être le quartier d'affaires standardisé. C'est l'une des raisons pour lesquelles des éditeurs de logiciels, des agences et des cabinets de conseil ont choisi le Chartrons Business Center, au 9 rue André Darbon, qui héberge aussi un incubateur éco-créatif.</p>
 <h2>Les points de vigilance</h2>
 <p>Le stationnement en voirie est limité, comme partout dans le centre de Bordeaux : un parking couvert dans l'immeuble change la vie des collaborateurs qui viennent en voiture. Les loyers des bureaux fermés y sont plus élevés qu'en périphérie, ce qui plaide pour les formules partagées quand l'équipe est petite ou évolutive.</p>
-<div class="encadre"><p>Au Chartrons Business Center, la place de parking en garage couvert coûte 72 € HT par mois, et le local vélos et deux-roues est inclus.</p></div>
+<div class="encadre"><p>Au Chartrons Business Center, la place de parking en garage couvert coûte 130 € HT par mois, et le local vélos et deux-roues est inclus.</p></div>
 """),
  dict(slug="guide-prix-bureau-bordeaux", date="2026-10-27", temps="5 min",
       title="Combien coûte un bureau à Bordeaux ? Prix au poste, au m²",
@@ -703,7 +702,7 @@ ARTICLES = [
   <li>L'assurance des locaux</li>
 </ul>
 <h2>Exemple de calcul pour une équipe de cinq personnes</h2>
-<p>En <a href="{u:location-bureaux-bordeaux}">espace partagé aux Chartrons</a> : 350 € + 4 × 300 € = <strong>1 550 € HT par mois</strong>, mobilier, fibre, salles de réunion et charges compris, avec un engagement mensuel. Ajoutez 72 € HT par place de parking si besoin.</p>
+<p>En <a href="{u:location-bureaux-bordeaux}">espace partagé aux Chartrons</a> : 350 € + 4 × 300 € = <strong>1 550 € HT par mois</strong>, mobilier, fibre, salles de réunion et charges compris, avec un engagement mensuel. Ajoutez 130 € HT par place de parking si besoin.</p>
 <p>En bail commercial, il faut compter environ 10 à 12 m² par poste, soit 50 à 60 m² pour cinq personnes, plus une salle de réunion. Le loyer n'est que la première ligne : une fois les charges, l'énergie, internet, le ménage et l'amortissement du mobilier ajoutés, le coût réel par poste est souvent plus élevé que le prix affiché, pour un engagement de trois ans minimum.</p>
 <div class="encadre"><p>La bonne question n'est pas « quel est le loyer ? » mais « combien me coûte chaque poste, tout compris, chaque mois, et pour quelle durée d'engagement ? ».</p></div>
 <h2>Quand le bail classique redevient pertinent</h2>
@@ -841,18 +840,18 @@ page(slug="contact", nav="Contact",
 # ----- Pages légales
 page(slug="mentions-legales", nav=None,
      title="Mentions légales | Chartrons Business Center",
-     description="Mentions légales du site location-bureau-bordeaux.fr, édité par Kaizen Marketing Group, Bordeaux.",
+     description="Mentions légales du site location-bureau-bordeaux.fr, édité par Shared Values, Bordeaux.",
      h1="Mentions légales", chapo="",
      corps="""
 <section class="section"><div class="conteneur prose">
 <h2>Éditeur du site</h2>
-<p>Le site location-bureau-bordeaux.fr est édité par <strong>Kaizen Marketing Group</strong>, société à responsabilité limitée, dont le siège est situé {nom}, {adresse}, {cp} {ville}, France.<br>Capital social : [à compléter]. RCS Bordeaux : [à compléter]. Numéro de TVA intracommunautaire : [à compléter].<br>Téléphone : <a href="tel:{tel_intl}">{tel}</a>. E-mail : <a href="mailto:{email}">{email}</a>.</p>
+<p>Le site location-bureau-bordeaux.fr est édité par <strong>Shared Values</strong>, dont le siège est situé {nom}, {adresse}, {cp} {ville}, France.<br>Capital social : [à compléter]. RCS Bordeaux : [à compléter]. Numéro de TVA intracommunautaire : [à compléter].<br>Téléphone : <a href="tel:{tel_intl}">{tel}</a>. E-mail : <a href="mailto:{email}">{email}</a>.</p>
 <h2>Directeur de la publication</h2>
 <p>[Nom du directeur de la publication à compléter], en qualité de gérant.</p>
 <h2>Hébergement</h2>
 <p>OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</p>
 <h2>Conception et réalisation</h2>
-<p>Kaizen Agency, {adresse}, {cp} {ville}.</p>
+<p>Shared Values, {adresse}, {cp} {ville}.</p>
 <h2>Propriété intellectuelle</h2>
 <p>L'ensemble des contenus du site (textes, visuels, logos, structure) est protégé par le droit d'auteur. Toute reproduction, même partielle, sans autorisation écrite de l'éditeur est interdite.</p>
 <h2>Données personnelles et cookies</h2>
@@ -869,7 +868,7 @@ page(slug="politique-de-confidentialite", nav=None,
 <section class="section"><div class="conteneur prose">
 <p class="meta">Dernière mise à jour : {date_fr}.</p>
 <h2>Responsable du traitement</h2>
-<p>Kaizen Marketing Group, {adresse}, {cp} {ville}. Contact : <a href="mailto:{email}">{email}</a>.</p>
+<p>Shared Values, {adresse}, {cp} {ville}. Contact : <a href="mailto:{email}">{email}</a>.</p>
 <h2>Données collectées</h2>
 <p>Lorsque vous utilisez le formulaire de contact, nous collectons votre nom, votre adresse e-mail, et, si vous les renseignez, le nom de votre entreprise, votre numéro de téléphone et le contenu de votre message. Ces données servent uniquement à répondre à votre demande de visite, de devis ou d'information. La base légale est votre consentement, recueilli par la case à cocher du formulaire.</p>
 <h2>Durée de conservation</h2>
@@ -900,8 +899,8 @@ FAQ = [
  ("coworking toutes", "Qui travaille dans l'open space ?", "Des indépendants, des fondateurs de start-up du numérique, des agences, des consultants en ressources humaines, des avocats et des gestionnaires de patrimoine. L'immeuble abrite aussi un incubateur éco-créatif de jeunes entreprises."),
  ("salles toutes", "Les salles sont-elles équipées pour la visioconférence ?", "Les salles disposent d'un écran de présentation, de l'audioconférence et de la fibre. Vous pouvez y brancher votre ordinateur pour une visioconférence avec votre propre outil."),
  ("salles toutes", "Peut-on louer une salle sans être résident ?", "Oui, sur demande. Indiquez-nous la date, la durée et le nombre de participants par téléphone ou via le formulaire de contact, et nous vous confirmons la disponibilité et le tarif dans la journée."),
- ("tarifs toutes", "Les prix sont-ils hors taxes ?", "Oui, tous les tarifs sont indiqués hors taxes, la TVA de 20 % s'ajoute sur la facture. Seule la séance d'ostéopathie partenaire est affichée toutes taxes comprises."),
- ("bureaux toutes", "Le parking est-il compris ?", "Le local vélos, scooters et motos est inclus. La place de parking voiture en garage couvert est une option à 72 € HT par mois."),
+ ("tarifs toutes", "Les prix sont-ils hors taxes ?", "Oui, tous les tarifs sont indiqués hors taxes, la TVA de 20 % s'ajoute sur la facture."),
+ ("bureaux toutes", "Le parking est-il compris ?", "Le local vélos, scooters et motos est inclus. La place de parking voiture en garage couvert est une option à 130 € HT par mois."),
  ("accueil lieu toutes", "L'immeuble est-il accessible aux personnes à mobilité réduite ?", "Oui. L'immeuble dispose d'un ascenseur desservant l'open space au troisième étage et de circulations adaptées aux personnes à mobilité réduite."),
  ("accueil toutes", "Peut-on visiter avant de s'engager ?", "Oui, et nous le recommandons. Une visite dure environ 30 minutes, du lundi au vendredi sur rendez-vous. Appelez le " + TEL + " ou utilisez le formulaire de contact."),
 ]
@@ -916,10 +915,10 @@ FAQ += [
 ]
 TEMOIGNAGES = [
  ("Julien Pellegrain", "Les Horaires", "Ces bureaux modernes, spacieux et lumineux sont idéaux pour les travailleurs indépendants."),
- ("Sophie Pallas", "Oenopia", "Un peu réticente par principe aux espaces ouverts et à la cohabitation, j'ai pourtant essayé le coworking chez Kaizen. Et j'y suis restée."),
+ ("Sophie Pallas", "Oenopia", "Un peu réticente par principe aux espaces ouverts et à la cohabitation, j'ai pourtant essayé le coworking chez Shared Values. Et j'y suis restée."),
  ("Christian Perron", "CRC, entrepreneur", "Plus qu'un bureau, c'est un vrai cadre de vie digne d'une start-up qui s'offre à vous."),
  ("Mariette Brenier", "Studio Malette Graphique", "J'apprécie notamment la salle de repos qui permet d'échanger autour d'un thé ou d'un café."),
- ("Benoît Droulin", "Azendoo", "Kaizen Marketing a su nous offrir des conditions idéales pour accueillir notre start-up."),
+ ("Benoît Droulin", "Azendoo", "Shared Values a su nous offrir des conditions idéales pour accueillir notre start-up."),
  ("Robert Gough", "Mevia, Alumn Force", "Le midi on voit du monde, ça permet de s'aérer la tête et de rencontrer des gens."),
  ("Sophie Brillaud", "Fimco", "C'est toute l'énergie que ça diffuse, l'échange avec des personnes qui ont des métiers complètement différents."),
 ]
@@ -1094,12 +1093,12 @@ def rendre(mode):
 </main>
 <footer class="pied"><div class="conteneur">
   <div class="grille">
-    <div><a class="logo" href="{u("")}"><img class="logo-img" src="{A}img/logo-blanc.webp" width="200" height="64" alt="Coworking Bordeaux Chartrons, retour à l'accueil"></a><p>Location de bureaux équipés, coworking et salles de réunion dans un open space de 700 m² au cœur des Chartrons, à Bordeaux. Un service du Kaizen Business Center.</p></div>
+    <div><a class="logo" href="{u("")}"><img class="logo-img" src="{A}img/logo-blanc.webp" width="200" height="64" alt="Coworking Bordeaux Chartrons, retour à l'accueil"></a><p>Location de bureaux équipés, coworking et salles de réunion dans un open space de 700 m² au cœur des Chartrons, à Bordeaux. Un espace Shared Values.</p></div>
     <div><p class="titre-pied">Nos espaces</p><ul><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés</a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking</a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion</a></li><li><a href="{u("services")}">Services inclus</a></li><li><a href="{u("tarifs")}">Tarifs</a></li></ul></div>
     <div><p class="titre-pied">Informations</p><ul><li><a href="{u("chartrons-business-center")}">Le lieu et l'accès</a></li><li><a href="{u("temoignages")}">Témoignages</a></li><li><a href="{u("faq")}">Questions fréquentes</a></li><li><a href="{u("guide")}">Guide</a></li><li><a href="{u("contact")}">Contact et visite</a></li></ul></div>
     <div><p class="titre-pied">Contact</p><address>{NOM}<br>{ADRESSE}<br>{CP} {VILLE}<br><a href="tel:{TEL_INTL}">{TEL}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
   </div>
-  <div class="pied-bas"><p>© {DATE_MAJ[:4]} <a href="https://www.kaizen-marketing.fr/" rel="noopener">Kaizen Marketing Group</a>. Tous droits réservés.</p><ul><li><a href="{u("mentions-legales")}">Mentions légales</a></li><li><a href="{u("politique-de-confidentialite")}">Confidentialité</a></li><li><a href="{u("plan-du-site")}">Plan du site</a></li></ul></div>
+  <div class="pied-bas"><p>© {DATE_MAJ[:4]} Shared Values. Tous droits réservés.</p><ul><li><a href="{u("mentions-legales")}">Mentions légales</a></li><li><a href="{u("politique-de-confidentialite")}">Confidentialité</a></li><li><a href="{u("plan-du-site")}">Plan du site</a></li></ul></div>
 </div></footer>
 <script>
 (function(){{
@@ -1162,7 +1161,7 @@ Sitemap: {DOMAINE}/sitemap.xml
 """)
         open(os.path.join(dist, "llms.txt"), "w").write(f"""# {NOM}
 
-> Location de bureaux équipés, coworking, flex office à la demande et salles de réunion dans un open space de 700 m² au 9 rue André Darbon, quartier des Chartrons, à Bordeaux (France). Premier poste 350 € HT par mois, postes supplémentaires 300 € HT par mois, parking couvert 72 € HT par mois. Téléphone {TEL}.
+> Location de bureaux équipés, coworking, flex office à la demande et salles de réunion dans un open space de 700 m² au 9 rue André Darbon, quartier des Chartrons, à Bordeaux (France). Premier poste 350 € HT par mois, postes supplémentaires 300 € HT par mois, parking couvert 130 € HT par mois. Téléphone {TEL}.
 
 ## Pages principales
 """ + "".join(f"- [{p['h1']}]({canon(p['slug'])}) : {p['description']}\n" for p in PAGES if p["slug"] not in ("mentions-legales", "politique-de-confidentialite", "plan-du-site")) + "\n## Guide\n" + "".join(f"- [{a['h1']}]({canon(a['slug'])}) : {a['description']}\n" for a in ARTICLES))
