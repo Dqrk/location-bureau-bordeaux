@@ -7,7 +7,7 @@
 @media (max-width:620px){.grille-2,.grille-3,.grille-4{grid-template-columns:1fr}}
 
 /* ---------- Cartes ---------- */
-.carte{position:relative;background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon);padding:1.8rem;transition:border-color .25s ease,box-shadow .25s ease}
+.carte{position:relative;background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon-l);padding:1.8rem;transition:border-color .25s ease,box-shadow .25s ease}
 .carte:hover{border-color:#bdbdbd;box-shadow:0 8px 24px rgba(0,0,0,.05)}
 .carte .icone{color:var(--noir);margin-bottom:1rem}
 .carte .icone svg{width:28px;height:28px}
@@ -34,14 +34,14 @@
 .deux-colonnes{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
 .deux-colonnes.inverse > :first-child{order:2}
 @media (max-width:860px){.deux-colonnes{grid-template-columns:1fr;gap:2rem}.deux-colonnes.inverse > :first-child{order:0}}
-.visuel{border-radius:var(--rayon);overflow:hidden}
+.visuel{border-radius:var(--rayon-l);overflow:hidden}
 .visuel img{width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .galerie{list-style:none;padding:0;margin:3rem 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
-.galerie li{margin:0;overflow:hidden;border-radius:var(--rayon)}
+.galerie li{margin:0;overflow:hidden;border-radius:var(--rayon-l)}
 .galerie img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .galerie li:hover img{transform:scale(1.03)}
 @media (max-width:760px){.galerie{grid-template-columns:repeat(2,1fr)}}
-.illustration{border-radius:var(--rayon);background:var(--gris);aspect-ratio:16/9;margin-bottom:1rem;overflow:hidden}
+.illustration{border-radius:var(--rayon-l);background:var(--gris);aspect-ratio:16/9;margin-bottom:1rem;overflow:hidden}
 .illustration img{width:100%;height:100%;object-fit:cover}
 
 /* ---------- Listes ---------- */
@@ -53,14 +53,13 @@
 
 /* ---------- Chiffres (section sombre) ---------- */
 .chiffres{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center}
-.chiffres div{padding:1.5rem 1rem;border-left:1px solid rgba(255,255,255,.15)}
-.chiffres div:first-child{border-left:0}
+.chiffres div{padding:2rem 1rem;background:rgba(255,255,255,.07);border-radius:var(--rayon-l)}
 .chiffres strong{display:block;font-family:var(--police-titre);font-weight:600;font-size:2.6rem;color:#fff;line-height:1.1}
 .chiffres span{font-size:.95rem}
-@media (max-width:760px){.chiffres{grid-template-columns:repeat(2,1fr);gap:.5rem}.chiffres div{border:0;padding:1rem .25rem}.chiffres strong{font-size:2.1rem}}
+@media (max-width:760px){.chiffres{grid-template-columns:repeat(2,1fr);gap:.6rem}.chiffres div{padding:1.4rem .5rem}.chiffres strong{font-size:2.1rem}}
 
 /* ---------- Témoignages ---------- */
-.temoignage{background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon);padding:1.8rem;display:flex;flex-direction:column;margin:0}
+.temoignage{background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon-l);padding:1.8rem;display:flex;flex-direction:column;margin:0}
 .temoignage blockquote{margin:0 0 1rem;font-size:1.05rem;flex:1}
 .temoignage blockquote::before{content:"“";font-family:var(--police-titre);font-size:3.5rem;color:var(--texte-doux);line-height:0;display:block;margin:1rem 0 .4rem}
 .temoignage figcaption{display:flex;align-items:center;gap:.8rem;font-size:.95rem}
@@ -89,7 +88,7 @@
 /* ---------- Étapes ---------- */
 .etapes{counter-reset:etape;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 @media (max-width:760px){.etapes{grid-template-columns:1fr}}
-.etapes li{counter-increment:etape;background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon);padding:1.8rem;margin:0}
+.etapes li{counter-increment:etape;background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon-l);padding:1.8rem;margin:0}
 .etapes li::before{content:counter(etape,decimal-leading-zero);display:block;font-family:var(--police-titre);font-weight:600;font-size:1.6rem;color:var(--texte-doux);margin-bottom:.4rem}
 .etapes h3{font-size:1.1rem}
 
@@ -128,7 +127,7 @@
 .coordonnees{list-style:none;padding:0;margin:0}
 .coordonnees li{display:flex;gap:.8rem;margin-bottom:1rem}
 .coordonnees svg{width:24px;height:24px;color:var(--noir);flex:none;margin-top:.15rem}
-.carte-plan{border:1px solid var(--ligne);border-radius:var(--rayon);overflow:hidden;height:420px;background:var(--gris);display:flex;align-items:center;justify-content:center;margin-top:1.2rem}
+.carte-plan{border:1px solid var(--ligne);border-radius:var(--rayon-l);overflow:hidden;height:420px;background:var(--gris);display:flex;align-items:center;justify-content:center;margin-top:1.2rem}
 .carte-plan iframe{width:100%;height:100%;border:0}
 @media (max-width:620px){.carte-plan{height:300px}}
 
@@ -155,6 +154,15 @@ td.prix,th.prix{text-align:right;white-space:nowrap;font-weight:600;color:var(--
 
 /* ---------- Apparition au défilement ----------
    Posée en JavaScript sur les seuls blocs situés sous la ligne de flottaison : rien ne clignote, tout reste visible sans JS. */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .9s var(--sortie)}
 .reveal.vu{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+/* Photos : se posent en douceur dans leur cadre arrondi */
+.reveal-image{overflow:hidden}
+.reveal-image img{transform:scale(1.12);opacity:.001;transition:transform 1.4s var(--sortie),opacity .8s ease}
+.reveal-image.vu img{transform:none;opacity:1}
+.reveal-image.vu:hover img{transform:scale(1.03)}
+/* Titres : chaque mot sort d'un masque, l'un après l'autre */
+.titre-anime .mot{display:inline-block;overflow:clip;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
+.titre-anime .mot>span{display:inline-block;transform:translateY(110%);transition:transform .9s var(--sortie)}
+.titre-anime.vu .mot>span{transform:none}
+@media (prefers-reduced-motion:reduce){.reveal,.reveal-image img,.titre-anime .mot>span{opacity:1;transform:none}}

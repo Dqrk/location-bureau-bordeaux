@@ -1122,6 +1122,7 @@ def rendre(mode):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js")</script>
 <title>{html.escape(p["title"])}</title>
 <meta name="description" content="{html.escape(p["description"])}">
 {"" if p.get("noindex") else f'<link rel="canonical" href="{canon(slug)}">'}

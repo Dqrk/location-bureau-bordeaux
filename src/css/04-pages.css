@@ -1,7 +1,10 @@
 /* ---------- Sections ---------- */
 .section{padding:5rem 0}
 .section-gris{background:var(--gris)}
-.section-nuit{background:var(--noir);color:#d0d0d0}
+.section-nuit{background:var(--noir);color:#d0d0d0;border-radius:var(--rayon-xl);margin:0 16px}
+/* Grand arc décoratif, très discret, en fond des sections grises */
+.section-gris{position:relative;overflow:hidden;isolation:isolate}
+.section-gris::before{content:"";position:absolute;z-index:-1;width:1100px;height:1100px;right:-520px;top:-520px;border-radius:50%;border:140px solid rgba(17,17,17,.028);pointer-events:none}
 .section-nuit h2{color:#fff}
 .etiquette{display:block;color:var(--texte-doux);font-weight:500;font-size:.95rem;margin:0 0 .5rem}
 .section-nuit .etiquette{color:rgba(255,255,255,.7)}
@@ -20,6 +23,13 @@
 .heros::before,.bandeau::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(18,18,20,.7),rgba(18,18,20,.76))}
 .heros{min-height:min(88vh,52rem);padding:7rem 0 8rem}
 .bandeau{min-height:26rem;padding:5.5rem 0 4.5rem}
+.heros,.bandeau{border-radius:0 0 var(--rayon-xl) var(--rayon-xl)}
+/* Entrée du haut de page au chargement (classe js posée dans le head : pas de clignotement) */
+@keyframes monte{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.js .heros h1,.js .bandeau h1{animation:monte 1s var(--sortie) .1s both}
+.js .heros .intro,.js .bandeau .intro{animation:monte 1s var(--sortie) .3s both}
+.js .heros .btn-groupe,.js .bandeau .meta{animation:monte 1s var(--sortie) .45s both}
+.js .heros .points-cles{animation:monte 1s var(--sortie) .6s both}
 .heros .conteneur,.bandeau .conteneur{width:100%}
 .heros h1,.bandeau h1{position:relative;display:inline-block;max-width:24ch;margin:0 auto 1.75rem;padding:.45em .9em;color:#fff;font-size:clamp(1.9rem,4vw,3.1rem);line-height:1.12}
 .heros h1::before,.heros h1::after,.bandeau h1::before,.bandeau h1::after{content:"";position:absolute;height:2px;width:100%;background:#fff;transition:width .85s ease .25s}
@@ -54,7 +64,7 @@
 @media (min-width:861px){.bandeau .fil{position:absolute;top:1.25rem;left:0;right:0;max-width:var(--largeur);margin:0 auto;padding:0 20px}}
 
 /* ---------- Tarifs ---------- */
-.tarif{position:relative;background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon);padding:2rem;display:flex;flex-direction:column;transition:border-color .25s ease,box-shadow .25s ease}
+.tarif{position:relative;background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon-l);padding:2rem;display:flex;flex-direction:column;transition:border-color .25s ease,box-shadow .25s ease}
 .tarif:hover{border-color:#bdbdbd;box-shadow:0 8px 24px rgba(0,0,0,.05)}
 .tarif.mis-en-avant{border-color:var(--noir)}
 .tarif .badge{display:block;color:var(--rouge);font-size:.9rem;font-weight:600;margin-bottom:.5rem}
@@ -96,7 +106,9 @@
 /* ---------- Impression : contenu seul, tout visible ---------- */
 @media print{
   .entete,.pied,.cta,.aside,.skip,.heros .suite,.btn-groupe,.carte-plan{display:none!important}
-  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .reveal,.reveal-image img,.titre-anime .mot>span{opacity:1!important;transform:none!important;transition:none!important}
+  *{animation:none!important}
+  .section-nuit{margin:0}
   .heros,.bandeau{background:none!important;color:#000;min-height:0;padding:1rem 0}
   .heros::before,.bandeau::before,.heros h1::before,.heros h1::after,.bandeau h1::before,.bandeau h1::after{display:none}
   .heros h1,.bandeau h1,.heros .intro,.bandeau .intro,.bandeau .meta,.points-cles strong,.points-cles span{color:#000}

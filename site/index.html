@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js")</script>
 <title>Coworking et bureaux à Bordeaux Chartrons dès 350 € HT</title>
 <meta name="description" content="Bureaux équipés, coworking, 6 salles de réunion et 3 cabines dans un open space de 700 m² aux Chartrons, Bordeaux. Fibre, parking, tram. Dès 350 € HT. Visitez.">
 <link rel="canonical" href="https://www.location-bureau-bordeaux.fr/">
@@ -26,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/instrument-sans-latin-400-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/assets/img/photos/hero-1000.webp" media="(max-width: 860px)" fetchpriority="high"><link rel="preload" as="image" href="/assets/img/photos/hero-1600.webp" media="(min-width: 861px)" fetchpriority="high">
 <noscript><style>.is-preload .heros h1::before,.is-preload .heros h1::after,.is-preload .bandeau h1::before,.is-preload .bandeau h1::after{width:100%}</style></noscript>
-<link rel="stylesheet" href="/assets/style.59b92c34.css">
+<link rel="stylesheet" href="/assets/style.f496d6ff.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CoworkingSpace", "hasMap": "https://www.google.com/maps/search/?api=1&query=9+rue+Andr%C3%A9+Darbon+33300+Bordeaux", "@id": "https://www.location-bureau-bordeaux.fr/#organisation", "name": "Coworking Bordeaux Chartrons", "alternateName": ["Location Bureau Bordeaux", "Chartrons Business Center"], "description": "Location de bureaux équipés, coworking et salles de réunion dans un open space de 700 m² au cœur du quartier des Chartrons à Bordeaux.", "url": "https://www.location-bureau-bordeaux.fr/", "telephone": "+33972125778", "email": "contact@shared-values.fr", "priceRange": "à partir de 350 € HT / mois", "image": "https://www.location-bureau-bordeaux.fr/assets/img/og.jpg", "logo": "https://www.location-bureau-bordeaux.fr/assets/img/logo.png", "address": {"@type": "PostalAddress", "streetAddress": "9 rue André Darbon", "postalCode": "33300", "addressLocality": "Bordeaux", "addressRegion": "Nouvelle-Aquitaine", "addressCountry": "FR"}, "areaServed": {"@type": "City", "name": "Bordeaux"}, "parentOrganization": {"@type": "Organization", "name": "Shared Values", "url": "https://www.shared-values.fr/"}, "knowsAbout": ["location de bureaux", "coworking", "flex office", "salles de réunion"], "makesOffer": [{"@type": "Offer", "name": "Poste de travail équipé en open space", "price": "350", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "350", "priceCurrency": "EUR", "unitCode": "MON", "valueAddedTaxIncluded": false}}, {"@type": "Offer", "name": "Poste supplémentaire", "price": "300", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "300", "priceCurrency": "EUR", "unitCode": "MON", "valueAddedTaxIncluded": false}}, {"@type": "Offer", "name": "Place de parking en garage couvert", "price": "130", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "130", "priceCurrency": "EUR", "unitCode": "MON", "valueAddedTaxIncluded": false}}, {"@type": "Offer", "name": "Flex office à la demande", "description": "Poste équipé en open space à la demi-journée ou à la journée, sans engagement ; tarif selon le nombre de jours, sur demande"}], "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "Fibre optique", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Six salles de réunion", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Trois cabines d'appel", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Parking couvert", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Local vélos", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Ascenseur et accès PMR", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Climatisation réversible", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Espace détente", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Café à volonté", "value": true}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://www.location-bureau-bordeaux.fr/#site", "url": "https://www.location-bureau-bordeaux.fr/", "name": "Coworking Bordeaux Chartrons", "inLanguage": "fr-FR", "alternateName": ["Location Bureau Bordeaux", "Chartrons Business Center"], "publisher": {"@id": "https://www.location-bureau-bordeaux.fr/#organisation"}}</script>
 </head>
 <body class="is-preload">
@@ -192,15 +193,30 @@
   var d=document;
   window.addEventListener('load',function(){setTimeout(function(){d.body.classList.remove('is-preload');},100);});
 
-  /* Apparition au défilement : toutes les lectures de position d'abord, puis les écritures (pas de recalcul forcé) */
+  /* Animations au défilement, uniquement sous la ligne de flottaison au chargement (rien ne clignote) :
+     blocs en fondu montant décalé, titres mot par mot sortant d'un masque, photos qui se posent, chiffres qui défilent */
   if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var cibles=[].slice.call(d.querySelectorAll('.en-tete-section,.grille>*,.deux-colonnes>*,.chiffres>div,.galerie li,.etapes li,.faq-bloc,.cta,.encadre,.pied-haut>*,.pied-nav>div'));
-    var hauteur=window.innerHeight,hauts=cibles.map(function(el){return el.getBoundingClientRect().top;});
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
-    cibles.forEach(function(el,i){
-      if(hauts[i]<hauteur)return;
-      el.style.transitionDelay=Math.min([].indexOf.call(el.parentNode.children,el),3)*80+'ms';
-      el.classList.add('reveal');io.observe(el);
+    var hauteur=window.innerHeight;
+    var sousLaLigne=function(liste){var h=liste.map(function(el){return el.getBoundingClientRect().top;});return liste.filter(function(el,i){return h[i]>=hauteur;});};
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target);if(e.target.compteur)e.target.compteur();}});},{rootMargin:'0px 0px -10% 0px'});
+    var blocs=sousLaLigne([].slice.call(d.querySelectorAll('.en-tete-section>:not(h2),.grille>*,.deux-colonnes>div:not(.visuel),.galerie li,.etapes li,.faq-item,.faq-intro>p,.cta>*,.encadre,.pied-haut>*,.pied-nav>div,.table-scroll,.prose>p,.prose>ul,.formulaire>*,.chiffres>div')));
+    var images=sousLaLigne([].slice.call(d.querySelectorAll('.deux-colonnes .visuel,.carte-visuel,.galerie li')));
+    var titres=sousLaLigne([].slice.call(d.querySelectorAll('main h2,.pied-titre')));
+    blocs.forEach(function(el){el.style.transitionDelay=Math.min([].indexOf.call(el.parentNode.children,el),4)*100+'ms';el.classList.add('reveal');io.observe(el);});
+    images.forEach(function(el){el.classList.add('reveal-image');io.observe(el);});
+    titres.forEach(function(t){
+      if(t.children.length)return;
+      var mots=t.textContent.trim().split(/ +/);
+      t.textContent='';
+      mots.forEach(function(m,i){var s=d.createElement('span'),c=d.createElement('span');s.className='mot';c.textContent=m;c.style.transitionDelay=Math.min(i,12)*45+'ms';s.appendChild(c);t.appendChild(s);if(i<mots.length-1)t.appendChild(d.createTextNode(' '));});
+      t.classList.add('titre-anime');io.observe(t);
+    });
+    /* Chiffres clés : défilent de 0 à leur valeur ; le texte final reste dans le HTML */
+    sousLaLigne([].slice.call(d.querySelectorAll('.chiffres strong'))).forEach(function(el){
+      var m=el.textContent.match(/^(\d+)(.*)$/);if(!m)return;
+      var fin=parseInt(m[1].replace(/\D/g,''),10),suite=m[2],bloc=el.closest('.chiffres>div')||el;
+      bloc.compteur=function(){var t0=null,dur=1400;var pas=function(t){if(!t0)t0=t;var k=Math.min((t-t0)/dur,1),v=Math.round(fin*(1-Math.pow(1-k,3)));el.textContent=v+suite;if(k<1)requestAnimationFrame(pas);};requestAnimationFrame(pas);};
+      el.textContent='0'+suite;
     });
   }
 
