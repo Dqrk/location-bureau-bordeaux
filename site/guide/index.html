@@ -65,7 +65,7 @@
     bt.addEventListener('click',function(){var ouvert=bt.getAttribute('aria-expanded')==='true';bt.setAttribute('aria-expanded',ouvert?'false':'true');r.hidden=ouvert;});
   });
   var cp=document.getElementById('charger-plan');
-  if(cp){cp.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.google.com/maps?q=9+rue+Andr%C3%A9+Darbon+33300+Bordeaux&output=embed';f.title='Plan Google Maps du 9 rue André Darbon à Bordeaux';f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';cp.parentNode.replaceChild(f,cp);});}
+  if(cp){cp.addEventListener('click',function(){cp.disabled=true;cp.textContent='Chargement du plan…';var f=document.createElement('iframe');f.title='Plan Google Maps du 9 rue André Darbon à Bordeaux';f.width='800';f.height='600';f.loading='eager';f.referrerPolicy='no-referrer-when-downgrade';f.allowFullscreen=true;f.style.display='none';f.addEventListener('load',function(){f.style.display='';if(cp.parentNode){cp.parentNode.removeChild(cp);}});cp.parentNode.appendChild(f);f.src='https://www.google.com/maps?q=9+rue+Andr%C3%A9+Darbon+33300+Bordeaux&output=embed';});}
 })();
 </script>
 </body>
