@@ -64,6 +64,12 @@ PHOTOS = {
  "Télétravail et bureau partagé : organiser une équipe hybride à Bordeaux": ("detente", "Espace détente et postes de travail de l'open space, avec canapés"),
 }
 PHOTO_PREFIX = "assets/img/photos/"
+# Photo de fond du hero, par page (les articles prennent la photo associée à leur titre dans PHOTOS)
+HERO_PHOTO = {"": "hero", "location-bureaux-bordeaux": "openspace", "coworking-bordeaux-chartrons": "coworking",
+              "salles-de-reunion-bordeaux": "grande-salle", "services": "cuisine", "tarifs": "bureau",
+              "chartrons-business-center": "fenetre", "temoignages": "detente", "faq": "lounge", "guide": "postes",
+              "contact": "hero", "merci": "hero", "mentions-legales": "plafond-vert", "politique-de-confidentialite": "plafond-vert",
+              "plan-du-site": "plafond-vert"}
 PHOTO_COMPTEUR = [0]
 def photo(cle, alt, prioritaire=False, sizes="(max-width: 860px) 100vw, (max-width: 1220px) 50vw, 570px"):
     PHOTO_COMPTEUR[0] += 1
@@ -91,6 +97,17 @@ ICONES = {
     "mail": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' aria-hidden='true'><rect x='3' y='5' width='18' height='14' rx='2'/><path d='M3 7l9 6 9-6'/></svg>",
     "horloge": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' aria-hidden='true'><circle cx='12' cy='12' r='9'/><path d='M12 7v5l3 2'/></svg>",
 }
+PLAN_SVG = ("<svg viewBox='0 0 220 220' width='216' height='216' aria-hidden='true' focusable='false'>"
+    "<defs><clipPath id='disque'><circle cx='110' cy='110' r='109'/></clipPath></defs><g clip-path='url(#disque)'>"
+    "<rect width='220' height='220' fill='#222427'/><g stroke='#34373b' stroke-width='1.5' fill='none'>"
+    "<path d='M-10 52 L230 30'/><path d='M-10 96 L230 82'/><path d='M-10 140 L230 132'/><path d='M-10 182 L230 178'/>"
+    "<path d='M40 -10 L58 230'/><path d='M92 -10 L104 230'/><path d='M140 -10 L146 230'/>"
+    "<path d='M20 -10 Q70 110 30 230' stroke='#3a3d42' stroke-width='3'/></g>"
+    "<path d='M178 -10 C150 50 200 110 168 160 C150 190 160 215 172 240 L240 240 L240 -10 Z' fill='#2b3a44'/>"
+    "<text x='196' y='96' fill='#6f8796' font-size='10' font-style='italic' transform='rotate(78 196 96)'>Garonne</text>"
+    "<circle class='anneau' cx='98' cy='104' r='22' fill='none' stroke='#c8161d' stroke-width='1.5' opacity='.55'/>"
+    "<circle cx='98' cy='104' r='12' fill='none' stroke='#c8161d' stroke-width='2'/><circle cx='98' cy='104' r='4.5' fill='#fff'/></g>"
+    "<circle cx='110' cy='110' r='109' fill='none' stroke='rgba(255,255,255,.28)'/></svg>")
 LOGO_SVG = "<svg viewBox='0 0 40 40' aria-hidden='true'><rect width='40' height='40' rx='9' fill='#111111'/><path d='M11 29V11h5v13h8v5zM26 11h4v9l-4 3z' fill='#fff'/></svg>"
 
 # ---------------------------------------------------------------- pages
@@ -144,7 +161,7 @@ page(slug="", nav="Accueil",
       <article class="carte carte-photo"><div class="carte-visuel">{photo:coworking:Espace détente du coworking avec canapés et cabine vitrée}</div><h3><a class="carte-lien" href="{u:coworking-bordeaux-chartrons}">Coworking</a></h3><p>Sortez de chez vous, rejoignez une communauté d'indépendants, de start-up et de cabinets de conseil, et partagez les coûts d'un vrai bureau.</p><a class="lien" href="{u:coworking-bordeaux-chartrons}">Découvrir le coworking</a></article>
       <article class="carte carte-photo"><div class="carte-visuel">{photo:salle-box:Cabine de réunion vitrée avec une personne au travail}</div><h3><a class="carte-lien" href="{u:salles-de-reunion-bordeaux}">Salles de réunion</a></h3><p>Une grande salle de 16 à 20 places en mode conférence et huit salles de 6 à 8 places, équipées pour la présentation et l'audioconférence.</p><a class="lien" href="{u:salles-de-reunion-bordeaux}">Réserver une salle</a></article>
     </div>
-    <div class="encadre" style="margin-top:2rem"><p><strong>Flex office à la demande.</strong> Besoin d'un poste pour une journée, une semaine ou quelques jours par mois, sans engagement ? Réservez un poste en open space quand vous en avez besoin, avec les mêmes services que les résidents. <a href="{u:coworking-bordeaux-chartrons}#flex-office">En savoir plus sur le flex office</a>.</p></div>
+    <div class="encadre" style="margin-top:2.5rem"><h3>Quelques jours par mois seulement ?</h3><p>Le flex office vous donne un poste en open space à la journée ou à la semaine, sans engagement, avec les mêmes services que les résidents. <a href="{u:coworking-bordeaux-chartrons}#flex-office">Voir comment fonctionne le flex office</a>.</p></div>
   </div>
 </section>
 
@@ -488,7 +505,7 @@ page(slug="tarifs", nav="Tarifs",
       <div class="tarif mis-en-avant"><span class="badge">Équipes</span><h2 class="h3">Postes supplémentaires</h2><p class="prix">300 € <small>HT</small></p><p class="unite">par mois et par poste, à partir du deuxième</p><ul class="liste-coches"><li>Mêmes prestations que le premier poste</li><li>Postes regroupés dans l'open space</li><li>Ajout d'un poste en quelques jours</li><li>Exemple : 3 postes = 950 € HT / mois</li><li>Exemple : 5 postes = 1 550 € HT / mois</li></ul><a class="btn" href="{u:contact}">Installer mon équipe</a></div>
       <div class="tarif"><h2 class="h3">Salle de réunion</h2><p class="prix">Sur devis</p><p class="unite">pour les entreprises non résidentes</p><ul class="liste-coches"><li>Grande salle 16 à 20 personnes</li><li>Huit salles de 6 à 8 personnes</li><li>Écran, audioconférence, Wi-Fi</li><li>Incluse pour les résidents jusqu'à 8 personnes</li></ul><a class="btn btn-secondaire" href="{u:salles-de-reunion-bordeaux}">Voir les salles</a></div>
     </div>
-    <div class="encadre" style="margin-top:2rem"><p><strong>Flex office à la demande.</strong> Un poste équipé en open space à la journée ou à la demi-journée, sans engagement, pour les indépendants et les salariés de passage. Tarif sur demande selon le nombre de jours : <a href="{u:contact}">indiquez-nous vos dates</a>.</p></div>
+    <div class="encadre" style="margin-top:2.5rem"><h3>Besoin d'un poste de temps en temps ?</h3><p>Le flex office loue un poste équipé en open space à la journée ou à la demi-journée, sans engagement, pour les indépendants et les salariés de passage. Le tarif dépend du nombre de jours : <a href="{u:contact}">indiquez-nous vos dates</a>.</p></div>
   </div>
 </section>
 
@@ -1016,11 +1033,11 @@ def rendre(mode):
     articles_html = "".join(
         f'<article class="carte article-carte"><div class="illustration">{visuel(a["h1"], i, "16/9")}</div><time datetime="{a["date"]}">{date_fr(a["date"])} · {a["temps"]} de lecture</time><h3><a href="{u(a["slug"])}">{a["h1"]}</a></h3><p>{a["description"]}</p><a class="lien" href="{u(a["slug"])}">Lire l\'article</a></article>'
         for i, a in enumerate(ARTICLES))
-    cta_html = f'<section class="section"><div class="conteneur"><div class="cta"><div><h2>Envie de voir l\'open space ?</h2><p>Visite de 30 minutes, du lundi au vendredi sur rendez-vous. Devis au nombre de postes envoyé dans la journée.</p></div><div class="btn-groupe"><a class="btn btn-blanc" href="{u("contact")}">Réserver une visite</a><a class="btn btn-blanc" href="tel:{TEL_INTL}">{TEL}</a></div></div></div></section>'
+    cta_html = f'<section class="section"><div class="conteneur"><div class="cta"><div><h2>Venir voir l\'open space</h2><p>La visite dure 30 minutes, du lundi au vendredi, sur rendez-vous. Vous recevez le devis au nombre de postes dans la journée.</p></div><p class="actions-visite"><a class="btn" href="{u("contact")}">Réserver une visite</a><span>ou <a href="tel:{TEL_INTL}">{TEL}</a></span></p></div></div></section>'
 
     sitemap = []
     for p in toutes:
-        slug = p["slug"]; corps = p["corps"]; PHOTO_COMPTEUR[0] = 0
+        slug = p["slug"]; corps = p["corps"]; PHOTO_COMPTEUR[0] = 1
         faq_items = []
         # substitutions
         def sub_u(m): return u(m.group(1))
@@ -1029,6 +1046,9 @@ def rendre(mode):
         corps = re.sub(r"\{v:([^:}]+):(\d)\}", sub_v, corps)
         def sub_faq(m):
             h, items = faq_html(m.group(1)); faq_items.extend(items); return h
+        corps = re.sub(r'<div class="en-tete-section(?: centre)?"><span class="etiquette">Questions fréquentes</span><h2>(.*?)</h2></div>\s*<div class="faq">(\{faq:[a-z]+\})</div>',
+                       lambda m: f'<div class="faq-bloc"><div class="faq-intro"><h2>{m.group(1)}</h2><p>Une autre question ? Appelez le <a href="tel:{TEL_INTL}">{TEL}</a> ou consultez <a href="{{u:faq}}">toutes les questions</a>.</p></div><div class="faq">{m.group(2)}</div></div>', corps)
+        corps = re.sub(r"\{u:([a-z0-9-]+)\}", sub_u, corps)
         corps = re.sub(r"\{faq:([a-z]+)\}", sub_faq, corps)
         corps = re.sub(r"\{photo:([a-z0-9-]+):([^}]+)\}", lambda m: photo(m.group(1), m.group(2), sizes="(max-width: 620px) 100vw, (max-width: 960px) 50vw, 370px"), corps)
         corps = re.sub(r"\{temoignages:(\d)\}", lambda m: temoignages_html(int(m.group(1))), corps)
@@ -1038,6 +1058,11 @@ def rendre(mode):
         corps = corps.replace("{formto}", FORMTO_ENDPOINT).replace("{tel}", TEL).replace("{tel_intl}", TEL_INTL).replace("{email}", EMAIL).replace("{nom}", NOM).replace("{adresse}", ADRESSE).replace("{cp}", CP).replace("{ville}", VILLE).replace("{date_fr}", date_fr(DATE_MAJ))
 
         fil_html, fil_ld = fil(p)
+        cle_hero = HERO_PHOTO.get(slug) or (PHOTOS[p["h1"]][0] if p["h1"] in PHOTOS else "openspace")
+        img_hero = f"{A}img/photos/{cle_hero}"
+        style_hero = f' style="--hero-img:url(\'{img_hero}-1600.webp\');--hero-img-m:url(\'{img_hero}-1000.webp\')"'
+        preload_hero = (f'<link rel="preload" as="image" href="{img_hero}-1000.webp" media="(max-width: 860px)" fetchpriority="high">'
+                        f'<link rel="preload" as="image" href="{img_hero}-1600.webp" media="(min-width: 861px)" fetchpriority="high">')
         og_image = abs_url("assets/img/og.jpg")
         for k_titre, (k_cle, k_alt) in PHOTOS.items():
             if k_titre == p["h1"] or ("{v:" + k_titre) in p["corps"]:
@@ -1056,19 +1081,18 @@ def rendre(mode):
 
         if slug == "":
             entete_page = f"""
-<section class="heros"><div class="conteneur">
-  <div><span class="etiquette">Bordeaux · Chartrons</span><h1>Location de bureaux et <em>coworking</em> à Bordeaux, quartier des Chartrons</h1><p class="intro">{p["chapo"]}</p>
+<section class="heros"{style_hero}><div class="conteneur">
+  <h1>Location de bureaux et coworking à Bordeaux, aux Chartrons</h1><p class="intro">{p["chapo"]}</p>
   <div class="btn-groupe"><a class="btn" href="{u("contact")}">Réserver une visite</a><a class="btn btn-secondaire" href="{u("tarifs")}">Voir les tarifs</a></div>
-  <ul class="points-cles"><li><strong>700 m²</strong><span>d'open space</span></li><li><strong>350 € HT</strong><span>par mois, 1er poste</span></li><li><strong>9 salles</strong><span>de réunion</span></li><li><strong>Tram B et C</strong><span>à 5 minutes</span></li></ul></div>
-  <div class="heros-visuel"><div class="cadre"></div><figure>{visuel("L'open space lumineux du Chartrons Business Center", 0)}<figcaption>Open space de 700 m² au troisième étage, 9 rue André Darbon, Bordeaux.</figcaption></figure></div>
-</div></section>"""
+  <ul class="points-cles"><li><strong>700 m²</strong><span>d'open space</span></li><li><strong>350 € HT</strong><span>par mois, 1er poste</span></li><li><strong>9 salles</strong><span>de réunion</span></li><li><strong>Tram B et C</strong><span>à 5 minutes</span></li></ul>
+</div><a class="suite" href="#suite" aria-label="Aller à la suite de la page"></a></section><div id="suite"></div>"""
         elif p.get("est_article"):
-            entete_page = f"""<header class="bandeau"><div class="conteneur">{fil_html}<h1>{p["h1"]}</h1><p class="intro">{p["chapo"]}</p><p class="meta" style="color:#c6c9dd">Publié le <time datetime="{p["date"]}">{date_fr(p["date"])}</time> · {p["temps"]} de lecture · par l'équipe du {NOM}</p></div></header>"""
+            entete_page = f"""<header class="bandeau"{style_hero}><div class="conteneur">{fil_html}<h1>{p["h1"]}</h1><p class="intro">{p["chapo"]}</p><p class="meta">Publié le <time datetime="{p["date"]}">{date_fr(p["date"])}</time> · {p["temps"]} de lecture · par l'équipe du {NOM}</p></div></header>"""
             autres = "".join('<li><a href="%s">%s</a></li>' % (u(a["slug"]), a["h1"]) for a in ARTICLES if a["slug"] != slug)
-            corps = f'<section class="section"><div class="conteneur mise-en-page"><article class="prose"><div class="visuel" style="margin-bottom:2rem">{visuel(p["h1"], 0)}</div>{corps}</article><aside class="aside" aria-label="Pour aller plus loin"><div class="carte"><h3>Nos espaces</h3><ul><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés</a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking</a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion</a></li><li><a href="{u("tarifs")}">Tarifs</a></li></ul></div><div class="carte"><h3>Autres articles</h3><ul>{autres}</ul></div></aside></div></section>{cta_html}'
+            corps = f'<section class="section"><div class="conteneur mise-en-page"><article class="prose">{corps}</article><aside class="aside" aria-label="Pour aller plus loin"><div class="carte"><h3>Nos espaces</h3><ul><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés</a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking</a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion</a></li><li><a href="{u("tarifs")}">Tarifs</a></li></ul></div><div class="carte"><h3>Autres articles</h3><ul>{autres}</ul></div></aside></div></section>{cta_html}'
         else:
             chapo = f'<p class="intro">{p["chapo"]}</p>' if p["chapo"] else ""
-            entete_page = f"""<header class="bandeau"><div class="conteneur">{fil_html}<h1>{p["h1"]}</h1>{chapo}</div></header>"""
+            entete_page = f"""<header class="bandeau"{style_hero}><div class="conteneur">{fil_html}<h1>{p["h1"]}</h1>{chapo}</div></header>"""
 
         doc = f"""<!DOCTYPE html>
 <html lang="fr">
@@ -1090,11 +1114,13 @@ def rendre(mode):
 <meta name="theme-color" content="#111111">
 <link rel="icon" href="{A}favicon.svg" type="image/svg+xml">
 <link rel="icon" href="{'' if mode=='preview' else '/'}favicon.ico" sizes="32x32">
-<link rel="preload" href="{A}fonts/montserrat-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{A}fonts/fraunces-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+{preload_hero}
+<noscript><style>.is-preload .heros h1::before,.is-preload .heros h1::after,.is-preload .bandeau h1::before,.is-preload .bandeau h1::after{{width:100%}}</style></noscript>
 <link rel="stylesheet" href="{A}{CSS_NOM}">
 {ld_html}
 </head>
-<body>
+<body class="is-preload">
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="entete"><div class="conteneur">
   <a class="logo" href="{u("")}"><img class="logo-img" src="{A}img/logo.webp" width="200" height="64" alt="Coworking Bordeaux Chartrons, location de bureaux"></a>
@@ -1111,16 +1137,38 @@ def rendre(mode):
 {corps}
 </main>
 <footer class="pied"><div class="conteneur">
-  <div class="grille">
-    <div><a class="logo" href="{u("")}"><img class="logo-img" src="{A}img/logo-blanc.webp" width="200" height="64" alt="Coworking Bordeaux Chartrons, retour à l'accueil"></a><p>Location de bureaux équipés, coworking et salles de réunion dans un open space de 700 m² au cœur des Chartrons, à Bordeaux. Un espace <a href="https://www.shared-values.fr/" target="_blank" rel="noopener">Shared Values</a>.</p></div>
-    <div><p class="titre-pied">Nos espaces</p><ul><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés</a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking</a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion</a></li><li><a href="{u("services")}">Services inclus</a></li><li><a href="{u("tarifs")}">Tarifs</a></li></ul></div>
-    <div><p class="titre-pied">Informations</p><ul><li><a href="{u("chartrons-business-center")}">Le lieu et l'accès</a></li><li><a href="{u("temoignages")}">Témoignages</a></li><li><a href="{u("faq")}">Questions fréquentes</a></li><li><a href="{u("guide")}">Guide</a></li><li><a href="{u("contact")}">Contact et visite</a></li></ul></div>
-    <div><p class="titre-pied">Contact</p><address>{NOM}<br>{ADRESSE}<br>{CP} {VILLE}<br><a href="tel:{TEL_INTL}">{TEL}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></address></div>
+  <div class="pied-haut">
+    <section class="trouver" aria-labelledby="pied-trouver">
+      <a class="trouver-plan" href="https://www.google.com/maps/dir/?api=1&amp;destination=9+rue+Andr%C3%A9+Darbon+33300+Bordeaux" target="_blank" rel="noopener" aria-label="Itinéraire vers le {NOM} sur Google Maps (nouvel onglet)">{PLAN_SVG}</a>
+      <div>
+        <p class="pied-titre" id="pied-trouver">Nous trouver</p>
+        <address><span class="lieu">{NOM}</span>{ADRESSE}<br>{CP} {VILLE}</address>
+        <dl>
+          <dt>Téléphone</dt><dd><a href="tel:{TEL_INTL}">{TEL}</a></dd>
+          <dt>E-mail</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd>
+          <dt>Visites</dt><dd>du lundi au vendredi, sur rendez-vous</dd>
+          <dt>Accès</dt><dd>tram B et C à 5 minutes</dd>
+        </dl>
+        <p class="liens"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=9+rue+Andr%C3%A9+Darbon+33300+Bordeaux" target="_blank" rel="noopener">Itinéraire</a><a href="{u("chartrons-business-center")}">Le lieu et l'accès</a></p>
+      </div>
+    </section>
+    <section class="pied-guide" aria-labelledby="pied-guide">
+      <p class="pied-titre" id="pied-guide">Le guide pour s'installer</p>
+      <ol>{"".join(f'<li><a href="{u(a["slug"])}">{a["h1"].split(" : ")[0]}</a></li>' for a in ARTICLES[:4])}</ol>
+      <a class="tous" href="{u("guide")}">Tous les articles du guide</a>
+    </section>
   </div>
-  <div class="pied-bas"><p>© {DATE_MAJ[:4]} <a href="https://www.shared-values.fr/" target="_blank" rel="noopener">Shared Values</a>. Tous droits réservés.</p><ul><li><a href="{u("mentions-legales")}">Mentions légales</a></li><li><a href="{u("politique-de-confidentialite")}">Confidentialité</a></li><li><a href="{u("plan-du-site")}">Plan du site</a></li></ul></div>
+  <nav class="pied-nav" aria-label="Pied de page">
+    <div><p class="titre-pied">Nos espaces</p><ul><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés</a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking</a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion</a></li><li><a href="{u("tarifs")}">Tarifs</a></li></ul></div>
+    <div><p class="titre-pied">Le centre</p><ul><li><a href="{u("chartrons-business-center")}">Le lieu</a></li><li><a href="{u("services")}">Services inclus</a></li><li><a href="{u("temoignages")}">Témoignages</a></li><li><a href="{u("faq")}">Questions fréquentes</a></li></ul></div>
+    <div><p class="titre-pied">Informations</p><ul><li><a href="{u("contact")}">Contact et visite</a></li><li><a href="{u("mentions-legales")}">Mentions légales</a></li><li><a href="{u("politique-de-confidentialite")}">Confidentialité</a></li><li><a href="{u("plan-du-site")}">Plan du site</a></li></ul></div>
+    <div class="pied-visite"><p class="titre-pied">Une visite ?</p><p>Trente minutes pour voir l'open space, les salles de réunion et l'espace détente.</p><a class="btn" href="{u("contact")}">Réserver une visite</a></div>
+  </nav>
+  <div class="pied-bas"><p>© {DATE_MAJ[:4]} {NOM}, un espace <a href="https://www.shared-values.fr/" target="_blank" rel="noopener">Shared Values</a>.</p><ul><li><a href="{u("mentions-legales")}">Mentions légales</a></li><li><a href="{u("politique-de-confidentialite")}">Confidentialité</a></li><li><a href="{u("plan-du-site")}">Plan du site</a></li></ul></div>
 </div></footer>
 <script>
 (function(){{
+  window.addEventListener('load',function(){{setTimeout(function(){{document.body.classList.remove('is-preload');}},100);}});
   var b=document.querySelector('.menu-btn'),n=document.getElementById('menu-principal');
   if(b){{b.addEventListener('click',function(){{var o=n.classList.toggle('ouvert');b.setAttribute('aria-expanded',o?'true':'false');}});}}
   document.querySelectorAll('.faq-item button').forEach(function(bt,i){{
