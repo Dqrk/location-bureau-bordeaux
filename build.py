@@ -555,7 +555,7 @@ page(slug="chartrons-business-center", nav="Le lieu",
     <div style="margin-top:2rem">
       <h3>Adresse</h3>
       <address class="prose">{nom}<br>{adresse}<br>{cp} {ville}<br>Téléphone : <a href="tel:{tel_intl}">{tel}</a></address>
-      <div class="carte-plan" id="plan"><button class="btn" type="button" id="charger-plan" style="margin:2rem">Afficher le plan Google Maps</button></div>
+      <div class="carte-plan" id="plan"><button class="btn" type="button" id="charger-plan">Afficher le plan Google Maps</button></div>
       <p class="meta">Le plan est chargé à la demande pour respecter votre vie privée et accélérer la page. <a href="https://www.google.com/maps/search/?api=1&amp;query=9+rue+Andr%C3%A9+Darbon+33300+Bordeaux" rel="noopener" target="_blank">Ouvrir l'itinéraire dans Google Maps</a> (nouvelle fenêtre).</p>
     </div>
   </div>
