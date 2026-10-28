@@ -11,11 +11,13 @@ RewriteRule ^ https://www.location-bureau-bordeaux.fr%{REQUEST_URI} [L,R=301]
 # Rediriger les anciennes URL du site WordPress
 RewriteRule ^coworking/?$ /coworking-bordeaux-chartrons/ [R=301,L]
 RewriteRule ^services-proposes/?$ /services/ [R=301,L]
-RewriteRule ^temoignages/?$ /temoignages/ [R=301,L]
 RewriteRule ^le-cadre/?$ /chartrons-business-center/ [R=301,L]
 RewriteRule ^category/la-presse/?$ /temoignages/ [R=301,L]
 RewriteRule ^article-dans-elle-sur-notre-coworking/?$ /temoignages/ [R=301,L]
 RewriteRule ^wp-content/.*$ / [R=301,L]
+# Pas de doublon en /index.html
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?]
+RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 # Ajouter la barre finale aux dossiers
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^(.*[^/])$ /$1/ [R=301,L]

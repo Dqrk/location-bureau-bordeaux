@@ -1,47 +1,55 @@
+/* Location Bureau Bordeaux : feuille de style unique, découpée en quatre sources concaténées au build.
+   01 base (polices, variables, typographie) · 02 en-tête, boutons, pied de page · 03 composants · 04 pages et finitions.
+   Partis pris : titres en Fraunces 600, texte en Instrument Sans, casse normale, filets de 1 px pour séparer,
+   rouge réservé aux liens et aux boutons principaux. */
+
 @font-face{font-family:"Fraunces";font-style:normal;font-weight:600;font-display:swap;src:url("/assets/fonts/fraunces-latin-600.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212,U+FEFF,U+FFFD}
 @font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url("/assets/fonts/instrument-sans-latin-400-700.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212,U+FEFF,U+FFFD}
-/* Location Bureau Bordeaux - feuille de style unique
-   Titres en Fraunces 600, texte en Instrument Sans (auto-hébergées). Rouge #c8161d (contraste AA). */
+
+/* Police de secours calibrée sur les métriques d'Instrument Sans : le texte ne bouge pas quand la police arrive */
+@font-face{font-family:"Instrument Sans Fallback";src:local("Arial"),local("Liberation Sans"),local("Helvetica");size-adjust:102.1%;ascent-override:95%;descent-override:24.5%;line-gap-override:0%}
+
 :root{
-  --rouge:#c8161d;
+  --rouge:#c8161d;          /* 5,9:1 sur blanc (AA) */
   --rouge-fonce:#a31218;
-  --rouge-clair:#fdeaea;
   --noir:#111111;
-  --nuit:#111111;
-  --bleu:#c8161d;
-  --bleu-fonce:#a31218;
-  --bleu-clair:#fdeaea;
   --texte:#222222;
-  --texte-doux:#5c5c5c;
+  --texte-doux:#5c5c5c;     /* 6,7:1 sur blanc, 6,1:1 sur --gris */
   --gris:#f4f4f4;
   --ligne:#e6e6e6;
-  --blanc:#ffffff;
-  --rayon:2px;
-  --ombre:0 10px 30px rgba(0,0,0,.06);
+  --nuit:#18191b;           /* fond du pied de page */
   --police-titre:"Fraunces",Georgia,"Times New Roman",serif;
-  --police:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --police:"Instrument Sans","Instrument Sans Fallback",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --largeur:1180px;
+  --rayon:2px;
 }
+
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{margin:0;font-family:var(--police);font-size:1.0625rem;line-height:1.65;color:var(--texte);background:var(--blanc)}
+[id]{scroll-margin-top:100px}
+body{margin:0;font-family:var(--police);font-size:1.0625rem;line-height:1.65;color:var(--texte);background:#fff;font-synthesis:none}
 img,svg{max-width:100%;height:auto;display:block}
-a{color:var(--bleu);text-underline-offset:3px}
-a:hover{color:var(--bleu-fonce)}
-:focus-visible{outline:3px solid var(--noir);outline-offset:3px;border-radius:4px}
-h1,h2,h3,h4{font-family:var(--police-titre);font-weight:600;line-height:1.2;color:var(--nuit);margin:0 0 .6em;letter-spacing:-.015em;text-wrap:balance}
+a{color:var(--rouge);text-underline-offset:3px;transition:color .15s ease,text-decoration-color .15s ease}
+a:hover{color:var(--rouge-fonce)}
+:focus-visible{outline:3px solid var(--noir);outline-offset:3px}
+.heros :focus-visible,.bandeau :focus-visible,.section-nuit :focus-visible,.pied :focus-visible{outline-color:#fff}
+
+h1,h2,h3{font-family:var(--police-titre);font-weight:600;line-height:1.2;color:var(--noir);margin:0 0 .6em;letter-spacing:-.015em;text-wrap:balance}
 h1{font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.1}
 h2{font-size:clamp(1.6rem,2.8vw,2.25rem);line-height:1.15}
-h3{font-size:1.25rem}
-h4{font-size:1.05rem}
-.h3{font-size:1.25rem}
+h3,.h3{font-size:1.25rem}
 p{margin:0 0 1em}
 ul,ol{padding-left:1.3em}
 li{margin-bottom:.35em}
-strong{color:var(--nuit)}
+strong{color:var(--noir)}
+address{font-style:normal}
+
 .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.skip{position:absolute;left:-999px;top:8px;background:var(--nuit);color:#fff;padding:.6rem 1rem;z-index:1000;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--noir);color:#fff;padding:.6rem 1rem;z-index:1000}
 .skip:focus{left:8px}
 .conteneur{max-width:var(--largeur);margin:0 auto;padding:0 20px}
+.espace-haut{margin-top:2rem}
+.espace-haut-s{margin-top:.8rem}
+.espace-bas{margin-bottom:3rem}
 
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
