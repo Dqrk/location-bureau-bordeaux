@@ -10,6 +10,8 @@ MARQUE = "Location Bureau Bordeaux"
 TEL = "09 72 12 57 78"
 TEL_INTL = "+33972125778"
 EMAIL = "contact@shared-values.fr"
+# Formulaire de contact : endpoint formto (instance auto-hébergée sur le VPS Kaizen). Le dashboard formto doit rediriger vers /merci/ après envoi.
+FORMTO_ENDPOINT = "https://forms.kaizen-agency.fr/f/location-bureau-bordeaux"
 ADRESSE = "9 rue André Darbon"
 CP = "33300"
 VILLE = "Bordeaux"
@@ -798,7 +800,8 @@ page(slug="contact", nav="Contact",
   <div class="conteneur mise-en-page">
     <div>
       <h2>Votre demande</h2>
-      <form class="formulaire" action="#" method="post" novalidate>
+      <form class="formulaire" action="{formto}" method="post" accept-charset="UTF-8">
+        <div class="piege" aria-hidden="true"><label for="website">Ne pas remplir ce champ</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <p class="meta">Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span> astérisque sont obligatoires.</p>
         <div class="ligne">
           <div><label for="nom">Nom et prénom <span class="obligatoire" aria-hidden="true">*</span></label><input id="nom" name="nom" type="text" autocomplete="name" required aria-required="true"></div>
@@ -838,6 +841,22 @@ page(slug="contact", nav="Contact",
 """)
 
 # ----- Pages légales
+page(slug="merci", nav=None, noindex=True,
+     title="Demande envoyée | Chartrons Business Center",
+     description="Votre demande a bien été envoyée à l'équipe du Chartrons Business Center. Réponse sous un jour ouvré.",
+     h1="Merci, votre demande est envoyée", chapo="Nous vous répondons sous un jour ouvré, par e-mail ou par téléphone si vous nous avez laissé un numéro. Pour une réponse immédiate, appelez-nous au " + TEL + ".",
+     corps="""
+<section class="section"><div class="conteneur prose">
+<h2>En attendant notre réponse</h2>
+<ul>
+<li><a href="{u:tarifs}">Consulter les tarifs</a> des postes, bureaux et salles de réunion.</li>
+<li><a href="{u:chartrons-business-center}">Préparer votre venue</a> : accès, tram, parking.</li>
+<li><a href="{u:guide}">Lire le guide</a> pour choisir entre coworking et bureau fermé.</li>
+</ul>
+<p><a class="btn" href="{u:}">Retour à l'accueil</a></p>
+</div></section>
+""")
+
 page(slug="mentions-legales", nav=None,
      title="Mentions légales | Chartrons Business Center",
      description="Mentions légales du site location-bureau-bordeaux.fr, édité par Shared Values, Bordeaux.",
@@ -1016,7 +1035,7 @@ def rendre(mode):
         corps = corps.replace("{logos}", "".join(f"<li>{l}</li>" for l in LOGOS))
         corps = corps.replace("{articles}", articles_html).replace("{plan}", plan_html).replace("{cta}", cta_html)
         for k, v in ICONES.items(): corps = corps.replace("{" + k + "}", v).replace("{" + k + "_ico}", v)
-        corps = corps.replace("{tel}", TEL).replace("{tel_intl}", TEL_INTL).replace("{email}", EMAIL).replace("{nom}", NOM).replace("{adresse}", ADRESSE).replace("{cp}", CP).replace("{ville}", VILLE).replace("{date_fr}", date_fr(DATE_MAJ))
+        corps = corps.replace("{formto}", FORMTO_ENDPOINT).replace("{tel}", TEL).replace("{tel_intl}", TEL_INTL).replace("{email}", EMAIL).replace("{nom}", NOM).replace("{adresse}", ADRESSE).replace("{cp}", CP).replace("{ville}", VILLE).replace("{date_fr}", date_fr(DATE_MAJ))
 
         fil_html, fil_ld = fil(p)
         og_image = abs_url("assets/img/og.jpg")
@@ -1121,7 +1140,9 @@ def rendre(mode):
         else:
             d = os.path.join(dist, slug) if slug else dist
             os.makedirs(d, exist_ok=True); chemin = os.path.join(d, "index.html")
+        if p.get("noindex"): doc = doc.replace('<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">', '<meta name="robots" content="noindex, follow">')
         open(chemin, "w", encoding="utf-8").write(doc)
+        if p.get("noindex"): continue
         prio = "1.0" if slug == "" else ("0.9" if slug in ("location-bureaux-bordeaux", "coworking-bordeaux-chartrons", "salles-de-reunion-bordeaux", "tarifs") else ("0.3" if slug in ("mentions-legales", "politique-de-confidentialite", "plan-du-site") else "0.7"))
         sitemap.append((canon(slug), prio, p.get("date", DATE_MAJ)))
 
@@ -1180,7 +1201,6 @@ RewriteRule ^coworking/?$ /coworking-bordeaux-chartrons/ [R=301,L]
 RewriteRule ^services-proposes/?$ /services/ [R=301,L]
 RewriteRule ^temoignages/?$ /temoignages/ [R=301,L]
 RewriteRule ^le-cadre/?$ /chartrons-business-center/ [R=301,L]
-RewriteRule ^merci/?$ /contact/ [R=301,L]
 RewriteRule ^category/la-presse/?$ /temoignages/ [R=301,L]
 RewriteRule ^article-dans-elle-sur-notre-coworking/?$ /temoignages/ [R=301,L]
 RewriteRule ^wp-content/.*$ / [R=301,L]
