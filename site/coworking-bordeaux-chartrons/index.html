@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/instrument-sans-latin-400-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/assets/img/photos/coworking-1000.webp" media="(max-width: 860px)" fetchpriority="high"><link rel="preload" as="image" href="/assets/img/photos/coworking-1600.webp" media="(min-width: 861px)" fetchpriority="high">
 <noscript><style>.is-preload .heros h1::before,.is-preload .heros h1::after,.is-preload .bandeau h1::before,.is-preload .bandeau h1::after{width:100%}</style></noscript>
-<link rel="stylesheet" href="/assets/style.f496d6ff.css">
+<link rel="stylesheet" href="/assets/style.68f80305.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.location-bureau-bordeaux.fr/"}, {"@type": "ListItem", "position": 2, "name": "Coworking", "item": "https://www.location-bureau-bordeaux.fr/coworking-bordeaux-chartrons/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Coworking", "serviceType": "Coworking", "provider": {"@id": "https://www.location-bureau-bordeaux.fr/#organisation"}, "areaServed": {"@type": "City", "name": "Bordeaux"}, "url": "https://www.location-bureau-bordeaux.fr/coworking-bordeaux-chartrons/", "description": "Coworking aux Chartrons à Bordeaux : poste fixe dans un open space de 700 m², indépendants et start-up, fibre et salles incluses. Visitez.", "offers": [{"@type": "Offer", "name": "Poste de travail équipé en open space", "price": "350", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "350", "priceCurrency": "EUR", "unitCode": "MON", "valueAddedTaxIncluded": false}}, {"@type": "Offer", "name": "Poste supplémentaire", "price": "300", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "300", "priceCurrency": "EUR", "unitCode": "MON", "valueAddedTaxIncluded": false}}]}</script>
 </head>
 <body class="is-preload">
@@ -176,6 +176,19 @@
       el.textContent='0'+suite;
     });
   }
+
+  /* Sliders de photos : boutons, points, flèches du clavier ; le défilement reste natif (glisser au doigt) */
+  d.querySelectorAll('.slider').forEach(function(sl){
+    var piste=sl.querySelector('.slider-piste'),slides=piste.children,prec=sl.querySelector('.slider-prec'),suiv=sl.querySelector('.slider-suiv'),points=sl.querySelectorAll('.slider-points button'),n=slides.length,courant=0,attente=0;
+    var aller=function(i){i=Math.max(0,Math.min(n-1,i));piste.scrollTo({left:i*piste.clientWidth,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});};
+    var maj=function(){courant=Math.round(piste.scrollLeft/piste.clientWidth);prec.disabled=courant<=0;suiv.disabled=courant>=n-1;points.forEach(function(p,i){if(i===courant)p.setAttribute('aria-current','true');else p.removeAttribute('aria-current');});};
+    prec.addEventListener('click',function(){aller(courant-1);});
+    suiv.addEventListener('click',function(){aller(courant+1);});
+    points.forEach(function(p,i){p.addEventListener('click',function(){aller(i);});});
+    piste.addEventListener('scroll',function(){cancelAnimationFrame(attente);attente=requestAnimationFrame(maj);},{passive:true});
+    piste.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();aller(courant+1);}else if(e.key==='ArrowLeft'){e.preventDefault();aller(courant-1);}});
+    window.addEventListener('resize',function(){aller(courant);});
+  });
 
   /* Menu mobile : focus sur le premier lien, Échap pour fermer, fermeture en sortie de menu ou en passant en grand écran */
   var b=d.querySelector('.menu-btn'),n=d.getElementById('menu-principal');

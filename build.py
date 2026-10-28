@@ -158,7 +158,7 @@ page(slug="", nav="Accueil",
 
 <section class="section section-gris">
   <div class="conteneur deux-colonnes">
-    <div class="visuel">{v:L'open space de 700 m² au troisième étage:0}</div>
+    {slider:lieu}
     <div>
       <span class="etiquette">Le lieu</span>
       <h2>Un open space de 700 m² au dernier étage, vitré sur toute sa longueur</h2>
@@ -964,6 +964,31 @@ LOGOS = ["Azendoo", "Alumn Force", "Oenopia", "Fimco", "Studio Malette Graphique
 # Script commun, en ligne en bas de page (un seul fichier, pas de requête en plus)
 SCRIPT = open(os.path.join(SRC, "src", "js", "site.js"), encoding="utf-8").read().strip()
 
+# ---------------------------------------------------------------- slider de photos
+SLIDERS = {
+ "lieu": [
+  ("openspace", "Postes de travail alignés le long des baies vitrées de l'open space, avec écrans et fauteuils ergonomiques"),
+  ("hero", "Grande table partagée et arbre d'intérieur au milieu de l'open space"),
+  ("detente", "Espace détente avec canapés, à côté des postes de travail"),
+  ("fenetre", "Baies vitrées de l'open space avec vue sur les toits du quartier des Chartrons"),
+  ("postes", "Rangée de postes de travail équipés face aux fenêtres"),
+ ],
+}
+FLECHE_G = "<svg viewBox='0 0 24 24' width='22' height='22' fill='none' stroke='currentColor' stroke-width='1.8' aria-hidden='true'><path d='M15 5l-7 7 7 7'/></svg>"
+FLECHE_D = "<svg viewBox='0 0 24 24' width='22' height='22' fill='none' stroke='currentColor' stroke-width='1.8' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg>"
+def slider_html(cle):
+    photos = SLIDERS[cle]; n = len(photos)
+    slides = "".join(
+        f'<figure class="slide" role="group" aria-roledescription="diapositive" aria-label="{i + 1} sur {n}">'
+        + photo(c, alt, sizes="(max-width: 860px) 100vw, 570px") + "</figure>"
+        for i, (c, alt) in enumerate(photos))
+    points = "".join(f'<button type="button" aria-label="Photo {i + 1} sur {n}"{" aria-current=\"true\"" if i == 0 else ""}></button>' for i in range(n))
+    return (f'<section class="slider" aria-roledescription="carrousel" aria-label="Photos du lieu">'
+            f'<div class="slider-piste" tabindex="0" aria-label="Photos du lieu, faire défiler avec les flèches du clavier">{slides}</div>'
+            f'<div class="slider-boutons"><button type="button" class="slider-prec" aria-label="Photo précédente" disabled>{FLECHE_G}</button>'
+            f'<button type="button" class="slider-suiv" aria-label="Photo suivante">{FLECHE_D}</button></div>'
+            f'<div class="slider-points">{points}</div></section>')
+
 # ---------------------------------------------------------------- finitions du HTML
 BALISES_SVG = r"svg|path|rect|circle|ellipse|line|polyline|polygon|g|text|title|defs|clipPath"
 def typographie(texte):
@@ -1079,6 +1104,7 @@ def rendre(mode):
         corps = re.sub(r"\{faq:([a-z]+)\}", sub_faq, corps)
         corps = re.sub(r"\{photo:([a-z0-9-]+):([^}]+)\}", lambda m: photo(m.group(1), m.group(2), sizes="(max-width: 620px) 100vw, (max-width: 960px) 50vw, 370px"), corps)
         corps = re.sub(r"\{temoignages:(\d)\}", lambda m: temoignages_html(int(m.group(1))), corps)
+        corps = re.sub(r"\{slider:([a-z]+)\}", lambda m: slider_html(m.group(1)), corps)
         corps = corps.replace("{logos}", "".join(f"<li>{l}</li>" for l in LOGOS))
         corps = corps.replace("{articles}", articles_html).replace("{plan}", plan_html).replace("{cta}", cta_html).replace("{cta_interne}", cta_interne)
         for k, v in ICONES.items(): corps = corps.replace("{" + k + "}", v).replace("{" + k + "_ico}", v)
