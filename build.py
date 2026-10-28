@@ -51,8 +51,9 @@ PHOTOS = {
  "La communauté de coworkers dans l'espace détente": ("coworking", "Espace détente avec fauteuils, canapés et cabine vitrée dans l'open space"),
  "Postes de travail en open space, vue générale": ("vue", "Vue générale de l'open space avec postes de travail, canapés et végétation"),
  "Grande salle de conférence": ("grande-salle", "Grande table de réunion avec deux personnes qui travaillent, dans un espace lumineux"),
- "Salle de réunion de 6 à 8 places": ("salle-1", "Salle de réunion vitrée avec parois jaunes donnant sur l'open space"),
- "Seconde salle de réunion de 6 à 8 places": ("salle-2", "Salle de réunion vitrée vue depuis l'espace détente"),
+ "Salle de réunion de 4 à 6 places": ("salle-1", "Salle de réunion vitrée avec parois jaunes donnant sur l'open space"),
+ "Cabine d'appel en solo": ("salle-box", "Cabine vitrée pour les appels, avec une personne qui travaille"),
+ "Salle de réunion de 2 à 4 places": ("salle-2", "Salle de réunion vitrée vue depuis l'espace détente"),
  "Salle de réunion en configuration présentation": ("presentation", "Espace de réunion avec cabine vitrée, fauteuils et table ronde"),
  "Façade de l'immeuble rue André Darbon": ("plante", "Poste de travail devant une fenêtre avec arbre d'intérieur au Chartrons Business Center"),
  "Le quartier des Chartrons et les Bassins à flot": ("fenetre", "Baies vitrées de l'open space avec vue sur les toits du quartier des Chartrons"),
@@ -97,17 +98,6 @@ ICONES = {
     "mail": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' aria-hidden='true'><rect x='3' y='5' width='18' height='14' rx='2'/><path d='M3 7l9 6 9-6'/></svg>",
     "horloge": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' aria-hidden='true'><circle cx='12' cy='12' r='9'/><path d='M12 7v5l3 2'/></svg>",
 }
-PLAN_SVG = ("<svg viewBox='0 0 220 220' width='216' height='216' aria-hidden='true' focusable='false'>"
-    "<defs><clipPath id='disque'><circle cx='110' cy='110' r='109'/></clipPath></defs><g clip-path='url(#disque)'>"
-    "<rect width='220' height='220' fill='#222427'/><g stroke='#34373b' stroke-width='1.5' fill='none'>"
-    "<path d='M-10 52 L230 30'/><path d='M-10 96 L230 82'/><path d='M-10 140 L230 132'/><path d='M-10 182 L230 178'/>"
-    "<path d='M40 -10 L58 230'/><path d='M92 -10 L104 230'/><path d='M140 -10 L146 230'/>"
-    "<path d='M20 -10 Q70 110 30 230' stroke='#3a3d42' stroke-width='3'/></g>"
-    "<path d='M178 -10 C150 50 200 110 168 160 C150 190 160 215 172 240 L240 240 L240 -10 Z' fill='#2b3a44'/>"
-    "<text x='196' y='96' fill='#6f8796' font-size='10' font-style='italic' transform='rotate(78 196 96)'>Garonne</text>"
-    "<circle class='anneau' cx='98' cy='104' r='22' fill='none' stroke='#c8161d' stroke-width='1.5' opacity='.55'/>"
-    "<circle cx='98' cy='104' r='12' fill='none' stroke='#c8161d' stroke-width='2'/><circle cx='98' cy='104' r='4.5' fill='#fff'/></g>"
-    "<circle cx='110' cy='110' r='109' fill='none' stroke='rgba(255,255,255,.28)'/></svg>")
 LOGO_SVG = "<svg viewBox='0 0 40 40' aria-hidden='true'><rect width='40' height='40' rx='9' fill='#111111'/><path d='M11 29V11h5v13h8v5zM26 11h4v9l-4 3z' fill='#fff'/></svg>"
 
 # ---------------------------------------------------------------- pages
@@ -159,7 +149,7 @@ page(slug="", nav="Accueil",
     <div class="grille grille-3">
       <article class="carte carte-photo"><div class="carte-visuel">{photo:bureau:Postes de travail équipés face aux fenêtres de l'open space}</div><h3><a class="carte-lien" href="{u:location-bureaux-bordeaux}">Bureaux équipés</a></h3><p>Un poste de travail neuf de 160 × 80 cm, un fauteuil ergonomique, la fibre et les salles de réunion incluses. Pour une personne ou une équipe de dix.</p><a class="lien" href="{u:location-bureaux-bordeaux}">Voir les bureaux</a></article>
       <article class="carte carte-photo"><div class="carte-visuel">{photo:coworking:Espace détente du coworking avec canapés et cabine vitrée}</div><h3><a class="carte-lien" href="{u:coworking-bordeaux-chartrons}">Coworking</a></h3><p>Sortez de chez vous, rejoignez une communauté d'indépendants, de start-up et de cabinets de conseil, et partagez les coûts d'un vrai bureau.</p><a class="lien" href="{u:coworking-bordeaux-chartrons}">Découvrir le coworking</a></article>
-      <article class="carte carte-photo"><div class="carte-visuel">{photo:salle-box:Cabine de réunion vitrée avec une personne au travail}</div><h3><a class="carte-lien" href="{u:salles-de-reunion-bordeaux}">Salles de réunion</a></h3><p>Une grande salle de 16 à 20 places en mode conférence et huit salles de 6 à 8 places, équipées pour la présentation et l'audioconférence.</p><a class="lien" href="{u:salles-de-reunion-bordeaux}">Réserver une salle</a></article>
+      <article class="carte carte-photo"><div class="carte-visuel">{photo:salle-box:Cabine de réunion vitrée avec une personne au travail}</div><h3><a class="carte-lien" href="{u:salles-de-reunion-bordeaux}">Salles de réunion</a></h3><p>Trois cabines pour les appels en solo, cinq salles de 2 à 6 personnes et une grande salle d'une dizaine de places, à réserver en ligne.</p><a class="lien" href="{u:salles-de-reunion-bordeaux}">Réserver une salle</a></article>
     </div>
     <div class="encadre" style="margin-top:2.5rem"><h3>Quelques jours par mois seulement ?</h3><p>Le flex office vous donne un poste en open space à la journée ou à la semaine, sans engagement, avec les mêmes services que les résidents. <a href="{u:coworking-bordeaux-chartrons}#flex-office">Voir comment fonctionne le flex office</a>.</p></div>
   </div>
@@ -176,6 +166,7 @@ page(slug="", nav="Accueil",
         <li>Parking couvert, local vélos et deux-roues, ascenseur</li>
         <li>Climatisation réversible et contrôle d'accès sécurisé</li>
         <li>Tram B (arrêt Chartrons) et tram C (arrêt Camille Godard) à quelques minutes à pied</li>
+        <li>Proche de tous commerces : restaurants, cafés et services du quartier des Chartrons</li>
         <li>Écoles de commerce et d'informatique à proximité pour recruter stagiaires et alternants</li>
       </ul>
       <div class="btn-groupe"><a class="btn" href="{u:chartrons-business-center}">Découvrir le lieu et l'accès</a></div>
@@ -188,7 +179,7 @@ page(slug="", nav="Accueil",
     <div class="en-tete-section centre"><span class="etiquette">En chiffres</span><h2>Ce que vous trouvez au Chartrons Business Center</h2></div>
     <div class="chiffres">
       <div><strong>700 m²</strong><span>d'open space lumineux au dernier étage</span></div>
-      <div><strong>3</strong><span>salles de réunion, de 6 à 20 personnes</span></div>
+      <div><strong>9</strong><span>salles, de la cabine d'appel à la grande salle</span></div>
       <div><strong>350 €</strong><span>HT par mois pour le premier poste, tout inclus</span></div>
       <div><strong>2 lignes</strong><span>de tram (B et C) et 2 lignes de bus (4 et 15)</span></div>
     </div>
@@ -206,9 +197,9 @@ page(slug="", nav="Accueil",
     <div class="en-tete-section centre"><span class="etiquette">Services inclus</span><h2>Tout est compris dans le loyer, sans option cachée</h2><p class="intro">Le prix d'un poste couvre le mobilier, la connexion, les salles de réunion et l'espace de vie. Seuls le parking, la téléphonie fixe et les impressions sont facturés en plus, à l'usage.</p></div>
     <div class="grille grille-4">
       <div class="carte"><div class="icone">{fibre}</div><h3>Fibre optique illimitée</h3><p>Connexion très haut débit par fibre, doublée d'une ligne ADSL de secours et du Wi-Fi dans tout l'espace.</p></div>
-      <div class="carte"><div class="icone">{reunion}</div><h3>Salles de réunion incluses</h3><p>Accès libre aux salles jusqu'à 8 personnes, équipées pour la présentation et l'audioconférence.</p></div>
+      <div class="carte"><div class="icone">{reunion}</div><h3>Salles de réunion incluses</h3><p>Les neuf salles, de la cabine d'appel à la grande salle, se réservent en ligne, sans frais.</p></div>
       <div class="carte"><div class="icone">{impression}</div><h3>Impression et scan</h3><p>Imprimante haute définition partagée et scan vers e-mail gratuit. Impressions facturées à la page.</p></div>
-      <div class="carte"><div class="icone">{cafe}</div><h3>Espace détente</h3><p>Salle de vie avec babyfoot, thé et café : l'endroit où l'on se croise, le midi et entre deux dossiers.</p></div>
+      <div class="carte"><div class="icone">{cafe}</div><h3>Espace détente</h3><p>Salle de vie avec babyfoot, café à volonté et panière de fruits : l'endroit où l'on se croise, le midi et entre deux dossiers.</p></div>
     </div>
     <div class="btn-groupe" style="justify-content:center"><a class="btn btn-secondaire" href="{u:services}">Voir tous les services</a></div>
   </div>
@@ -268,7 +259,7 @@ page(slug="location-bureaux-bordeaux", nav="Bureaux",
         <li>Fauteuil ergonomique synchrone, dossier et accoudoirs réglables</li>
         <li>Internet illimité : fibre optique, ADSL de secours et Wi-Fi</li>
         <li>Impression haute définition et scan vers e-mail</li>
-        <li>Salles de réunion jusqu'à 8 personnes en accès libre</li>
+        <li>Neuf salles de réunion incluses, réservées en ligne</li>
         <li>Salle de vie, local vélos et deux-roues</li>
       </ul>
     </div>
@@ -398,18 +389,19 @@ page(slug="coworking-bordeaux-chartrons", nav="Coworking",
 
 # ----- Salles de réunion
 page(slug="salles-de-reunion-bordeaux", nav="Salles de réunion",
-     title="Salles de réunion à Bordeaux Chartrons, 6 à 20 personnes",
-     description="Neuf salles de réunion aux Chartrons à Bordeaux, de 6 à 20 personnes, écran et audioconférence. Incluses pour les résidents, sur devis pour les autres.",
+     title="Salles de réunion à Bordeaux Chartrons, de 1 à 10 personnes",
+     description="Neuf salles aux Chartrons, Bordeaux : 3 cabines d'appel, salles de 2 à 6 personnes, grande salle d'une dizaine de places. Incluses pour les résidents.",
      h1="Salles de réunion à Bordeaux, aux Chartrons",
-     chapo="Le Chartrons Business Center dispose de neuf salles de réunion : une grande salle de 16 à 20 personnes en configuration conférence, et des salles de 6 à 8 personnes équipées pour la présentation et l'audioconférence. Les résidents y accèdent librement ; les entreprises extérieures peuvent les réserver sur demande.",
+     chapo="Le Chartrons Business Center compte neuf salles, réservables en ligne : trois cabines pour les appels en solo, deux salles de 2 à 4 personnes, trois salles de 4 à 6 personnes et une grande salle qui accueille une dizaine de personnes. Toutes sont incluses pour les résidents ; les entreprises extérieures peuvent les réserver sur demande.",
      corps="""
 <section class="section">
   <div class="conteneur">
     <div class="en-tete-section"><span class="etiquette">Neuf salles</span><h2>Quelle salle de réunion pour quel usage ?</h2></div>
-    <div class="grille grille-3">
-      <article class="carte"><div class="visuel" style="margin-bottom:1.2rem">{v:Grande salle de conférence:2}</div><h3>Grande salle de conférence</h3><p><strong>16 à 20 personnes</strong> en configuration conférence. Pour une formation, un comité, une présentation client ou une assemblée.</p><ul class="liste-coches"><li>Écran de présentation</li><li>Audioconférence</li><li>Lumière naturelle, climatisation</li></ul></article>
-      <article class="carte"><div class="visuel" style="margin-bottom:1.2rem">{v:Salle de réunion de 6 à 8 places:1}</div><h3>Salles de réunion de 6 à 8 places</h3><p><strong>6 à 8 personnes</strong> autour d'une table. Pour un point d'équipe, un entretien de recrutement ou un rendez-vous client.</p><ul class="liste-coches"><li>Écran et présentation sans fil</li><li>Audioconférence</li><li>Incluse pour les résidents</li></ul></article>
-      <article class="carte"><div class="visuel" style="margin-bottom:1.2rem">{v:Seconde salle de réunion de 6 à 8 places:1}</div><h3>Salles pour les rendez-vous courts</h3><p><strong>6 à 8 personnes</strong>, même équipement. Avec neuf salles, personne n'attend la sienne, même en fin de matinée.</p><ul class="liste-coches"><li>Écran et présentation sans fil</li><li>Audioconférence</li><li>Incluse pour les résidents</li></ul></article>
+    <div class="grille grille-4 salles">
+      <article class="carte"><div class="visuel" style="margin-bottom:1.2rem">{v:Grande salle de conférence:2}</div><p class="nb">1 salle</p><h3>Grande salle</h3><p><strong>Une dizaine de personnes</strong> autour de la table. Pour une formation, un comité, une présentation client ou une journée d'équipe.</p><ul class="liste-coches"><li>Écran de présentation</li><li>Audioconférence</li><li>Incluse pour les résidents</li></ul></article>
+      <article class="carte"><div class="visuel" style="margin-bottom:1.2rem">{v:Salle de réunion de 4 à 6 places:1}</div><p class="nb">3 salles</p><h3>Salles de 4 à 6 personnes</h3><p><strong>4 à 6 personnes</strong> autour d'une table. Pour un point d'équipe, un atelier ou un rendez-vous client.</p><ul class="liste-coches"><li>Écran et présentation sans fil</li><li>Audioconférence</li><li>Incluses pour les résidents</li></ul></article>
+      <article class="carte"><div class="visuel" style="margin-bottom:1.2rem">{v:Salle de réunion de 2 à 4 places:1}</div><p class="nb">2 salles</p><h3>Salles de 2 à 4 personnes</h3><p><strong>2 à 4 personnes</strong>. Pour un entretien de recrutement, un échange à deux ou un rendez-vous court.</p><ul class="liste-coches"><li>Réservation en ligne</li><li>Incluses pour les résidents</li></ul></article>
+      <article class="carte"><div class="visuel" style="margin-bottom:1.2rem">{v:Cabine d'appel en solo:0}</div><p class="nb">3 cabines</p><h3>Cabines d'appel</h3><p><strong>Une personne</strong>. Pour un appel, une visio ou une heure de concentration, à l'écart de l'open space.</p><ul class="liste-coches"><li>Réservation en ligne</li><li>Incluses pour les résidents</li></ul></article>
     </div>
   </div>
 </section>
@@ -419,14 +411,14 @@ page(slug="salles-de-reunion-bordeaux", nav="Salles de réunion",
     <div>
       <span class="etiquette">Fonctionnement</span>
       <h2>Comment réserver une salle de réunion ?</h2>
-      <p><strong>Vous êtes résident</strong> (poste de bureau ou coworking) : les salles jusqu'à 8 personnes sont incluses dans votre loyer et se réservent sur le planning partagé, sans frais.</p>
+      <p><strong>Vous êtes résident</strong> (poste de bureau ou coworking) : toutes les salles, grande salle comprise, sont incluses dans votre loyer et se réservent en ligne, sans frais.</p>
       <p>Avant de réserver, parcourez notre <a href="{u:guide-louer-salle-de-reunion-bordeaux}">check-list pour louer une salle de réunion à Bordeaux</a>.</p>
       <p><strong>Vous n'êtes pas résident</strong> : contactez-nous par téléphone au <a href="tel:{tel_intl}">{tel}</a> ou via le <a href="{u:contact}">formulaire</a> en précisant la date, la durée et le nombre de participants. Nous vous confirmons la disponibilité et le tarif dans la journée.</p>
       <ul class="liste-coches">
         <li>Accès au bâtiment sécurisé, ascenseur et accès PMR</li>
         <li>Parking couvert sur demande pour vos participants</li>
         <li>Tram B et C et bus 4 et 15 à quelques minutes</li>
-        <li>Thé et café dans la salle de vie</li>
+        <li>Café à volonté et panière de fruits dans la salle de vie</li>
       </ul>
     </div>
     <div class="visuel">{v:Salle de réunion en configuration présentation:2}</div>
@@ -454,11 +446,11 @@ page(slug="services", nav="Services",
     <div class="en-tete-section"><span class="etiquette">Au quotidien</span><h2>Dix services compris ou en option</h2></div>
     <div class="grille grille-2">
       <div class="carte"><div class="icone">{bureau}</div><h3>Open space de 700 m² aux Chartrons</h3><p>Des bureaux équipés au troisième et dernier étage, avec de la lumière naturelle toute la journée. Chaque poste comprend un bureau neuf de 160 × 80 cm avec cloison de courtoisie et un fauteuil ergonomique synchrone.</p></div>
-      <div class="carte"><div class="icone">{reunion}</div><h3>Neuf salles de réunion</h3><p>Une grande salle de 16 à 20 places en mode conférence et des salles de 6 à 8 places, équipées pour la présentation et l'audioconférence. Les salles jusqu'à 8 personnes sont incluses pour les résidents.</p><a class="lien" href="{u:salles-de-reunion-bordeaux}">Voir les salles</a></div>
+      <div class="carte"><div class="icone">{reunion}</div><h3>Neuf salles de réunion</h3><p>Trois cabines pour les appels en solo, deux salles de 2 à 4 personnes, trois salles de 4 à 6 personnes et une grande salle d'une dizaine de places. Toutes sont incluses pour les résidents et se réservent en ligne.</p><a class="lien" href="{u:salles-de-reunion-bordeaux}">Voir les salles</a></div>
       <div class="carte"><div class="icone">{fibre}</div><h3>Fibre optique illimitée</h3><p>Connexion très haut débit par fibre optique, illimitée, avec une ligne ADSL de secours et le Wi-Fi dans tout l'espace. Le téléchargement illégal et le pair-à-pair sont interdits par le règlement intérieur.</p></div>
       <div class="carte"><div class="icone">{telico}</div><h3>Téléphonie fixe et fax</h3><p>Une ligne fixe dédiée par poste, en option : téléphone IP avec appels illimités vers les fixes en France, aux États-Unis et dans de nombreux pays d'Europe (10 € HT / mois), ou vers les fixes et mobiles (20 € HT / mois). Fax disponible.</p></div>
       <div class="carte"><div class="icone">{impression}</div><h3>Impression et scan</h3><p>Imprimante haute définition partagée, scan vers e-mail gratuit. Les impressions sont facturées à la page : 0,04 € HT en noir et blanc, 0,12 € HT en couleur.</p></div>
-      <div class="carte"><div class="icone">{cafe}</div><h3>Espace détente</h3><p>Une salle de vie avec babyfoot, thé et café, où les résidents se retrouvent le midi. C'est là que naissent la plupart des collaborations entre voisins de bureau.</p></div>
+      <div class="carte"><div class="icone">{cafe}</div><h3>Espace détente</h3><p>Une salle de vie avec babyfoot, café à volonté et panière de fruits, où les résidents se retrouvent le midi. C'est là que naissent la plupart des collaborations entre voisins de bureau.</p></div>
       <div class="carte"><div class="icone">{tram}</div><h3>Proche du tramway</h3><p>Tram B à l'arrêt Chartrons, tram C à l'arrêt Camille Godard, bus 4 et 15 à l'arrêt Picard. La gare Saint-Jean est à 20 minutes en tram.</p><a class="lien" href="{u:chartrons-business-center}">Voir l'accès</a></div>
       <div class="carte"><div class="icone">{parking}</div><h3>Parking, vélos et deux-roues</h3><p>Place de parking en garage couvert en option (130 € HT par mois). Local sécurisé pour les vélos, scooters et motos, inclus.</p></div>
       <div class="carte"><div class="icone">{pmr}</div><h3>Accès handicapés et PMR</h3><p>L'immeuble dispose d'un ascenseur desservant l'open space au troisième étage et de circulations adaptées aux personnes à mobilité réduite.</p></div>
@@ -476,7 +468,7 @@ page(slug="services", nav="Services",
       <tbody>
         <tr><td data-label="Prestation">Bureau 160 × 80 cm et fauteuil ergonomique</td><td data-label="Statut">Inclus</td><td data-label="Tarif" class="prix">0 €</td></tr>
         <tr><td data-label="Prestation">Fibre optique, ADSL de secours, Wi-Fi</td><td data-label="Statut">Inclus</td><td data-label="Tarif" class="prix">0 €</td></tr>
-        <tr><td data-label="Prestation">Salles de réunion jusqu'à 8 personnes</td><td data-label="Statut">Inclus</td><td data-label="Tarif" class="prix">0 €</td></tr>
+        <tr><td data-label="Prestation">Neuf salles de réunion, grande salle comprise</td><td data-label="Statut">Inclus</td><td data-label="Tarif" class="prix">0 €</td></tr>
         <tr><td data-label="Prestation">Scan vers e-mail, espace détente, local vélos</td><td data-label="Statut">Inclus</td><td data-label="Tarif" class="prix">0 €</td></tr>
         <tr><td data-label="Prestation">Téléphone IP, appels illimités vers les fixes</td><td data-label="Statut">Option</td><td data-label="Tarif" class="prix">10 € HT / mois</td></tr>
         <tr><td data-label="Prestation">Téléphone IP, appels illimités fixes et mobiles</td><td data-label="Statut">Option</td><td data-label="Tarif" class="prix">20 € HT / mois</td></tr>
@@ -499,11 +491,11 @@ page(slug="tarifs", nav="Tarifs",
      corps="""
 <section class="section">
   <div class="conteneur">
-    <div class="deux-colonnes" style="margin-bottom:3rem"><div class="visuel">{v:Poste de travail équipé dans l'open space:0}</div><div><span class="etiquette">Ce que vous louez</span><h2>Un poste équipé, tout compris</h2><p>Chaque poste comprend un bureau neuf de 160 × 80 cm, un fauteuil ergonomique, la fibre, l'impression, l'accès aux salles de réunion jusqu'à 8 personnes et à l'espace détente. Les tarifs ci-dessous sont ceux en vigueur en 2026.</p></div></div>
+    <div class="deux-colonnes" style="margin-bottom:3rem"><div class="visuel">{v:Poste de travail équipé dans l'open space:0}</div><div><span class="etiquette">Ce que vous louez</span><h2>Un poste équipé, tout compris</h2><p>Chaque poste comprend un bureau neuf de 160 × 80 cm, un fauteuil ergonomique, la fibre, l'impression, l'accès aux neuf salles de réunion et à l'espace détente. Les tarifs ci-dessous sont ceux en vigueur en 2026.</p></div></div>
     <div class="grille grille-3">
-      <div class="tarif"><h2 class="h3">Premier poste</h2><p class="prix">350 € <small>HT</small></p><p class="unite">par mois, poste de travail équipé en open space</p><ul class="liste-coches"><li>Bureau neuf 160 × 80 cm, cloison de courtoisie</li><li>Fauteuil ergonomique synchrone réglable</li><li>Fibre, ADSL de secours et Wi-Fi illimités</li><li>Impression HD et scan vers e-mail</li><li>Salles de réunion jusqu'à 8 personnes</li><li>Espace détente, local vélos et deux-roues</li></ul><a class="btn" href="{u:contact}">Demander un devis</a></div>
+      <div class="tarif"><h2 class="h3">Premier poste</h2><p class="prix">350 € <small>HT</small></p><p class="unite">par mois, poste de travail équipé en open space</p><ul class="liste-coches"><li>Bureau neuf 160 × 80 cm, cloison de courtoisie</li><li>Fauteuil ergonomique synchrone réglable</li><li>Fibre, ADSL de secours et Wi-Fi illimités</li><li>Impression HD et scan vers e-mail</li><li>Neuf salles de réunion, réservées en ligne</li><li>Espace détente, local vélos et deux-roues</li></ul><a class="btn" href="{u:contact}">Demander un devis</a></div>
       <div class="tarif mis-en-avant"><span class="badge">Équipes</span><h2 class="h3">Postes supplémentaires</h2><p class="prix">300 € <small>HT</small></p><p class="unite">par mois et par poste, à partir du deuxième</p><ul class="liste-coches"><li>Mêmes prestations que le premier poste</li><li>Postes regroupés dans l'open space</li><li>Ajout d'un poste en quelques jours</li><li>Exemple : 3 postes = 950 € HT / mois</li><li>Exemple : 5 postes = 1 550 € HT / mois</li></ul><a class="btn" href="{u:contact}">Installer mon équipe</a></div>
-      <div class="tarif"><h2 class="h3">Salle de réunion</h2><p class="prix">Sur devis</p><p class="unite">pour les entreprises non résidentes</p><ul class="liste-coches"><li>Grande salle 16 à 20 personnes</li><li>Huit salles de 6 à 8 personnes</li><li>Écran, audioconférence, Wi-Fi</li><li>Incluse pour les résidents jusqu'à 8 personnes</li></ul><a class="btn btn-secondaire" href="{u:salles-de-reunion-bordeaux}">Voir les salles</a></div>
+      <div class="tarif"><h2 class="h3">Salle de réunion</h2><p class="prix">Sur devis</p><p class="unite">pour les entreprises non résidentes</p><ul class="liste-coches"><li>Grande salle d'une dizaine de places</li><li>Salles de 2 à 6 personnes, cabines d'appel</li><li>Écran, audioconférence, Wi-Fi</li><li>Toutes incluses pour les résidents</li></ul><a class="btn btn-secondaire" href="{u:salles-de-reunion-bordeaux}">Voir les salles</a></div>
     </div>
     <div class="encadre" style="margin-top:2.5rem"><h3>Besoin d'un poste de temps en temps ?</h3><p>Le flex office loue un poste équipé en open space à la journée ou à la demi-journée, sans engagement, pour les indépendants et les salariés de passage. Le tarif dépend du nombre de jours : <a href="{u:contact}">indiquez-nous vos dates</a>.</p></div>
   </div>
@@ -562,6 +554,7 @@ page(slug="chartrons-business-center", nav="Le lieu",
         <li>Climatisation réversible dans tous les espaces</li>
         <li>Contrôle d'accès et systèmes de sécurité modernes</li>
         <li>Incubateur éco-créatif au sein du bâtiment</li>
+        <li>Proche de tous commerces, restaurants et services</li>
       </ul>
     </div>
     <div class="visuel">{v:Façade de l'immeuble rue André Darbon:2}</div>
@@ -673,7 +666,7 @@ ARTICLES = [
 <h3>Vous lancez une start-up ou une petite agence</h3>
 <p>L'open space pour équipe permet d'ajouter un poste à chaque recrutement sans déménager. Les salles de réunion incluses évitent de louer une surface que l'on n'utilise que deux heures par semaine.</p>
 <h3>Vous avez besoin de confidentialité</h3>
-<p>Un cabinet qui reçoit des clients pour des entretiens sensibles ou une équipe qui passe sa journée au téléphone sera plus à l'aise avec un bureau fermé ou une organisation mixte : postes en open space et salle réservée pour les échanges confidentiels. Les salles de 6 à 8 personnes du Chartrons Business Center servent souvent à cela.</p>
+<p>Un cabinet qui reçoit des clients pour des entretiens sensibles ou une équipe qui passe sa journée au téléphone sera plus à l'aise avec un bureau fermé ou une organisation mixte : postes en open space et salle réservée pour les échanges confidentiels. Les salles de 2 à 6 personnes et les cabines d'appel du Chartrons Business Center servent souvent à cela.</p>
 <h2>Les questions à se poser avant de choisir</h2>
 <ul>
   <li>Combien de personnes seront présentes au bureau en même temps, dans six mois ?</li>
@@ -742,7 +735,7 @@ ARTICLES = [
       chapo="Une réunion ratée commence souvent par une salle mal choisie : trop petite, sans écran, introuvable en tram. Voici les huit points à vérifier avant de réserver, et ce que proposent les salles du Chartrons Business Center.",
       corps="""
 <h2>1. La capacité réelle, selon la configuration</h2>
-<p>Une salle annoncée pour 20 personnes en mode conférence (rangées face à l'écran) n'en accueille que 10 à 12 autour d'une table. Précisez toujours le format : conférence, table en U, réunion autour d'une table. Aux Chartrons, la grande salle accueille 16 à 20 personnes en conférence, et les deux petites salles 6 à 8 personnes autour d'une table.</p>
+<p>Une salle annoncée pour 20 personnes en mode conférence (rangées face à l'écran) n'en accueille que 10 à 12 autour d'une table. Précisez toujours le format : conférence, table en U, réunion autour d'une table. Aux Chartrons, la grande salle accueille une dizaine de personnes, trois salles de 4 à 6 personnes et deux salles de 2 à 4 personnes servent aux réunions plus courtes, et trois cabines aux appels en solo.</p>
 <h2>2. L'équipement de présentation</h2>
 <p>Un écran, une connexion sans fil ou un câble pour votre ordinateur, l'audioconférence pour les participants à distance, et une connexion fibre stable : ce sont les quatre indispensables. Vérifiez aussi la présence d'un paperboard ou d'un tableau blanc si vous animez un atelier.</p>
 <h2>3. L'accès pour vos participants</h2>
@@ -754,9 +747,9 @@ ARTICLES = [
 <h2>6. Les pauses et le déjeuner</h2>
 <p>Thé, café, et un espace où sortir de la salle font la différence sur une journée complète. Aux Chartrons, la salle de vie est à disposition et les restaurants de la rue Notre-Dame et des quais sont à quelques minutes à pied.</p>
 <h2>7. La durée et la souplesse de réservation</h2>
-<p>Demi-journée, journée, soirée : vérifiez les créneaux proposés et la possibilité de prolonger si la réunion déborde. Les résidents du Chartrons Business Center réservent les petites salles librement sur le planning partagé.</p>
+<p>Demi-journée, journée, soirée : vérifiez les créneaux proposés et la possibilité de prolonger si la réunion déborde. Les résidents du Chartrons Business Center réservent toutes les salles en ligne, sans frais.</p>
 <h2>8. Le prix, tout compris ?</h2>
-<p>Comparez des devis qui incluent la même chose : équipement, Wi-Fi, boissons, accueil. Au Chartrons Business Center, les salles jusqu'à 8 personnes sont incluses dans le loyer des résidents ; pour une entreprise extérieure, un devis est envoyé dans la journée.</p>
+<p>Comparez des devis qui incluent la même chose : équipement, Wi-Fi, boissons, accueil. Au Chartrons Business Center, toutes les salles, grande salle comprise, sont incluses dans le loyer des résidents ; pour une entreprise extérieure, un devis est envoyé dans la journée.</p>
 <div class="encadre"><p>Pour réserver : appelez le """ + TEL + """ ou utilisez le <a href="{u:contact}">formulaire de contact</a> en précisant la date, la durée, le nombre de participants et le format souhaité.</p></div>
 """),
  dict(slug="guide-domiciliation-entreprise-bordeaux", date="2026-10-27", temps="5 min",
@@ -794,7 +787,7 @@ ARTICLES = [
 <h2>Fixer des jours d'équipe</h2>
 <p>Le bureau hybride sert d'abord à se voir. Décidez d'un ou deux jours où toute l'équipe est sur place, et réservez ces jours aux réunions, aux ateliers et aux arrivées de nouveaux collaborateurs. Les autres jours, le bureau devient un lieu de concentration pour ceux qui ne peuvent pas travailler chez eux.</p>
 <h2>Prévoir les salles plutôt que les mètres carrés</h2>
-<p>En mode hybride, les réunions mélangent présents et distants. Une salle équipée pour l'audioconférence et la présentation vaut plus que des mètres carrés d'open space en plus. Au Chartrons Business Center, des salles de 6 à 8 personnes sont incluses pour les résidents, et une grande salle de 16 à 20 personnes accueille les journées d'équipe.</p>
+<p>En mode hybride, les réunions mélangent présents et distants. Une salle équipée pour l'audioconférence et la présentation vaut plus que des mètres carrés d'open space en plus. Au Chartrons Business Center, les neuf salles sont incluses pour les résidents : cabines pour les appels, salles de 2 à 6 personnes pour les points d'équipe et une grande salle d'une dizaine de places pour les journées d'équipe.</p>
 <h2>Pourquoi l'espace partagé convient à l'hybride</h2>
 <ul>
   <li>Vous louez le nombre de postes du jour de pointe, pas un local dimensionné pour tout le monde</li>
@@ -932,15 +925,15 @@ page(slug="plan-du-site", nav=None,
 
 # ---------------------------------------------------------------- FAQ et témoignages
 FAQ = [
- ("tarifs toutes", "Combien coûte un bureau au Chartrons Business Center ?", "Un poste de travail équipé en open space coûte 350 € HT par mois pour le premier poste, puis 300 € HT par mois pour chaque poste supplémentaire. Le loyer comprend le mobilier, la fibre, l'impression, les salles de réunion jusqu'à 8 personnes et l'espace détente."),
+ ("tarifs toutes", "Combien coûte un bureau au Chartrons Business Center ?", "Un poste de travail équipé en open space coûte 350 € HT par mois pour le premier poste, puis 300 € HT par mois pour chaque poste supplémentaire. Le loyer comprend le mobilier, la fibre, l'impression, les neuf salles de réunion et l'espace détente."),
  ("tarifs toutes", "Quel est l'engagement minimum ?", "Le contrat est mensuel. Vous pouvez louer un poste pour quelques mois ou pour plusieurs années, et ajouter ou retirer des postes au fil de l'évolution de votre équipe. Les conditions précises figurent sur le devis."),
  ("lieu toutes", "Où se trouve le Chartrons Business Center ?", "Au 9 rue André Darbon, 33300 Bordeaux, dans le quartier des Chartrons, près des Bassins à flot. Le tram B (arrêt Chartrons), le tram C (arrêt Camille Godard) et les bus 4 et 15 (arrêt Picard) desservent l'immeuble."),
- ("salles toutes", "Les salles de réunion sont-elles incluses ?", "Oui pour les résidents : les salles de 6 à 8 personnes sont en accès libre, sur réservation dans le planning partagé. La grande salle de 16 à 20 personnes et la location par des entreprises extérieures se font sur demande."),
+ ("salles toutes", "Les salles de réunion sont-elles incluses ?", "Oui pour les résidents : les neuf salles, grande salle comprise, sont incluses et se réservent en ligne. Les entreprises extérieures peuvent louer une salle sur demande."),
  ("bureaux toutes", "Puis-je domicilier mon entreprise à cette adresse ?", "La domiciliation du siège social au 9 rue André Darbon peut être étudiée pour les résidents qui louent un poste. Parlez-en lors de la visite, nous vous indiquerons les conditions et les justificatifs nécessaires (voir notre guide pour domicilier son entreprise à Bordeaux)."),
  ("tarifs toutes", "Y a-t-il des frais de dossier ou un dépôt de garantie ?", "Il n'y a pas de frais de dossier. Les modalités de dépôt de garantie, s'il y en a, sont précisées sur le devis en fonction du nombre de postes."),
  ("coworking toutes", "À quelles heures l'open space est-il accessible ?", "Les résidents disposent d'un accès sécurisé et peuvent venir travailler en dehors des horaires de bureau, y compris le week-end, dans le respect du règlement intérieur. Les visites se font du lundi au vendredi sur rendez-vous."),
  ("coworking toutes", "Qui travaille dans l'open space ?", "Des indépendants, des fondateurs de start-up du numérique, des agences, des consultants en ressources humaines, des avocats et des gestionnaires de patrimoine. L'immeuble abrite aussi un incubateur éco-créatif de jeunes entreprises."),
- ("salles toutes", "Les salles sont-elles équipées pour la visioconférence ?", "Les salles disposent d'un écran de présentation, de l'audioconférence et de la fibre. Vous pouvez y brancher votre ordinateur pour une visioconférence avec votre propre outil."),
+ ("salles toutes", "Les salles sont-elles équipées pour la visioconférence ?", "Les salles de réunion disposent d'un écran de présentation, de l'audioconférence et de la fibre : vous y branchez votre ordinateur pour une visioconférence avec votre propre outil. Pour une visio en solo, les trois cabines d'appel sont plus adaptées."),
  ("salles toutes", "Peut-on louer une salle sans être résident ?", "Oui, sur demande. Indiquez-nous la date, la durée et le nombre de participants par téléphone ou via le formulaire de contact, et nous vous confirmons la disponibilité et le tarif dans la journée."),
  ("tarifs toutes", "Les prix sont-ils hors taxes ?", "Oui, tous les tarifs sont indiqués hors taxes, la TVA de 20 % s'ajoute sur la facture."),
  ("bureaux toutes", "Le parking est-il compris ?", "Le local vélos, scooters et motos est inclus. La place de parking voiture en garage couvert est une option à 130 € HT par mois."),
@@ -954,7 +947,7 @@ FAQ += [
  ("bureaux toutes", "Combien de postes une équipe peut-elle regrouper ?", "De 2 à 10 postes regroupés dans l'open space, à 300 € HT par mois le poste supplémentaire ; un poste de plus s'ajoute en quelques jours quand vous recrutez."),
  ("coworking toutes", "Puis-je louer un poste de coworking pour un seul mois ?", "Oui, le contrat est mensuel : un indépendant peut louer un poste pour un mois, une saison ou plusieurs années, sans engagement de surface."),
  ("coworking toutes", "Proposez-vous du flex office à la demande ?", "Oui. Le flex office à la demande permet de réserver un poste équipé en open space pour une journée, une demi-journée ou quelques jours par mois, sans engagement. Vous disposez des mêmes services que les résidents : fibre, Wi-Fi, impression, espace détente. Le tarif dépend du nombre de jours ; contactez-nous avec vos dates."),
- ("coworking toutes", "Le coworking comprend-il les salles de réunion ?", "Oui, les salles de 6 à 8 personnes sont incluses pour les coworkers, sur réservation dans le planning partagé, pour recevoir un client ou passer un appel au calme."),
+ ("coworking toutes", "Le coworking comprend-il les salles de réunion ?", "Oui, les neuf salles sont incluses pour les coworkers et se réservent en ligne : une cabine pour passer un appel au calme, une salle pour recevoir un client."),
 ]
 TEMOIGNAGES = [
  ("Julien Pellegrain", "Les Horaires", "Ces bureaux modernes, spacieux et lumineux sont idéaux pour les travailleurs indépendants."),
@@ -1081,7 +1074,7 @@ def rendre(mode):
             ld.append({"@context": "https://schema.org", "@type": "Article", "headline": p["h1"], "description": p["description"], "datePublished": p["date"], "dateModified": p["date"], "inLanguage": "fr-FR", "mainEntityOfPage": canon(slug), "author": {"@type": "Organization", "name": NOM, "@id": DOMAINE + "/#organisation"}, "publisher": {"@id": DOMAINE + "/#organisation"}})
         if slug in ("location-bureaux-bordeaux", "coworking-bordeaux-chartrons", "salles-de-reunion-bordeaux"):
             nom_service = {"location-bureaux-bordeaux": "Location de bureaux équipés", "coworking-bordeaux-chartrons": "Coworking", "salles-de-reunion-bordeaux": "Location de salles de réunion"}[slug]
-            ld.append({"@context": "https://schema.org", "@type": "Service", "name": nom_service, "serviceType": nom_service, "provider": {"@id": DOMAINE + "/#organisation"}, "areaServed": {"@type": "City", "name": "Bordeaux"}, "url": canon(slug), "description": p["description"], "offers": jsonld_org(abs_url)["makesOffer"][:2] if slug != "salles-de-reunion-bordeaux" else {"@type": "Offer", "name": "Salle de réunion de 6 à 20 personnes", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "description": "Incluse pour les résidents jusqu'à 8 personnes ; sur devis pour les entreprises extérieures"}})
+            ld.append({"@context": "https://schema.org", "@type": "Service", "name": nom_service, "serviceType": nom_service, "provider": {"@id": DOMAINE + "/#organisation"}, "areaServed": {"@type": "City", "name": "Bordeaux"}, "url": canon(slug), "description": p["description"], "offers": jsonld_org(abs_url)["makesOffer"][:2] if slug != "salles-de-reunion-bordeaux" else {"@type": "Offer", "name": "Salles de réunion de 1 à 10 personnes", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "description": "Incluses pour les résidents, réservation en ligne ; sur devis pour les entreprises extérieures"}})
         if slug == "temoignages":
             ld.append({"@context": "https://schema.org", "@type": "Organization", "@id": DOMAINE + "/#organisation", "review": [{"@type": "Review", "author": {"@type": "Person", "name": n}, "reviewBody": t, "itemReviewed": {"@id": DOMAINE + "/#organisation"}} for n, soc, t in TEMOIGNAGES]})
         ld_html = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
@@ -1095,8 +1088,8 @@ def rendre(mode):
 </div><a class="suite" href="#suite" aria-label="Aller à la suite de la page"></a></section><div id="suite"></div>"""
         elif p.get("est_article"):
             entete_page = f"""<header class="bandeau"{style_hero}><div class="conteneur">{fil_html}<h1>{p["h1"]}</h1><p class="intro">{p["chapo"]}</p><p class="meta">Publié le <time datetime="{p["date"]}">{date_fr(p["date"])}</time> · {p["temps"]} de lecture · par l'équipe du {NOM}</p></div></header>"""
-            autres = "".join('<li><a href="%s">%s</a></li>' % (u(a["slug"]), a["h1"]) for a in ARTICLES if a["slug"] != slug)
-            corps = f'<section class="section"><div class="conteneur mise-en-page"><article class="prose">{corps}</article><aside class="aside" aria-label="Pour aller plus loin"><div class="carte"><h3>Nos espaces</h3><ul><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés</a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking</a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion</a></li><li><a href="{u("tarifs")}">Tarifs</a></li></ul></div><div class="carte"><h3>Autres articles</h3><ul>{autres}</ul></div></aside></div></section>{cta_html}'
+            autres = "".join('<li><a href="%s">%s<span>%s de lecture</span></a></li>' % (u(a["slug"]), a["h1"], a["temps"]) for a in ARTICLES if a["slug"] != slug)
+            corps = f'<section class="section"><div class="conteneur mise-en-page"><article class="prose">{corps}</article><aside class="aside" aria-label="Pour aller plus loin"><div class="aside-bloc"><p class="aside-titre">Nos espaces</p><ul class="aside-liens"><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés<span>dès 350 € HT par mois</span></a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking<span>indépendants et petites équipes</span></a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion<span>neuf salles, réservation en ligne</span></a></li><li><a href="{u("tarifs")}">Tarifs<span>tout compris, sans frais de dossier</span></a></li></ul></div><div class="aside-bloc"><p class="aside-titre">Autres articles</p><ol class="aside-articles">{autres}</ol><a class="aside-tous" href="{u("guide")}">Tout le guide</a></div><div class="aside-visite"><p>Envie de voir l\'open space&nbsp;?</p><a class="btn" href="{u("contact")}">Réserver une visite</a></div></aside></div></section>{cta_html}'
         else:
             chapo = f'<p class="intro">{p["chapo"]}</p>' if p["chapo"] else ""
             entete_page = f"""<header class="bandeau"{style_hero}><div class="conteneur">{fil_html}<h1>{p["h1"]}</h1>{chapo}</div></header>"""
@@ -1146,17 +1139,24 @@ def rendre(mode):
 <footer class="pied"><div class="conteneur">
   <div class="pied-haut">
     <section class="trouver" aria-labelledby="pied-trouver">
-      <a class="trouver-plan" href="https://www.google.com/maps/dir/?api=1&amp;destination=9+rue+Andr%C3%A9+Darbon+33300+Bordeaux" target="_blank" rel="noopener" aria-label="Itinéraire vers le {NOM} sur Google Maps (nouvel onglet)">{PLAN_SVG}</a>
-      <div>
-        <p class="pied-titre" id="pied-trouver">Nous trouver</p>
-        <address><span class="lieu">{NOM}</span>{ADRESSE}<br>{CP} {VILLE}</address>
-        <dl>
-          <dt>Téléphone</dt><dd><a href="tel:{TEL_INTL}">{TEL}</a></dd>
-          <dt>E-mail</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd>
-          <dt>Visites</dt><dd>du lundi au vendredi, sur rendez-vous</dd>
-          <dt>Accès</dt><dd>tram B et C à 5 minutes</dd>
-        </dl>
-        <p class="liens"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=9+rue+Andr%C3%A9+Darbon+33300+Bordeaux" target="_blank" rel="noopener">Itinéraire</a><a href="{u("chartrons-business-center")}">Le lieu et l'accès</a></p>
+      <p class="pied-titre" id="pied-trouver">Nous trouver</p>
+      <div class="trouver-grille">
+        <div>
+          <address><span class="lieu">{NOM}</span>{ADRESSE}<br>{CP} {VILLE}</address>
+          <dl>
+            <dt>Téléphone</dt><dd><a href="tel:{TEL_INTL}">{TEL}</a></dd>
+            <dt>E-mail</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd>
+            <dt>Visites</dt><dd>du lundi au vendredi, sur rendez-vous</dd>
+          </dl>
+          <p class="liens"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=9+rue+Andr%C3%A9+Darbon+33300+Bordeaux" target="_blank" rel="noopener">Itinéraire sur Google Maps</a><a href="{u("chartrons-business-center")}">Le lieu et l'accès</a></p>
+        </div>
+        <ol class="acces" aria-label="Comment venir">
+          <li class="acces-ici"><span class="pastille" aria-hidden="true"></span><span><strong>{ADRESSE}</strong>quartier des Chartrons, proche de tous commerces</span></li>
+          <li><span class="pastille" aria-hidden="true">B</span><span><strong>Tram B, arrêt Chartrons</strong>à quelques minutes à pied</span></li>
+          <li><span class="pastille" aria-hidden="true">C</span><span><strong>Tram C, arrêt Camille Godard</strong>à quelques minutes à pied</span></li>
+          <li><span class="pastille pastille-carree" aria-hidden="true">Bus</span><span><strong>Bus 4 et 15, arrêt Picard</strong>à proximité</span></li>
+          <li><span class="pastille pastille-carree" aria-hidden="true">P</span><span><strong>Parking couvert</strong>dans l'immeuble, en option</span></li>
+        </ol>
       </div>
     </section>
     <section class="pied-guide" aria-labelledby="pied-guide">
