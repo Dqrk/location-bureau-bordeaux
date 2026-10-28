@@ -512,15 +512,22 @@ page(slug="tarifs", nav="Tarifs",
 <section class="section section-gris">
   <div class="conteneur">
     <div class="en-tete-section"><span class="etiquette">Options</span><h2>Options et consommations, facturées à l'usage</h2></div>
-    <table>
-      <caption>Options disponibles en plus du loyer d'un poste (prix hors taxes sauf mention contraire)</caption>
-      <thead><tr><th scope="col">Option</th><th scope="col">Détail</th><th scope="col" class="prix">Prix</th></tr></thead>
+    <table class="tableau-options">
+      <caption class="visually-hidden">Options en plus du loyer d'un poste, prix hors taxes</caption>
+      <thead><tr><th scope="col">Option</th><th scope="col" class="prix">Prix HT</th></tr></thead>
       <tbody>
-        <tr><td data-label="Option">Téléphone IP, formule fixes</td><td data-label="Détail">Poste Thomson ST2030, appels illimités vers les fixes en France, aux États-Unis et dans de nombreux pays d'Europe, conférence téléphonique</td><td data-label="Prix" class="prix">10 € HT / mois</td></tr>
-        <tr><td data-label="Option">Téléphone IP, formule fixes et mobiles</td><td data-label="Détail">Appels illimités vers les fixes et les mobiles en France, aux États-Unis et dans de nombreux pays d'Europe</td><td data-label="Prix" class="prix">20 € HT / mois</td></tr>
-        <tr><td data-label="Option">Place de parking</td><td data-label="Détail">Garage couvert et sécurisé dans l'immeuble</td><td data-label="Prix" class="prix">130 € HT / mois</td></tr>
-        <tr><td data-label="Option">Impression noir et blanc</td><td data-label="Détail">Imprimante haute définition partagée</td><td data-label="Prix" class="prix">0,04 € HT la page</td></tr>
-        <tr><td data-label="Option">Impression couleur</td><td data-label="Détail">Imprimante haute définition partagée</td><td data-label="Prix" class="prix">0,12 € HT la page</td></tr>
+        <tr class="groupe"><th scope="rowgroup" colspan="2">Téléphonie</th></tr>
+        <tr><td data-label="Option"><strong>Formule fixes</strong><span>Poste Thomson ST2030, appels illimités vers les fixes en France, aux États-Unis et dans de nombreux pays d'Europe, conférence téléphonique</span></td><td data-label="Prix HT" class="prix">10 €<small> par mois</small></td></tr>
+        <tr><td data-label="Option"><strong>Formule fixes et mobiles</strong><span>Appels illimités vers les fixes et les mobiles en France, aux États-Unis et dans de nombreux pays d'Europe</span></td><td data-label="Prix HT" class="prix">20 €<small> par mois</small></td></tr>
+      </tbody>
+      <tbody>
+        <tr class="groupe"><th scope="rowgroup" colspan="2">Parking</th></tr>
+        <tr><td data-label="Option"><strong>Place de parking</strong><span>Garage couvert et sécurisé dans l'immeuble</span></td><td data-label="Prix HT" class="prix">130 €<small> par mois</small></td></tr>
+      </tbody>
+      <tbody>
+        <tr class="groupe"><th scope="rowgroup" colspan="2">Impression</th></tr>
+        <tr><td data-label="Option"><strong>Noir et blanc</strong><span>Imprimante haute définition partagée</span></td><td data-label="Prix HT" class="prix">0,04 €<small> la page</small></td></tr>
+        <tr><td data-label="Option"><strong>Couleur</strong><span>Même imprimante, scan vers e-mail gratuit</span></td><td data-label="Prix HT" class="prix">0,12 €<small> la page</small></td></tr>
       </tbody>
     </table>
     <p class="meta">Tarifs en vigueur au {date_fr}. Les prix sont exprimés hors taxes, TVA de 20 % en sus. Devis personnalisé sur demande pour les équipes de plus de cinq postes et pour la location ponctuelle de salles. Pour comparer un prix au poste et un loyer au m², lisez <a href="{u:guide-prix-bureau-bordeaux}">Combien coûte un bureau à Bordeaux ?</a></p>
@@ -834,7 +841,7 @@ page(slug="contact", nav="Contact",
         </div>
         <div><label for="message">Message</label><textarea id="message" name="message" rows="5" placeholder="Date d'arrivée souhaitée, options utiles (parking, ligne fixe), questions"></textarea></div>
         <label class="consentement"><input type="checkbox" name="consentement" required aria-required="true"><span>J'accepte que mes informations soient utilisées pour traiter ma demande, conformément à la <a href="{u:politique-de-confidentialite}">politique de confidentialité</a>. <span class="obligatoire" aria-hidden="true">*</span></span></label>
-        <div><button class="btn" type="submit">Envoyer ma demande</button></div>
+        <div class="envoi"><button class="btn" type="submit">Envoyer ma demande</button></div>
       </form>
     </div>
     <aside class="aside" aria-label="Coordonnées">
@@ -1169,6 +1176,16 @@ def rendre(mode):
 <script>
 (function(){{
   window.addEventListener('load',function(){{setTimeout(function(){{document.body.classList.remove('is-preload');}},100);}});
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){{
+    var cibles=document.querySelectorAll('.en-tete-section,.grille>*,.deux-colonnes>*,.chiffres>div,.galerie li,.etapes li,.faq-bloc,.cta,.encadre,.pied-haut>*,.pied-nav>div');
+    var io=new IntersectionObserver(function(es){{es.forEach(function(e){{if(e.isIntersecting){{e.target.classList.add('vu');io.unobserve(e.target);}}}});}},{{rootMargin:'0px 0px -8% 0px'}});
+    cibles.forEach(function(el){{
+      if(el.getBoundingClientRect().top<window.innerHeight)return;
+      var rang=Array.prototype.indexOf.call(el.parentNode.children,el);
+      el.style.transitionDelay=Math.min(rang,3)*80+'ms';
+      el.classList.add('reveal');io.observe(el);
+    }});
+  }}
   var b=document.querySelector('.menu-btn'),n=document.getElementById('menu-principal');
   if(b){{b.addEventListener('click',function(){{var o=n.classList.toggle('ouvert');b.setAttribute('aria-expanded',o?'true':'false');}});}}
   document.querySelectorAll('.faq-item button').forEach(function(bt,i){{

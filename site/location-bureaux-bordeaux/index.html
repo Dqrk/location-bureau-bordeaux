@@ -21,7 +21,7 @@
 <link rel="preload" href="/assets/fonts/fraunces-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/assets/img/photos/openspace-1000.webp" media="(max-width: 860px)" fetchpriority="high"><link rel="preload" as="image" href="/assets/img/photos/openspace-1600.webp" media="(min-width: 861px)" fetchpriority="high">
 <noscript><style>.is-preload .heros h1::before,.is-preload .heros h1::after,.is-preload .bandeau h1::before,.is-preload .bandeau h1::after{width:100%}</style></noscript>
-<link rel="stylesheet" href="/assets/style.0994d264.css">
+<link rel="stylesheet" href="/assets/style.52670f73.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.location-bureau-bordeaux.fr/"}, {"@type": "ListItem", "position": 2, "name": "Location de bureaux équipés à Bordeaux, aux Chartrons", "item": "https://www.location-bureau-bordeaux.fr/location-bureaux-bordeaux/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Puis-je domicilier mon entreprise à cette adresse ?", "acceptedAnswer": {"@type": "Answer", "text": "La domiciliation du siège social au 9 rue André Darbon peut être étudiée pour les résidents qui louent un poste. Parlez-en lors de la visite, nous vous indiquerons les conditions et les justificatifs nécessaires (voir notre guide pour domicilier son entreprise à Bordeaux)."}}, {"@type": "Question", "name": "Le parking est-il compris ?", "acceptedAnswer": {"@type": "Answer", "text": "Le local vélos, scooters et motos est inclus. La place de parking voiture en garage couvert est une option à 130 € HT par mois."}}, {"@type": "Question", "name": "Quelle est la taille d'un poste de travail ?", "acceptedAnswer": {"@type": "Answer", "text": "Chaque poste comprend un bureau neuf de 160 × 80 cm avec cloison de courtoisie et un fauteuil ergonomique synchrone réglable, dans l'open space de 700 m²."}}, {"@type": "Question", "name": "Combien de postes une équipe peut-elle regrouper ?", "acceptedAnswer": {"@type": "Answer", "text": "De 2 à 10 postes regroupés dans l'open space, à 300 € HT par mois le poste supplémentaire ; un poste de plus s'ajoute en quelques jours quand vous recrutez."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Location de bureaux équipés", "serviceType": "Location de bureaux équipés", "provider": {"@id": "https://www.location-bureau-bordeaux.fr/#organisation"}, "areaServed": {"@type": "City", "name": "Bordeaux"}, "url": "https://www.location-bureau-bordeaux.fr/location-bureaux-bordeaux/", "description": "Poste de travail équipé aux Chartrons : bureau neuf, fauteuil ergonomique, fibre et salles de réunion incluses, de 1 à 10 personnes. Demandez un devis.", "offers": [{"@type": "Offer", "name": "Poste de travail équipé en open space", "price": "350", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "350", "priceCurrency": "EUR", "unitText": "mois HT, premier poste", "valueAddedTaxIncluded": false}}, {"@type": "Offer", "name": "Poste supplémentaire", "price": "300", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "300", "priceCurrency": "EUR", "unitText": "mois HT par poste", "valueAddedTaxIncluded": false}}]}</script>
 </head>
 <body class="is-preload">
@@ -139,6 +139,16 @@
 <script>
 (function(){
   window.addEventListener('load',function(){setTimeout(function(){document.body.classList.remove('is-preload');},100);});
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var cibles=document.querySelectorAll('.en-tete-section,.grille>*,.deux-colonnes>*,.chiffres>div,.galerie li,.etapes li,.faq-bloc,.cta,.encadre,.pied-haut>*,.pied-nav>div');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    cibles.forEach(function(el){
+      if(el.getBoundingClientRect().top<window.innerHeight)return;
+      var rang=Array.prototype.indexOf.call(el.parentNode.children,el);
+      el.style.transitionDelay=Math.min(rang,3)*80+'ms';
+      el.classList.add('reveal');io.observe(el);
+    });
+  }
   var b=document.querySelector('.menu-btn'),n=document.getElementById('menu-principal');
   if(b){b.addEventListener('click',function(){var o=n.classList.toggle('ouvert');b.setAttribute('aria-expanded',o?'true':'false');});}
   document.querySelectorAll('.faq-item button').forEach(function(bt,i){
