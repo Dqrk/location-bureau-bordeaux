@@ -20,4 +20,4 @@ jobs:
         with:
           node-version: "22"
       - name: Validation HTML
-        run: npx --yes html-validate@9 "dist/prod/*.html" "dist/prod/*/index.html"
+        run: npx --yes html-validate@11 "dist/prod/*.html" "dist/prod/*/index.html"
