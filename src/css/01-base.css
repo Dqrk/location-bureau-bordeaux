@@ -21,9 +21,12 @@
   --police-titre:"Fraunces",Georgia,"Times New Roman",serif;
   --police:"Instrument Sans","Instrument Sans Fallback",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --largeur:1180px;
-  --rayon:10px;            /* boutons, champs */
-  --rayon-l:18px;          /* cartes, images */
-  --rayon-xl:32px;         /* grands panneaux */
+  --c-champ:#8a8a8a;       /* bordures de champs et contrôles : 3,45:1 sur blanc (WCAG 1.4.11) */
+  --c-filet-fort:#bdbdbd;
+  /* Un seul rayon, discret : le ton reste éditorial (filets), pas « template » (audit du 02/11) */
+  --rayon:4px;             /* boutons, champs, cartes, images */
+  --rayon-l:4px;
+  --rayon-xl:0;            /* hero, bandeaux et pied de page à angles droits */
   --sortie:cubic-bezier(.16,1,.3,1);
 }
 

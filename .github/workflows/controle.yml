@@ -1,0 +1,23 @@
+# Contrôle à chaque push et pull request : le site se construit, les garde-fous du build passent
+# (jetons non remplacés, « [à compléter] », liens internes, longueurs title/description),
+# le HTML est valide et site/ correspond exactement au build (préprod à jour).
+name: Contrôle du site
+on:
+  push:
+  pull_request:
+jobs:
+  controle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Build et vérification de site/
+        run: python3 scripts/maj_preprod.py --verifier
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validation HTML
+        run: npx --yes html-validate@9 "dist/prod/*.html" "dist/prod/*/index.html"

@@ -77,7 +77,7 @@ def photo(cle, alt, prioritaire=False, sizes="(max-width: 860px) 100vw, (max-wid
     if PHOTO_COMPTEUR[0] == 1: prioritaire = True
     p = PHOTO_PREFIX_ACTIF + cle
     attrs = 'fetchpriority="high" decoding="async"' if prioritaire else 'loading="lazy" decoding="async"'
-    return (f'<img src="{p}-800.webp" srcset="{p}-600.webp 600w, {p}-800.webp 800w, {p}-1000.webp 1000w, {p}-1600.webp 1600w" sizes="{sizes}" '
+    return (f'<img src="{p}-800.webp" srcset="{p}-600.webp 600w, {p}-800.webp 800w, {p}-1000.webp 1000w" sizes="{sizes}" '
             f'width="1000" height="667" alt="{html.escape(alt)}" {attrs}>')
 PHOTO_PREFIX_ACTIF = PHOTO_PREFIX
 
@@ -136,7 +136,7 @@ def jsonld_org(abs_url):
 # ----- Accueil
 page(slug="", nav="Accueil",
      title="Coworking et bureaux à Bordeaux Chartrons dès 350 € HT",
-     description="Bureaux équipés, coworking, 6 salles de réunion et 3 cabines dans un open space de 700 m² aux Chartrons, Bordeaux. Fibre, parking, tram. Dès 350 € HT. Visitez.",
+     description="Bureaux équipés, coworking, 6 salles de réunion et 3 cabines dans un open space de 700 m² aux Chartrons, Bordeaux. Fibre, tram, dès 350 € HT. Visitez.",
      h1="Location de bureaux et coworking à Bordeaux, aux Chartrons",
      chapo="Le Chartrons Business Center propose des postes de travail équipés, du coworking, six salles de réunion et trois cabines d'appel dans un open space lumineux de 700 m², au dernier étage d'un immeuble d'architecte. Premier poste à 350 € HT par mois, charges, fibre et salles comprises.",
      corps="""
@@ -150,7 +150,7 @@ page(slug="", nav="Accueil",
     <div class="grille grille-3">
       <article class="carte carte-photo"><div class="carte-visuel">{photo:bureau:Postes de travail équipés face aux fenêtres de l'open space}</div><h3><a class="carte-lien" href="{u:location-bureaux-bordeaux}">Bureaux équipés</a></h3><p>Un poste de travail neuf de 160 × 80 cm, un fauteuil ergonomique, la fibre et les salles de réunion incluses. Pour une personne ou une équipe de dix.</p><span class="lien" aria-hidden="true">Voir les bureaux</span></article>
       <article class="carte carte-photo"><div class="carte-visuel">{photo:coworking:Espace détente du coworking avec canapés et cabine vitrée}</div><h3><a class="carte-lien" href="{u:coworking-bordeaux-chartrons}">Coworking</a></h3><p>Sortez de chez vous, rejoignez une communauté d'indépendants, de start-up et de cabinets de conseil, et partagez les coûts d'un vrai bureau.</p><span class="lien" aria-hidden="true">Découvrir le coworking</span></article>
-      <article class="carte carte-photo"><div class="carte-visuel">{photo:salle-box:Cabine de réunion vitrée avec une personne au travail}</div><h3><a class="carte-lien" href="{u:salles-de-reunion-bordeaux}">Salles de réunion</a></h3><p>Six salles de 2 à 10 personnes et trois cabines pour les appels en solo, à réserver en ligne.</p><span class="lien" aria-hidden="true">Réserver une salle</span></article>
+      <article class="carte carte-photo"><div class="carte-visuel">{photo:salle-box:Cabine de réunion vitrée avec une personne au travail}</div><h3><a class="carte-lien" href="{u:salles-de-reunion-bordeaux}">Salles de réunion</a></h3><p>Six salles de 2 à 10 personnes et trois cabines pour les appels en solo. Réservation en ligne pour les résidents, sur demande pour les autres.</p><span class="lien" aria-hidden="true">Voir les salles</span></article>
     </div>
     <div class="encadre"><h3>Quelques jours par mois seulement ?</h3><p>Le flex office vous donne un poste en open space à la demi-journée ou à la journée, ponctuellement ou quelques jours par mois, sans engagement, avec les mêmes services que les résidents. <a href="{u:coworking-bordeaux-chartrons}#flex-office">Voir comment fonctionne le flex office</a>.</p></div>
   </div>
@@ -175,16 +175,10 @@ page(slug="", nav="Accueil",
   </div>
 </section>
 
-<section class="section section-nuit">
+<section class="section">
   <div class="conteneur">
-    <div class="en-tete-section centre"><span class="etiquette">En chiffres</span><h2>Ce que vous trouvez au Chartrons Business Center</h2></div>
-    <div class="chiffres">
-      <div><strong>700 m²</strong><span>d'open space lumineux au dernier étage</span></div>
-      <div><strong>6</strong><span>salles de réunion, et 3 cabines d'appel</span></div>
-      <div><strong>350 €</strong><span>HT par mois pour le premier poste, charges et salles comprises</span></div>
-      <div><strong>2 lignes</strong><span>de tram (B et C) et 2 lignes de bus (4 et 15)</span></div>
-    </div>
-    <ul class="galerie" aria-label="Photos de l'espace">
+    <div class="en-tete-section"><h2>L'espace en photos</h2></div>
+    <ul class="galerie galerie-seule" aria-label="Photos de l'espace">
       <li>{photo:cuisine:Cuisine de l'espace détente avec îlot central et deux personnes qui échangent}</li>
       <li>{photo:plafond-vert:Mur végétal suspendu au plafond de l'open space}</li>
       <li>{photo:lounge:Salon de l'espace détente avec fauteuils et panneaux acoustiques colorés}</li>
@@ -210,8 +204,8 @@ page(slug="", nav="Accueil",
   <div class="conteneur">
     <div class="en-tete-section centre"><span class="etiquette">Tarifs</span><h2>Des tarifs simples et dégressifs</h2><p class="intro">Un seul tarif par poste de travail équipé en open space, dégressif à partir du deuxième poste. Pas de frais de dossier, pas de surprise.</p></div>
     <div class="grille grille-3">
-      <div class="tarif"><h3>Premier poste</h3><p class="prix">350 € <small>HT</small></p><p class="unite">par mois, poste de travail équipé</p><ul class="liste-coches"><li>Bureau 160 × 80 cm et fauteuil ergonomique</li><li>Fibre, Wi-Fi et scan vers e-mail</li><li>Salles de réunion et espace détente</li></ul><a class="btn" href="{u:contact}">Demander un devis</a></div>
-      <div class="tarif mis-en-avant"><span class="badge">Équipes</span><h3>Postes supplémentaires</h3><p class="prix">300 € <small>HT</small></p><p class="unite">par mois et par poste, dès le deuxième</p><ul class="liste-coches"><li>Mêmes prestations que le premier poste</li><li>Postes regroupés pour votre équipe</li><li>Idéal de 2 à 10 collaborateurs</li></ul><a class="btn" href="{u:contact}">Installer mon équipe</a></div>
+      <div class="tarif"><h3>Premier poste</h3><p class="prix">350 € <small>HT</small></p><p class="unite">par mois, poste de travail équipé</p><ul class="liste-coches"><li>Bureau 160 × 80 cm et fauteuil ergonomique</li><li>Fibre, Wi-Fi et scan vers e-mail</li><li>Salles de réunion et espace détente</li></ul><a class="btn" href="{u:contact}?besoin=coworking">Demander un devis</a></div>
+      <div class="tarif mis-en-avant"><span class="badge">Équipes</span><h3>Postes supplémentaires</h3><p class="prix">300 € <small>HT</small></p><p class="unite">par mois et par poste, dès le deuxième</p><ul class="liste-coches"><li>Mêmes prestations que le premier poste</li><li>Postes regroupés pour votre équipe</li><li>Idéal de 2 à 10 collaborateurs</li></ul><a class="btn" href="{u:contact}?besoin=equipe">Installer mon équipe</a></div>
       <div class="tarif"><h3>Options à l'usage</h3><p class="prix">dès 10 € <small>HT</small></p><p class="unite">par mois, selon l'option</p><ul class="liste-coches"><li>Téléphone IP fixe : 10 € ou 20 € HT / mois</li><li>Parking en garage couvert : 130 € HT / mois</li><li>Impression : 0,04 € HT (noir) ou 0,12 € HT (couleur) la page</li></ul><a class="btn btn-secondaire" href="{u:tarifs}">Voir le détail des tarifs</a></div>
     </div>
   </div>
@@ -355,7 +349,7 @@ page(slug="coworking-bordeaux-chartrons", nav="Coworking",
       <h2>Une communauté de métiers complémentaires</h2>
       <p>L'immeuble abrite un incubateur éco-créatif dédié aux jeunes entreprises du numérique, et l'open space accueille des profils variés : éditeurs de logiciels, agences web et marketing, consultants en ressources humaines, avocats, gestionnaires de patrimoine, graphistes indépendants, acteurs du vin et de l'agroalimentaire.</p>
       <p>Des entreprises comme Azendoo, Alumn Force, Oenopia, Fimco ou le Studio Malette Graphique y ont installé leurs équipes. Leurs retours sont à lire sur la page <a href="{u:temoignages}">témoignages</a>.</p>
-      <div class="btn-groupe"><a class="btn" href="{u:contact}">Réserver une visite</a></div>
+      <div class="btn-groupe"><a class="btn" href="{u:contact}?besoin=visite">Demander une visite</a></div>
     </div>
   </div>
 </section>
@@ -368,7 +362,7 @@ page(slug="coworking-bordeaux-chartrons", nav="Coworking",
       <div class="carte"><div class="icone">{cowork}</div><h3>Sans engagement</h3><p>Pas de bail, pas de mois minimum. Vous réservez une demi-journée, une journée ou quelques jours par mois, selon votre activité du moment.</p></div>
       <div class="carte"><div class="icone">{cafe}</div><h3>Pour qui ?</h3><p>Indépendants en télétravail, consultants de passage à Bordeaux, salariés en déplacement, équipes qui se retrouvent un jour par semaine. Le flex office complète le poste fixe, il ne le remplace pas.</p></div>
     </div>
-    <p class="espace-haut">Les tarifs du flex office sont communiqués sur demande, selon le nombre de jours. <a href="{u:contact}">Demandez vos dates</a> et nous vous confirmons la disponibilité dans la journée.</p>
+    <p class="espace-haut">Les tarifs du flex office sont communiqués sur demande, selon le nombre de jours. <a href="{u:contact}?besoin=flex">Demandez vos dates</a> et nous vous confirmons la disponibilité dans la journée.</p>
   </div>
 </section>
 
@@ -414,7 +408,7 @@ page(slug="salles-de-reunion-bordeaux", nav="Salles de réunion",
       <h2>Comment réserver une salle de réunion ?</h2>
       <p><strong>Vous êtes résident</strong> (poste de bureau ou coworking) : toutes les salles, grande salle comprise, sont incluses dans votre loyer et se réservent en ligne, sans frais.</p>
       <p>Avant de réserver, parcourez notre <a href="{u:guide-louer-salle-de-reunion-bordeaux}">check-list pour louer une salle de réunion à Bordeaux</a>.</p>
-      <p><strong>Vous n'êtes pas résident</strong> : contactez-nous par téléphone au <a href="tel:{tel_intl}">{tel}</a> ou via le <a href="{u:contact}">formulaire</a> en précisant la date, la durée et le nombre de participants. Nous vous confirmons la disponibilité et le tarif dans la journée.</p>
+      <p><strong>Vous n'êtes pas résident</strong> : contactez-nous par téléphone au <a href="tel:{tel_intl}">{tel}</a> ou via le <a href="{u:contact}?besoin=salle">formulaire</a> en précisant la date, la durée et le nombre de participants. Nous vous confirmons la disponibilité et le tarif dans la journée.</p>
       <ul class="liste-coches">
         <li>Accès au bâtiment sécurisé, ascenseur et accès PMR</li>
         <li>Parking couvert sur demande pour vos participants</li>
@@ -494,8 +488,8 @@ page(slug="tarifs", nav="Tarifs",
   <div class="conteneur">
     <div class="deux-colonnes espace-bas"><div class="visuel">{v:Poste de travail équipé dans l'open space:0}</div><div><span class="etiquette">Ce que vous louez</span><h2>Un poste équipé, charges comprises</h2><p>Chaque poste comprend un bureau neuf de 160 × 80 cm, un fauteuil ergonomique, la fibre, le scan vers e-mail, l'accès aux six salles de réunion, aux trois cabines d'appel et à l'espace détente. Les tarifs ci-dessous sont ceux en vigueur en 2026.</p></div></div>
     <div class="grille grille-3">
-      <div class="tarif"><h2 class="h3">Premier poste</h2><p class="prix">350 € <small>HT</small></p><p class="unite">par mois, poste de travail équipé en open space</p><ul class="liste-coches"><li>Bureau neuf 160 × 80 cm, cloison de courtoisie</li><li>Fauteuil ergonomique synchrone réglable</li><li>Fibre, ADSL de secours et Wi-Fi illimités</li><li>Scan vers e-mail (impressions à la page)</li><li>Six salles et trois cabines, réservées en ligne</li><li>Espace détente, local vélos et deux-roues</li></ul><a class="btn" href="{u:contact}">Demander un devis</a></div>
-      <div class="tarif mis-en-avant"><span class="badge">Équipes</span><h2 class="h3">Postes supplémentaires</h2><p class="prix">300 € <small>HT</small></p><p class="unite">par mois et par poste, à partir du deuxième</p><ul class="liste-coches"><li>Mêmes prestations que le premier poste</li><li>Postes regroupés dans l'open space</li><li>Ajout d'un poste en quelques jours</li><li>Exemple : 3 postes = 950 € HT / mois</li><li>Exemple : 5 postes = 1 550 € HT / mois</li></ul><a class="btn" href="{u:contact}">Installer mon équipe</a></div>
+      <div class="tarif"><h2 class="h3">Premier poste</h2><p class="prix">350 € <small>HT</small></p><p class="unite">par mois, poste de travail équipé en open space</p><ul class="liste-coches"><li>Bureau neuf 160 × 80 cm, cloison de courtoisie</li><li>Fauteuil ergonomique synchrone réglable</li><li>Fibre, ADSL de secours et Wi-Fi illimités</li><li>Scan vers e-mail (impressions à la page)</li><li>Six salles et trois cabines, réservées en ligne</li><li>Espace détente, local vélos et deux-roues</li></ul><a class="btn" href="{u:contact}?besoin=coworking">Demander un devis</a></div>
+      <div class="tarif mis-en-avant"><span class="badge">Équipes</span><h2 class="h3">Postes supplémentaires</h2><p class="prix">300 € <small>HT</small></p><p class="unite">par mois et par poste, à partir du deuxième</p><ul class="liste-coches"><li>Mêmes prestations que le premier poste</li><li>Postes regroupés dans l'open space</li><li>Ajout d'un poste en quelques jours</li><li>Exemple : 3 postes = 950 € HT / mois</li><li>Exemple : 5 postes = 1 550 € HT / mois</li></ul><a class="btn" href="{u:contact}?besoin=equipe">Installer mon équipe</a></div>
       <div class="tarif"><h2 class="h3">Salle de réunion</h2><p class="prix">Sur devis</p><p class="unite">pour les entreprises non résidentes</p><ul class="liste-coches"><li>Grande salle d'une dizaine de places</li><li>Salles de 2 à 6 personnes, cabines d'appel</li><li>Écran, audioconférence, Wi-Fi</li><li>Toutes incluses pour les résidents</li></ul><a class="btn btn-secondaire" href="{u:salles-de-reunion-bordeaux}">Voir les salles</a></div>
     </div>
     <div class="encadre"><h2 class="h3">Besoin d'un poste de temps en temps ?</h2><p>Le flex office loue un poste équipé en open space à la demi-journée ou à la journée, ponctuellement ou quelques jours par mois, sans engagement, pour les indépendants et les salariés de passage. Le tarif dépend du nombre de jours : <a href="{u:contact}">indiquez-nous vos dates</a>.</p></div>
@@ -573,7 +567,7 @@ page(slug="chartrons-business-center", nav="Le lieu",
     <div class="espace-haut">
       <h3>Adresse</h3>
       <address class="prose">{nom}<br>{adresse}<br>{cp} {ville}<br>Téléphone : <a href="tel:{tel_intl}">{tel}</a></address>
-      <div class="carte-plan" id="plan"><button class="btn" type="button" id="charger-plan">Afficher le plan Google Maps</button></div>
+      <div class="carte-plan" id="plan"><div class="carte-plan-invite"><button class="btn" type="button" id="charger-plan">Afficher le plan Google Maps</button><p>En affichant le plan, vous acceptez que Google reçoive votre adresse IP et puisse déposer des cookies (<a href="{u:politique-de-confidentialite}#cookies">en savoir plus</a>).</p></div></div>
       <p class="meta">Plan fourni par Google Maps. <a href="https://www.google.com/maps/dir/?api=1&amp;destination=9+rue+Andr%C3%A9+Darbon+33300+Bordeaux" rel="noopener" target="_blank">Calculer l'itinéraire dans Google Maps (nouvel onglet)</a>.</p>
     </div>
   </div>
@@ -587,7 +581,7 @@ page(slug="chartrons-business-center", nav="Le lieu",
       <h2>Pourquoi s'installer aux Chartrons ?</h2>
       <p>Les Chartrons sont l'ancien quartier des négociants en vin de Bordeaux, entre le centre historique et les Bassins à flot (où se trouve la <a href="https://www.laciteduvin.com/" rel="noopener">Cité du Vin</a>). Le quartier a gardé ses échoppes et ses antiquaires, et accueille aujourd'hui des agences, des start-up et des écoles. Les restaurants et commerces de la rue Notre-Dame et des quais sont à quelques minutes à pied.</p>
       <p>Pour une entreprise, c'est une adresse reconnue à Bordeaux, bien desservie, avec des écoles de commerce et d'informatique à proximité qui facilitent le recrutement de stagiaires et d'alternants.</p>
-      <div class="btn-groupe"><a class="btn" href="{u:contact}">Organiser une visite</a><a class="btn btn-secondaire" href="{u:guide-quartier-chartrons-entreprise}">Lire notre guide du quartier</a></div>
+      <div class="btn-groupe"><a class="btn" href="{u:contact}?besoin=visite">Demander une visite</a><a class="btn btn-secondaire" href="{u:guide-quartier-chartrons-entreprise}">Lire notre guide du quartier</a></div>
     </div>
   </div>
 </section>
@@ -751,7 +745,7 @@ ARTICLES = [
 <p>Demi-journée, journée, soirée : vérifiez les créneaux proposés et la possibilité de prolonger si la réunion déborde. Les résidents du Chartrons Business Center réservent toutes les salles en ligne, sans frais.</p>
 <h2>8. Le prix, tout compris ?</h2>
 <p>Comparez des devis qui incluent la même chose : équipement, Wi-Fi, boissons, accueil. Au Chartrons Business Center, toutes les salles, grande salle comprise, sont incluses dans le loyer des résidents ; pour une entreprise extérieure, un devis est envoyé dans la journée.</p>
-<div class="encadre"><p>Pour réserver : appelez le """ + TEL + """ ou utilisez le <a href="{u:contact}">formulaire de contact</a> en précisant la date, la durée, le nombre de participants et le format souhaité.</p></div>
+<div class="encadre"><p>Pour réserver : appelez le """ + TEL + """ ou utilisez le <a href="{u:contact}?besoin=salle">formulaire de contact</a> en précisant la date, la durée, le nombre de participants et le format souhaité.</p></div>
 """),
  dict(slug="guide-domiciliation-entreprise-bordeaux", date="2026-10-27", temps="5 min",
       title="Domicilier son entreprise à Bordeaux : quelle option ?",
@@ -800,7 +794,7 @@ ARTICLES = [
 <p>Une agence de huit personnes fixe le mardi et le jeudi comme jours d'équipe, avec six postes loués aux Chartrons : 350 € + 5 × 300 € = 1 850 € HT par mois. Les salles de réunion incluses accueillent les points clients, la grande salle est réservée pour le séminaire trimestriel.</p>
 <h2>Les règles à écrire noir sur blanc</h2>
 <p>Qui vient quel jour, comment on réserve un poste ou une salle, ce qu'on laisse ou non sur le bureau le soir : trois règles simples évitent la plupart des frictions. Un poste fixe par personne présente plus de deux jours par semaine, et des postes partagés pour les autres, est souvent le bon compromis.</p>
-<div class="encadre"><p>Pour chiffrer votre configuration, <a href="{u:contact}">demandez un devis</a> en indiquant le nombre de postes au jour de pointe. Nous répondons dans la journée.</p></div>
+<div class="encadre"><p>Pour chiffrer votre configuration, <a href="{u:contact}?besoin=equipe">demandez un devis</a> en indiquant le nombre de postes au jour de pointe. Nous répondons dans la journée.</p></div>
 """),
 ]
 
@@ -818,7 +812,7 @@ page(slug="contact", nav="Contact",
   <div class="conteneur mise-en-page">
     <div>
       <h2>Votre demande</h2>
-      <form class="formulaire" action="{formto}" method="post" accept-charset="UTF-8">
+      <form class="formulaire" action="{formto}" method="post" accept-charset="UTF-8" data-merci="{u:merci}" data-tel="{tel}" data-tel-intl="{tel_intl}" data-email="{email}">
         <div class="piege" aria-hidden="true"><label for="website">Ne pas remplir ce champ</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <p class="meta">Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span> astérisque sont obligatoires.</p>
         <div class="ligne">
@@ -830,12 +824,13 @@ page(slug="contact", nav="Contact",
           <div><label for="telephone">Téléphone</label><input id="telephone" name="telephone" type="tel" autocomplete="tel" aria-describedby="aide-tel"><p class="aide" id="aide-tel">Pour vous rappeler plus vite.</p></div>
         </div>
         <div class="ligne">
-          <div><label for="besoin">Votre besoin <span class="obligatoire" aria-hidden="true">*</span></label><select id="besoin" name="besoin" required aria-required="true"><option value="">Choisir</option><option>Un poste en coworking</option><option>Des bureaux pour une équipe</option><option>Une salle de réunion</option><option>Une visite, sans engagement</option><option>Autre demande</option></select></div>
-          <div><label for="postes">Nombre de postes</label><input id="postes" name="postes" type="number" min="1" max="30" inputmode="numeric"></div>
+          <div><label for="besoin">Votre besoin <span class="obligatoire" aria-hidden="true">*</span></label><select id="besoin" name="besoin" required aria-required="true"><option value="">Choisir</option><option data-cle="coworking">Un poste en coworking</option><option data-cle="equipe">Des bureaux pour une équipe</option><option data-cle="flex">Du flex office, quelques jours par mois</option><option data-cle="salle">Une salle de réunion</option><option data-cle="visite">Une visite, sans engagement</option><option>Autre demande</option></select></div>
+          <div><label for="postes" id="label-postes">Nombre de postes</label><input id="postes" name="postes" type="number" min="1" max="30" inputmode="numeric"></div>
         </div>
         <div><label for="message">Message</label><textarea id="message" name="message" rows="5" placeholder="Date d'arrivée souhaitée, options utiles (parking, ligne fixe), questions"></textarea></div>
         <label class="consentement"><input type="checkbox" id="consentement" name="consentement" required aria-required="true"><span>J'ai lu la <a href="{u:politique-de-confidentialite}">politique de confidentialité</a> : mes informations servent uniquement à traiter ma demande. <span class="obligatoire" aria-hidden="true">*</span></span></label>
         <div class="envoi"><button class="btn" type="submit">Envoyer ma demande</button></div>
+        <div class="envoi-etat" role="status" aria-live="polite"></div>
       </form>
     </div>
     <aside class="aside" aria-label="Coordonnées">
@@ -886,7 +881,7 @@ page(slug="mentions-legales", nav=None,
 <h2>Directeur de la publication</h2>
 <p>Romain Jannekeyn-Vauquier, en qualité de gérant.</p>
 <h2>Hébergement</h2>
-<p>OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</p>
+<p>OVH SAS, 2 rue Kellermann, 59100 Roubaix, France. Téléphone : 1007.</p>
 <h2>Conception et réalisation</h2>
 <p><a href="https://www.shared-values.fr/" rel="noopener">Shared Values</a>, {adresse}, {cp} {ville}.</p>
 <h2>Propriété intellectuelle</h2>
@@ -911,11 +906,12 @@ page(slug="politique-de-confidentialite", nav=None,
 <h2>Durée de conservation</h2>
 <p>Les demandes de contact sont conservées au maximum trois ans à compter du dernier échange, puis supprimées.</p>
 <h2>Destinataires</h2>
-<p>Vos données sont traitées par l'équipe du Chartrons Business Center. Elles ne sont ni vendues ni cédées à des tiers. Le formulaire est opéré par notre prestataire Kaizen Agency (serveur hébergé en France), qui agit comme sous-traitant ; l'hébergeur du site (OVH, France) y a accès techniquement dans le cadre de sa prestation.</p>
+<p>Vos données sont traitées par l'équipe du Chartrons Business Center. Elles ne sont ni vendues ni cédées à des tiers. Le formulaire est transmis à un outil d'envoi hébergé en France et administré par notre prestataire technique Kaizen Agency, qui agit comme sous-traitant ; votre demande nous parvient ensuite par e-mail. Les pages du site sont hébergées par OVH (France). Aucune donnée du formulaire n'est transférée hors de l'Union européenne.</p>
 <h2>Vos droits</h2>
 <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données. Pour l'exercer, écrivez à <a href="mailto:{email}">{email}</a>. Vous pouvez aussi saisir la CNIL (cnil.fr) si vous estimez que vos droits ne sont pas respectés.</p>
-<h2>Cookies</h2>
-<p>Ce site ne dépose aucun cookie de suivi sans votre accord. Le plan Google Maps de la page d'accès est fourni par Google, qui peut déposer ses propres cookies lorsqu'il s'affiche ; vous pouvez les refuser dans les réglages de votre navigateur. Si un outil de mesure d'audience est activé, il vous est proposé via un bandeau de consentement et vous pouvez le refuser sans que la navigation en soit affectée.</p>
+<h2 id="cookies">Cookies et contenus tiers</h2>
+<p>Ce site ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience. Aucune ressource externe n'est chargée pendant votre navigation : polices, images et feuilles de style sont servies par le site lui-même.</p>
+<p>Seule exception, à votre demande : sur la page d'accès, le plan Google Maps ne s'affiche que si vous cliquez sur « Afficher le plan Google Maps ». Ce clic vaut accord pour ce seul affichage. Google (Google LLC, États-Unis) reçoit alors votre adresse IP et l'adresse de la page, et peut déposer ses propres cookies ; ce transfert est encadré par le Data Privacy Framework. Sans ce clic, rien n'est envoyé à Google. Le lien « Calculer l'itinéraire » ouvre Google Maps dans un nouvel onglet, hors de notre site.</p>
 </div></section>
 """)
 page(slug="plan-du-site", nav=None,
@@ -968,7 +964,7 @@ SCRIPT = open(os.path.join(SRC, "src", "js", "site.js"), encoding="utf-8").read(
 SLIDERS = {
  "lieu": [
   ("openspace", "Postes de travail alignés le long des baies vitrées de l'open space, avec écrans et fauteuils ergonomiques"),
-  ("hero", "Grande table partagée et arbre d'intérieur au milieu de l'open space"),
+  ("vue", "Vue générale de l'open space avec postes de travail, canapés et végétation"),
   ("detente", "Espace détente avec canapés, à côté des postes de travail"),
   ("fenetre", "Baies vitrées de l'open space avec vue sur les toits du quartier des Chartrons"),
   ("postes", "Rangée de postes de travail équipés face aux fenêtres"),
@@ -985,9 +981,31 @@ def slider_html(cle):
     points = "".join(f'<button type="button" aria-label="Photo {i + 1} sur {n}"{" aria-current=\"true\"" if i == 0 else ""}></button>' for i in range(n))
     return (f'<section class="slider" aria-roledescription="carrousel" aria-label="Photos du lieu">'
             f'<div class="slider-piste" tabindex="0" aria-label="Photos du lieu, faire défiler avec les flèches du clavier">{slides}</div>'
-            f'<div class="slider-boutons"><button type="button" class="slider-prec" aria-label="Photo précédente" disabled>{FLECHE_G}</button>'
+            f'<div class="slider-boutons"><button type="button" class="slider-prec" aria-label="Photo précédente" aria-disabled="true">{FLECHE_G}</button>'
             f'<button type="button" class="slider-suiv" aria-label="Photo suivante">{FLECHE_D}</button></div>'
-            f'<div class="slider-points">{points}</div></section>')
+            f'<div class="slider-points">{points}</div><p class="slider-etat visually-hidden" aria-live="polite"></p></section>')
+
+# ---------------------------------------------------------------- garde-fous
+JETONS = re.compile(r"\{(?:u|v|faq|photo|temoignages|slider):[^}]*\}|\{(?:logos|articles|plan|cta|cta_interne|formto|tel|tel_intl|email|nom|adresse|cp|ville|date_fr)\}")
+def controler(dist):
+    """Arrête le build si une page contient un jeton non remplacé, un « [à compléter] », un lien interne vers une page absente
+    ou une balise title / description hors des longueurs utiles."""
+    import glob
+    erreurs = []
+    for f in sorted(glob.glob(os.path.join(dist, "**", "*.html"), recursive=True)):
+        rel = os.path.relpath(f, dist); doc = open(f, encoding="utf-8").read()
+        for m in JETONS.finditer(doc): erreurs.append(f"{rel} : jeton non remplacé {m.group(0)}")
+        if "[à compléter]" in doc: erreurs.append(f"{rel} : champ « [à compléter] »")
+        if rel != "404.html":
+            t = html.unescape(re.search(r"<title>(.*?)</title>", doc).group(1)); d = html.unescape(re.search(r'<meta name="description" content="([^"]*)"', doc).group(1))
+            if len(t) > 60: erreurs.append(f"{rel} : title de {len(t)} caractères (> 60)")
+            if len(d) > 155: erreurs.append(f"{rel} : description de {len(d)} caractères (> 155)")
+        for href in re.findall(r'href="(/[^"#?]*)', doc):
+            if href.startswith("/assets/") or href == "/favicon.ico": cible = os.path.join(dist, href.lstrip("/"))
+            else: cible = os.path.join(dist, href.strip("/"), "index.html") if href != "/" else os.path.join(dist, "index.html")
+            if not os.path.exists(cible): erreurs.append(f"{rel} : lien interne cassé {href}")
+    if erreurs:
+        print("\n".join("ERREUR " + e for e in erreurs)); sys.exit(1)
 
 # ---------------------------------------------------------------- finitions du HTML
 BALISES_SVG = r"svg|path|rect|circle|ellipse|line|polyline|polygon|g|text|title|defs|clipPath"
@@ -1005,7 +1023,12 @@ def finitions(doc):
     # Liens vers un nouvel onglet : prévenir les lecteurs d'écran
     doc = re.sub(r'(<a [^>]*target="_blank"[^>]*>)(.*?)(</a>)', lambda m: m.group(0) if "nouvel onglet" in m.group(2) else m.group(1) + m.group(2) + '<span class="visually-hidden"> (nouvel onglet)</span>' + m.group(3), doc, flags=re.S)
     # Tableaux : défilement horizontal sur petit écran plutôt que des cellules empilées (garde la sémantique)
-    doc = doc.replace("<table", '<div class="table-scroll"><table').replace("</table>", "</table></div>")
+    # Le conteneur défilant est atteignable au clavier et nommé d'après la légende du tableau (WCAG 2.1.1)
+    def envelopper(m):
+        cap = re.search(r"<caption[^>]*>(.*?)</caption>", m.group(0), re.S)
+        nom = html.escape(re.sub(r"<[^>]+>", "", cap.group(1)).strip(), quote=True) if cap else "Tableau"
+        return f'<section class="table-scroll" tabindex="0" aria-label="{nom}">' + m.group(0) + "</section>"
+    doc = re.sub(r"<table\b.*?</table>", envelopper, doc, flags=re.S)
     # Typographie : uniquement dans les nœuds de texte, hors script, style et données structurées
     morceaux = re.split(r"(<script\b.*?</script>|<style\b.*?</style>|<[^>]+>)", doc, flags=re.S)
     return "".join(m if (i % 2) else typographie(m) for i, m in enumerate(morceaux))
@@ -1067,7 +1090,7 @@ def rendre(mode):
             cur_attr = ' aria-current="page"' if sl == cur else ""
             li.append(f'<li><a href="{u(sl)}"{cur_attr}>{lab}</a></li>')
         sec = "".join(f'<li><a href="{u(sl)}"{" aria-current=\"page\"" if sl == cur else ""}>{lab}</a></li>' for sl, lab in SECONDAIRE)
-        return "".join(li) + f'<li class="nav-secondaire"><ul>{sec}</ul></li><li class="nav-mobile-cta"><a class="tel-cta" href="tel:{TEL_INTL}">{ICONES["telico"]}<span>{TEL}</span></a><a class="btn" href="{u("contact")}">Réserver une visite</a></li>'
+        return "".join(li) + f'<li class="nav-secondaire"><ul>{sec}</ul></li><li class="nav-mobile-cta"><a class="tel-cta" href="tel:{TEL_INTL}">{ICONES["telico"]}<span>{TEL}</span></a><a class="btn" href="{u("contact")}?besoin=visite">Demander une visite</a></li>'
 
     def fil(p):
         items = [("Accueil", u(""))]
@@ -1084,7 +1107,7 @@ def rendre(mode):
     articles_html = "".join(
         f'<article class="carte article-carte"><div class="illustration">{visuel(a["h1"], i, "16/9")}</div><time datetime="{a["date"]}">{date_fr(a["date"])} · {a["temps"]} de lecture</time><h3><a href="{u(a["slug"])}">{a["h1"]}</a></h3><p>{a["description"]}</p><a class="lien" href="{u(a["slug"])}">Lire l\'article</a></article>'
         for i, a in enumerate(ARTICLES))
-    cta_html = f'<section class="section"><div class="conteneur"><div class="cta"><div><h2>Venir voir l\'open space</h2><p>La visite dure 30 minutes, du lundi au vendredi, sur rendez-vous. Vous recevez le devis au nombre de postes dans la journée.</p></div><p class="actions-visite"><a class="btn" href="{u("contact")}">Réserver une visite</a><span>ou <a href="tel:{TEL_INTL}">{TEL}</a></span></p></div></div></section>'
+    cta_html = f'<section class="section"><div class="conteneur"><div class="cta"><div><h2>Venir voir l\'open space</h2><p>La visite dure 30 minutes, du lundi au vendredi, sur rendez-vous. Vous recevez le devis au nombre de postes dans la journée.</p></div><p class="actions-visite"><a class="btn" href="{u("contact")}?besoin=visite">Demander une visite</a><span>ou <a href="tel:{TEL_INTL}">{TEL}</a></span></p></div></div></section>'
 
     cta_interne = cta_html.replace('<section class="section"><div class="conteneur">', '', 1).replace('</div></section>', '', 1)
     sitemap = []
@@ -1093,14 +1116,14 @@ def rendre(mode):
         faq_items = []
         # substitutions
         def sub_u(m): return u(m.group(1))
-        corps = re.sub(r"\{u:([a-z0-9-]+)\}", sub_u, corps)
+        corps = re.sub(r"\{u:([a-z0-9-]*)\}", sub_u, corps)
         def sub_v(m): return visuel(m.group(1), int(m.group(2)))
         corps = re.sub(r"\{v:([^:}]+):(\d)\}", sub_v, corps)
         def sub_faq(m):
             h, items = faq_html(m.group(1)); faq_items.extend(items); return h
         corps = re.sub(r'<div class="en-tete-section(?: centre)?"><span class="etiquette">Questions fréquentes</span><h2>(.*?)</h2></div>\s*<div class="faq">(\{faq:[a-z]+\})</div>',
                        lambda m: f'<div class="faq-bloc"><div class="faq-intro"><h2>{m.group(1)}</h2><p>Une autre question ? Appelez le <a href="tel:{TEL_INTL}">{TEL}</a> ou consultez <a href="{{u:faq}}">toutes les questions</a>.</p></div><div class="faq">{m.group(2)}</div></div>', corps)
-        corps = re.sub(r"\{u:([a-z0-9-]+)\}", sub_u, corps)
+        corps = re.sub(r"\{u:([a-z0-9-]*)\}", sub_u, corps)
         corps = re.sub(r"\{faq:([a-z]+)\}", sub_faq, corps)
         corps = re.sub(r"\{photo:([a-z0-9-]+):([^}]+)\}", lambda m: photo(m.group(1), m.group(2), sizes="(max-width: 620px) 100vw, (max-width: 960px) 50vw, 370px"), corps)
         corps = re.sub(r"\{temoignages:(\d)\}", lambda m: temoignages_html(int(m.group(1))), corps)
@@ -1126,19 +1149,19 @@ def rendre(mode):
         if slug in ("location-bureaux-bordeaux", "coworking-bordeaux-chartrons", "salles-de-reunion-bordeaux"):
             nom_service = {"location-bureaux-bordeaux": "Location de bureaux équipés", "coworking-bordeaux-chartrons": "Coworking", "salles-de-reunion-bordeaux": "Location de salles de réunion"}[slug]
             ld.append({"@context": "https://schema.org", "@type": "Service", "name": nom_service, "serviceType": nom_service, "provider": {"@id": DOMAINE + "/#organisation"}, "areaServed": {"@type": "City", "name": "Bordeaux"}, "url": canon(slug), "description": p["description"], "offers": jsonld_org(abs_url)["makesOffer"][:2] if slug != "salles-de-reunion-bordeaux" else {"@type": "Offer", "name": "Salles de réunion de 2 à 10 personnes et cabines d'appel", "description": "Incluses pour les résidents, réservation en ligne ; sur devis pour les entreprises extérieures"}})
-        ld_html = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
+        ld_html = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False).replace("</", "<\\/")}</script>' for x in ld)
 
         if slug == "":
             entete_page = f"""
 <section class="heros{style_hero}"><div class="conteneur">
   <h1>{p["h1"]}</h1><p class="intro">{p["chapo"]}</p>
-  <div class="btn-groupe"><a class="btn" href="{u("contact")}">Réserver une visite</a><a class="btn btn-secondaire" href="{u("tarifs")}">Voir les tarifs</a></div>
+  <div class="btn-groupe"><a class="btn" href="{u("contact")}?besoin=visite">Demander une visite</a><a class="btn btn-secondaire" href="{u("tarifs")}">Voir les tarifs</a></div>
   <ul class="points-cles"><li><strong>700 m²</strong><span>d'open space</span></li><li><strong>350 € HT</strong><span>par mois, 1er poste</span></li><li><strong>6 salles</strong><span>et 3 cabines d'appel</span></li><li><strong>Tram B et C</strong><span>à quelques minutes</span></li></ul>
 </div><a class="suite" href="#suite" aria-label="Aller à la suite de la page"></a></section><div id="suite"></div>"""
         elif p.get("est_article"):
             entete_page = f"""<header class="bandeau{style_hero}"><div class="conteneur">{fil_html}<h1>{p["h1"]}</h1><p class="intro">{p["chapo"]}</p><p class="meta">Publié le <time datetime="{p["date"]}">{date_fr(p["date"])}</time> · {p["temps"]} de lecture · par l'équipe du {NOM}</p></div></header>"""
             autres = "".join('<li><a href="%s">%s<span>%s de lecture</span></a></li>' % (u(a["slug"]), a["h1"], a["temps"]) for a in ARTICLES if a["slug"] != slug)
-            corps = f'<section class="section"><div class="conteneur mise-en-page"><article class="prose">{corps}</article><aside class="aside" aria-label="Pour aller plus loin"><div class="aside-bloc"><h2 class="aside-titre">Nos espaces</h2><ul class="aside-liens"><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés<span>dès 350 € HT par mois</span></a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking<span>indépendants et petites équipes</span></a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion<span>six salles et trois cabines, en ligne</span></a></li><li><a href="{u("tarifs")}">Tarifs<span>tout compris, sans frais de dossier</span></a></li></ul></div><div class="aside-bloc"><h2 class="aside-titre">Autres articles</h2><ol class="aside-articles">{autres}</ol><a class="aside-tous" href="{u("guide")}">Tout le guide</a></div><div class="aside-visite"><p>Envie de voir l\'open space&nbsp;?</p><a class="btn" href="{u("contact")}">Réserver une visite</a></div></aside></div></section>{cta_html}'
+            corps = f'<section class="section"><div class="conteneur mise-en-page"><article class="prose">{corps}</article><aside class="aside" aria-label="Pour aller plus loin"><div class="aside-bloc"><h2 class="aside-titre">Nos espaces</h2><ul class="aside-liens"><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés<span>dès 350 € HT par mois</span></a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking<span>indépendants et petites équipes</span></a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion<span>six salles et trois cabines, en ligne</span></a></li><li><a href="{u("tarifs")}">Tarifs<span>tout compris, sans frais de dossier</span></a></li></ul></div><div class="aside-bloc"><h2 class="aside-titre">Autres articles</h2><ol class="aside-articles">{autres}</ol><a class="aside-tous" href="{u("guide")}">Tout le guide</a></div><div class="aside-visite"><p>Envie de voir l\'open space&nbsp;?</p><a class="btn" href="{u("contact")}?besoin=visite">Demander une visite</a></div></aside></div></section>{cta_html}'
         else:
             chapo = f'<p class="intro">{p["chapo"]}</p>' if p["chapo"] else ""
             entete_page = f"""<header class="bandeau{style_hero}"><div class="conteneur">{fil_html}<h1>{p["h1"]}</h1>{chapo}</div></header>"""
@@ -1182,7 +1205,7 @@ def rendre(mode):
   <nav class="nav" id="menu-principal" aria-label="Navigation principale"><ul>{nav_html(slug)}</ul></nav>
   <div class="entete-actions">
     <a class="tel-cta" href="tel:{TEL_INTL}">{ICONES["telico"]}<span><small>Appelez&#8209;nous</small>{TEL}</span></a>
-    <a class="btn btn-cta" href="{u("contact")}">Réserver une visite</a>
+    <a class="btn btn-cta" href="{u("contact")}?besoin=visite">Demander une visite</a>
     <a class="tel-mobile" href="tel:{TEL_INTL}" aria-label="Appeler le {TEL}">{ICONES["telico"]}</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal"><span class="burger" aria-hidden="true"></span>Menu</button>
   </div>
@@ -1194,7 +1217,7 @@ def rendre(mode):
 <footer class="pied"><div class="conteneur">
   <div class="pied-haut">
     <section class="trouver" aria-labelledby="pied-trouver">
-      <h2 class="pied-titre" id="pied-trouver">Nous trouver</h2>
+      <p class="pied-titre" id="pied-trouver">Nous trouver</p>
       <div class="trouver-grille">
         <div>
           <address><span class="lieu">{NOM}</span>{ADRESSE}<br>{CP} {VILLE}</address>
@@ -1215,7 +1238,7 @@ def rendre(mode):
       </div>
     </section>
     <section class="pied-guide" aria-labelledby="pied-guide">
-      <h2 class="pied-titre" id="pied-guide">Le guide pour s'installer</h2>
+      <p class="pied-titre" id="pied-guide">Le guide pour s'installer</p>
       <ol>{"".join(f'<li><a href="{u(a["slug"])}">{a["h1"].split(" : ")[0]}</a></li>' for a in ARTICLES[:4])}</ol>
       <a class="tous" href="{u("guide")}">Tous les articles du guide</a>
     </section>
@@ -1224,7 +1247,6 @@ def rendre(mode):
     <div><p class="titre-pied">Nos espaces</p><ul><li><a href="{u("location-bureaux-bordeaux")}">Bureaux équipés</a></li><li><a href="{u("coworking-bordeaux-chartrons")}">Coworking</a></li><li><a href="{u("salles-de-reunion-bordeaux")}">Salles de réunion</a></li><li><a href="{u("tarifs")}">Tarifs</a></li></ul></div>
     <div><p class="titre-pied">Le centre</p><ul><li><a href="{u("chartrons-business-center")}">Le lieu</a></li><li><a href="{u("services")}">Services inclus</a></li><li><a href="{u("temoignages")}">Témoignages</a></li><li><a href="{u("faq")}">Questions fréquentes</a></li></ul></div>
     <div><p class="titre-pied">Informations</p><ul><li><a href="{u("contact")}">Contact et visite</a></li><li><a href="{u("guide")}">Le guide</a></li><li><a href="{u("plan-du-site")}">Plan du site</a></li></ul></div>
-    <div class="pied-visite"><p class="titre-pied">Une visite ?</p><p>Trente minutes pour voir l'open space, les salles de réunion et l'espace détente.</p><a class="btn" href="{u("contact")}">Réserver une visite</a></div>
   </nav>
   <div class="pied-bas"><p>© {DATE_MAJ[:4]} {NOM}, un espace <a href="https://www.shared-values.fr/" rel="noopener">Shared Values</a>.</p><ul><li><a href="{u("mentions-legales")}">Mentions légales</a></li><li><a href="{u("politique-de-confidentialite")}">Confidentialité</a></li></ul></div>
 </div></footer>
@@ -1256,12 +1278,11 @@ def rendre(mode):
         im = Image.open(os.path.join(SRC, "src", "img", "photos", f"{c}-1600.webp")).convert("RGB")
         w, h = im.size; nh = int(w * 630 / 1200); haut = max(0, (h - nh) // 2)
         im.crop((0, haut, w, haut + nh)).resize((1200, 630), Image.LANCZOS).save(os.path.join(dist, "assets", "img", "og", f"{c}.jpg"), quality=82, optimize=True, progressive=True)
-    placeholders = [f for f in __import__("glob").glob(os.path.join(dist, "**", "*.html"), recursive=True) if "[à compléter]" in open(f, encoding="utf-8").read()]
-    if placeholders: print("ATTENTION : champs « [à compléter] » dans", [os.path.relpath(f, dist) for f in placeholders])
+    controler(dist)
 
     if mode == "prod":
-        open(os.path.join(dist, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{l}</loc><lastmod>{d}</lastmod></url>\n" for l, pr, d in sitemap) + "</urlset>\n")
-        open(os.path.join(dist, "robots.txt"), "w").write(f"""# Robots classiques
+        open(os.path.join(dist, "sitemap.xml"), "w", encoding="utf-8").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{l}</loc><lastmod>{d}</lastmod></url>\n" for l, pr, d in sitemap) + "</urlset>\n")
+        open(os.path.join(dist, "robots.txt"), "w", encoding="utf-8").write(f"""# Robots classiques
 User-agent: *
 Allow: /
 
@@ -1272,15 +1293,17 @@ User-agent: ChatGPT-User
 User-agent: ClaudeBot
 User-agent: Claude-User
 User-agent: Claude-SearchBot
+User-agent: anthropic-ai
 User-agent: PerplexityBot
 User-agent: Perplexity-User
 User-agent: Google-Extended
 User-agent: Applebot-Extended
+User-agent: Bingbot
 Allow: /
 
 Sitemap: {DOMAINE}/sitemap.xml
 """)
-        open(os.path.join(dist, "llms.txt"), "w").write(f"""# {NOM}
+        open(os.path.join(dist, "llms.txt"), "w", encoding="utf-8").write(f"""# {NOM}
 
 > Location de bureaux équipés, coworking, flex office à la demande et salles de réunion dans un open space de 700 m² au 9 rue André Darbon, quartier des Chartrons, à Bordeaux (France). Premier poste 350 € HT par mois, postes supplémentaires 300 € HT par mois, parking couvert 130 € HT par mois. Téléphone {TEL}.
 
@@ -1298,7 +1321,7 @@ Sitemap: {DOMAINE}/sitemap.xml
 
 ## Pages principales
 """ + "".join(f"- [{p['h1']}]({canon(p['slug'])}) : {p['description']}\n" for p in PAGES if p["slug"] not in ("mentions-legales", "politique-de-confidentialite", "plan-du-site") and not p.get("noindex")) + "\n## Guide\n" + "".join(f"- [{a['h1']}]({canon(a['slug'])}) : {a['description']}\n" for a in ARTICLES))
-        open(os.path.join(dist, ".htaccess"), "w").write("""# URLs propres, cache et compression (Apache, hébergement OVH)
+        open(os.path.join(dist, ".htaccess"), "w", encoding="utf-8").write("""# URLs propres, cache et compression (Apache, hébergement OVH)
 Options -Indexes
 AddDefaultCharset UTF-8
 DirectoryIndex index.html
@@ -1331,12 +1354,13 @@ ErrorDocument 404 /404.html
   ExpiresActive On
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/avif "access plus 1 year"
+  # Photos et icônes : noms non versionnés, cache d'une semaine pour qu'un remplacement soit vu
+  ExpiresByType image/webp "access plus 1 week"
+  ExpiresByType image/avif "access plus 1 week"
   ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 week"
+  ExpiresByType image/png "access plus 1 week"
+  ExpiresByType image/x-icon "access plus 1 week"
   ExpiresByType text/html "access plus 1 hour"
 </IfModule>
 <IfModule mod_headers.c>
@@ -1344,7 +1368,7 @@ ErrorDocument 404 /404.html
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set Strict-Transport-Security "max-age=31536000"
 </IfModule>
 """)
         p404 = open(os.path.join(dist, "faq", "index.html"), encoding="utf-8").read()
