@@ -77,7 +77,7 @@ def photo(cle, alt, prioritaire=False, sizes="(max-width: 860px) 100vw, (max-wid
     if PHOTO_COMPTEUR[0] == 1: prioritaire = True
     p = PHOTO_PREFIX_ACTIF + cle
     attrs = 'fetchpriority="high" decoding="async"' if prioritaire else 'loading="lazy" decoding="async"'
-    return (f'<img src="{p}-800.webp" srcset="{p}-600.webp 600w, {p}-800.webp 800w, {p}-1000.webp 1000w" sizes="{sizes}" '
+    return (f'<img src="{p}-800.webp" srcset="{p}-600.webp 600w, {p}-800.webp 800w, {p}-1000.webp 1000w, {p}-1200.webp 1200w" sizes="{sizes}" '
             f'width="1000" height="667" alt="{html.escape(alt)}" {attrs}>')
 PHOTO_PREFIX_ACTIF = PHOTO_PREFIX
 
@@ -976,7 +976,7 @@ def slider_html(cle):
     photos = SLIDERS[cle]; n = len(photos)
     slides = "".join(
         f'<figure class="slide" role="group" aria-roledescription="diapositive" aria-label="{i + 1} sur {n}">'
-        + photo(c, alt, sizes="(max-width: 860px) 100vw, 570px") + "</figure>"
+        + photo(c, alt, sizes="(max-width: 860px) 113vw, 645px") + "</figure>"
         for i, (c, alt) in enumerate(photos))
     points = "".join(f'<button type="button" aria-label="Photo {i + 1} sur {n}"{" aria-current=\"true\"" if i == 0 else ""}></button>' for i in range(n))
     return (f'<section class="slider" aria-roledescription="carrousel" aria-label="Photos du lieu">'
