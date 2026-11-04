@@ -1,0 +1,2 @@
+# Générateur du site (Python 3.12 ou plus récent)
+Pillow>=10

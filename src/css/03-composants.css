@@ -7,8 +7,9 @@
 @media (max-width:620px){.grille-2,.grille-3,.grille-4{grid-template-columns:1fr}}
 
 /* ---------- Cartes ---------- */
-.carte{position:relative;background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon-l);padding:1.8rem;transition:border-color .25s ease,box-shadow .25s ease}
-.carte:hover{border-color:#bdbdbd;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+.carte{position:relative;background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon-l);padding:1.8rem;transition:border-color .2s ease}
+/* Survol réservé aux cartes cliquables */
+.carte:has(.carte-lien):hover{border-color:var(--c-filet-fort)}
 .carte .icone{color:var(--noir);margin-bottom:1rem}
 .carte .icone svg{width:28px;height:28px}
 .carte h3{margin-bottom:.4rem}
@@ -16,7 +17,7 @@
 .carte p:last-child{margin-bottom:0}
 .carte .lien{color:var(--rouge);font-weight:600;text-decoration:none}
 .carte .lien::after{content:" →";display:inline-block;transition:transform .2s ease}
-.carte:hover .lien::after{transform:translateX(3px)}
+.carte:has(.carte-lien):hover .lien::after,.carte a.lien:hover::after{transform:translateX(3px)}
 /* Carte entièrement cliquable : le lien du titre couvre la carte, un seul arrêt de tabulation */
 .carte-lien{color:inherit;text-decoration:none}
 .carte-lien::after{content:"";position:absolute;inset:0;z-index:1}
@@ -39,7 +40,6 @@
 .galerie{list-style:none;padding:0;margin:3rem 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
 .galerie li{margin:0;overflow:hidden;border-radius:var(--rayon-l)}
 .galerie img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.galerie li:hover img{transform:scale(1.03)}
 @media (max-width:760px){.galerie{grid-template-columns:repeat(2,1fr)}}
 .illustration{border-radius:var(--rayon-l);background:var(--gris);aspect-ratio:16/9;margin-bottom:1rem;overflow:hidden}
 .illustration img{width:100%;height:100%;object-fit:cover}
@@ -51,12 +51,6 @@
 .logos{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:center;list-style:none;padding:0;margin:0}
 .logos li{margin:0;padding:.4rem 0;border-bottom:1px solid var(--ligne);font-weight:600;color:var(--texte-doux)}
 
-/* ---------- Chiffres (section sombre) ---------- */
-.chiffres{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center}
-.chiffres div{padding:2rem 1rem;background:rgba(255,255,255,.07);border-radius:var(--rayon-l)}
-.chiffres strong{display:block;font-family:var(--police-titre);font-weight:600;font-size:2.6rem;color:#fff;line-height:1.1}
-.chiffres span{font-size:.95rem}
-@media (max-width:760px){.chiffres{grid-template-columns:repeat(2,1fr);gap:.6rem}.chiffres div{padding:1.4rem .5rem}.chiffres strong{font-size:2.1rem}}
 
 /* ---------- Témoignages ---------- */
 .temoignage{background:#fff;border:1px solid var(--ligne);border-radius:var(--rayon-l);padding:1.8rem;display:flex;flex-direction:column;margin:0}
@@ -112,7 +106,7 @@
 .formulaire{display:grid;gap:1.1rem}
 .formulaire .piege{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .formulaire label{display:block;font-weight:600;margin-bottom:.35rem;color:var(--noir)}
-.formulaire input,.formulaire select,.formulaire textarea{width:100%;min-height:48px;padding:.75rem .9rem;border:1px solid #bdbdbd;border-radius:var(--rayon);font:inherit;background:#fff;color:var(--texte)}
+.formulaire input,.formulaire select,.formulaire textarea{width:100%;min-height:48px;padding:.75rem .9rem;border:1px solid var(--c-champ);border-radius:var(--rayon);font:inherit;background:#fff;color:var(--texte)}
 .formulaire input:focus,.formulaire select:focus,.formulaire textarea:focus{border-color:var(--noir);outline:2px solid var(--noir);outline-offset:0}
 .formulaire [aria-invalid="true"]{border-color:var(--rouge)}
 .formulaire .erreur{color:var(--rouge);font-size:.9rem;font-weight:600;margin:.35rem 0 0}
@@ -122,17 +116,24 @@
 .formulaire .consentement{display:flex;gap:.7rem;align-items:flex-start;font-weight:400}
 .formulaire .consentement input{width:1.2rem;min-height:0;height:1.2rem;margin-top:.25rem;flex:none}
 .formulaire .envoi{display:flex;justify-content:flex-end;padding-top:.5rem}
+.formulaire .envoi .btn:disabled{opacity:.7;cursor:progress}
+.envoi-etat:empty{display:none}
+.envoi-erreur{border-top:2px solid var(--rouge);padding:1rem 0 0;color:var(--texte);font-weight:500}
+.envoi-erreur:focus{outline:none}
 @media (max-width:620px){.formulaire .envoi .btn{width:100%;text-align:center}}
 .obligatoire{color:var(--rouge)}
 .coordonnees{list-style:none;padding:0;margin:0}
 .coordonnees li{display:flex;gap:.8rem;margin-bottom:1rem}
 .coordonnees svg{width:24px;height:24px;color:var(--noir);flex:none;margin-top:.15rem}
 .carte-plan{border:1px solid var(--ligne);border-radius:var(--rayon-l);overflow:hidden;height:420px;background:var(--gris);display:flex;align-items:center;justify-content:center;margin-top:1.2rem}
+.carte-plan-invite{max-width:26rem;padding:1.5rem;text-align:center}
+.carte-plan-invite p{margin:1rem 0 0;font-size:.875rem;color:var(--texte-doux)}
 .carte-plan iframe{width:100%;height:100%;border:0}
 @media (max-width:620px){.carte-plan{height:300px}}
 
 /* ---------- Tableaux : filets seuls ; défilement horizontal sur petit écran ---------- */
 .table-scroll{overflow-x:auto;margin:1.5rem 0;-webkit-overflow-scrolling:touch}
+.table-scroll:focus-visible{outline:3px solid var(--noir);outline-offset:4px}
 table{width:100%;border-collapse:collapse;margin:0}
 .table-scroll table{min-width:34rem}
 caption{text-align:left;font-weight:600;padding:0 0 .7rem;color:var(--noir)}
@@ -152,43 +153,26 @@ td.prix,th.prix{text-align:right;white-space:nowrap;font-weight:600;color:var(--
 .tableau-options td.prix small{display:block;font-family:var(--police);font-size:.875rem;font-weight:400;color:var(--texte-doux)}
 @media (max-width:620px){.tableau-options td{padding-right:1rem}.tableau-options td.prix{font-size:1.2rem}}
 
-/* ---------- Apparition au défilement ----------
-   Posée en JavaScript sur les seuls blocs situés sous la ligne de flottaison : rien ne clignote, tout reste visible sans JS. */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .9s var(--sortie)}
-.reveal.vu{opacity:1;transform:none}
-/* Photos : se posent en douceur dans leur cadre arrondi */
-.reveal-image{overflow:hidden}
-.reveal-image img{transform:scale(1.12);opacity:.001;transition:transform 1.4s var(--sortie),opacity .8s ease}
-.reveal-image.vu img{transform:none;opacity:1}
-.reveal-image.vu:hover img{transform:scale(1.03)}
-/* Titres : chaque mot sort d'un masque, l'un après l'autre */
-.titre-anime .mot{display:inline-block;overflow:clip;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
-.titre-anime .mot>span{display:inline-block;transform:translateY(110%);transition:transform .9s var(--sortie)}
-.titre-anime.vu .mot>span{transform:none}
-@media (prefers-reduced-motion:reduce){.reveal,.reveal-image img,.titre-anime .mot>span{opacity:1;transform:none}}
-
 /* ---------- Slider de photos (accueil, « Le lieu ») ----------
    Défilement natif avec accroche : glisser au doigt, clavier, et sans JavaScript une simple bande défilante. */
-.slider{position:relative;padding-bottom:2.75rem}
+.slider{position:relative}
 .slider-piste{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:var(--rayon-l);scrollbar-width:none;overscroll-behavior-x:contain}
 .slider-piste::-webkit-scrollbar{display:none}
 .slider-piste:focus-visible{outline:3px solid var(--noir);outline-offset:4px}
 .slide{flex:0 0 100%;scroll-snap-align:start;margin:0}
 .slide img{width:100%;height:auto;aspect-ratio:9/10;object-fit:cover}
-.slider-boutons{display:none}
-.js .slider-boutons{display:flex;flex-direction:column;gap:1rem;position:absolute;right:-32px;top:calc(50% - 1.375rem);transform:translateY(-50%)}
-.slider-boutons button{width:64px;height:64px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;transition:background-color .2s ease,color .2s ease,opacity .2s ease,transform .25s var(--sortie)}
-.slider-prec{background:rgba(255,255,255,.85);color:var(--noir);box-shadow:0 6px 20px rgba(0,0,0,.08)}
-.slider-suiv{background:var(--noir);color:#fff}
-.slider-boutons button:hover:not(:disabled){transform:scale(1.06)}
-.slider-suiv:hover:not(:disabled){background:var(--rouge)}
-.slider-prec:hover:not(:disabled){background:#fff}
-.slider-boutons button:disabled{opacity:.45;cursor:default}
-.slider-points{display:none}
-.js .slider-points{display:flex;justify-content:center;gap:.6rem;position:absolute;left:0;right:0;bottom:0}
-.slider-points button{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:var(--noir);opacity:.8;cursor:pointer;transition:all .25s var(--sortie);position:relative}
-.slider-points button::before{content:"";position:absolute;inset:-12px}
-.slider-points button[aria-current="true"]{width:18px;height:18px;margin:-4px 0;background:var(--texte-doux);opacity:.5}
-@media (max-width:860px){.slide img{aspect-ratio:4/3}.js .slider-boutons{flex-direction:row;gap:.5rem;top:auto;bottom:3.6rem;right:12px;transform:none}.slider-boutons button{width:46px;height:46px}.slider-prec:disabled{opacity:.6}}
+/* Contrôles sur une ligne, sous la photo : points à gauche, flèches à droite */
+.slider-boutons,.slider-points{display:none}
+.js .slider{display:grid;grid-template-columns:1fr auto;align-items:center;row-gap:1rem}
+.js .slider-piste{grid-column:1/-1}
+.js .slider-points{display:flex;gap:.25rem;grid-row:2;grid-column:1}
+.js .slider-boutons{display:flex;gap:.5rem;grid-row:2;grid-column:2}
+.slider-boutons button{width:44px;height:44px;border-radius:var(--rayon);border:1px solid var(--noir);background:#fff;color:var(--noir);display:grid;place-items:center;cursor:pointer;transition:background-color .2s ease,color .2s ease}
+.slider-boutons button:hover{background:var(--noir);color:#fff}
+.slider-boutons button[aria-disabled="true"]{border-color:var(--c-filet-fort);color:var(--c-filet-fort);background:#fff;cursor:default}
+.slider-points button{width:24px;height:24px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.slider-points button::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--c-filet-fort);transition:background-color .2s ease,transform .2s ease}
+.slider-points button[aria-current="true"]::after{background:var(--noir);transform:scale(1.25)}
+@media (max-width:860px){.slide img{aspect-ratio:4/3}}
 @media (prefers-reduced-motion:reduce){.slider-piste{scroll-behavior:auto}}
 @media print{.slider-piste{overflow:visible}.slide:not(:first-child),.slider-boutons,.slider-points{display:none!important}}

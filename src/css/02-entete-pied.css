@@ -9,8 +9,7 @@
 .nav .nav-secondaire,.nav .nav-mobile-cta{display:none}
 .entete-actions{display:flex;align-items:center;gap:1rem;flex:none}
 .tel-cta{display:flex;align-items:center;gap:.55rem;text-decoration:none;color:var(--noir);font-weight:600;font-size:1.05rem;white-space:nowrap}
-.tel-cta svg{width:22px;height:22px;flex:none;transition:transform .2s ease}
-.tel-cta:hover svg{transform:rotate(-8deg)}
+.tel-cta svg{width:22px;height:22px;flex:none}
 .tel-cta span{display:flex;flex-direction:column;line-height:1.05}
 .tel-cta small{font-size:.75rem;color:var(--texte-doux)}
 .tel-cta:hover{color:var(--rouge)}
@@ -40,6 +39,8 @@
   .tel-mobile,.menu-btn{display:inline-flex}
 }
 @media (max-width:620px){.logo-img{width:150px}.entete .conteneur{min-height:72px}}
+/* Très petits écrans (zoom 400 %, 320 px) : l'en-tête tient sans défilement horizontal */
+@media (max-width:359px){.logo-img{width:118px}.entete .conteneur{gap:.5rem}.entete-actions{gap:.4rem}.menu-btn{padding:.55rem .6rem}}
 
 /* ---------- Boutons ---------- */
 .btn{display:inline-block;background:var(--rouge);color:#fff;font-family:var(--police);font-weight:600;font-size:1rem;padding:.85rem 1.5rem;border-radius:var(--rayon);text-decoration:none;border:2px solid var(--rouge);cursor:pointer;white-space:nowrap;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
@@ -52,14 +53,14 @@
 .btn-centre{justify-content:center}
 
 /* ---------- Pied de page ---------- */
-.pied{background:var(--nuit);color:rgba(255,255,255,.75);font-size:1rem;line-height:1.6;border-radius:var(--rayon-xl) var(--rayon-xl) 0 0}
+.pied{background:var(--nuit);color:rgba(255,255,255,.75);font-size:1rem;line-height:1.6}
 .pied a{color:#fff;text-decoration:none}
 .pied a:hover{color:#fff;text-decoration:underline;text-underline-offset:.2em}
 .pied ul{list-style:none;margin:0;padding:0}
 .pied li{margin:0}
 .pied-haut{display:grid;gap:3.5rem 4rem;padding:4.5rem 0 3.5rem}
 @media (min-width:960px){.pied-haut{grid-template-columns:1.35fr 1fr}}
-.pied-titre{color:#fff;font-size:1.625rem;margin:0 0 1.25rem}
+.pied-titre{color:#fff;font-family:var(--police-titre);font-weight:600;line-height:1.2;letter-spacing:-.015em;font-size:1.625rem;margin:0 0 1.25rem}
 .trouver-grille{display:grid;gap:2rem 3rem}
 @media (min-width:620px){.trouver-grille{grid-template-columns:1fr 1fr}}
 .trouver .lieu{color:#fff;font-weight:600;display:block}
@@ -72,9 +73,8 @@
 /* Plan d'accès : une ligne verticale et ses arrêts */
 .acces{position:relative}
 .acces::before{content:"";position:absolute;left:.95rem;top:1rem;bottom:1rem;width:2px;background:rgba(255,255,255,.2)}
-.acces li{position:relative;display:flex;gap:.9rem;align-items:flex-start;margin:0 0 1.1rem;transition:transform .2s ease}
+.acces li{position:relative;display:flex;gap:.9rem;align-items:flex-start;margin:0 0 1.1rem}
 .acces li:last-child{margin-bottom:0}
-.acces li:hover{transform:translateX(3px)}
 .acces .pastille{flex:none;width:1.9rem;height:1.9rem;border-radius:50%;display:grid;place-items:center;background:var(--nuit);border:2px solid rgba(255,255,255,.6);color:#fff;font-weight:600;font-size:.8rem;line-height:1;position:relative;z-index:1}
 .acces .pastille-carree{border-radius:4px;font-size:.7rem}
 .acces .acces-ici .pastille{background:var(--rouge);border-color:var(--rouge)}
@@ -91,13 +91,11 @@
 .pied-guide .tous{display:inline-block;margin-top:1.25rem}
 /* Navigation et ligne légale */
 .pied-nav{display:grid;gap:2rem;padding:2.5rem 0;border-top:1px solid rgba(255,255,255,.15);grid-template-columns:repeat(2,1fr)}
-@media (min-width:800px){.pied-nav{grid-template-columns:repeat(3,1fr) 1.2fr}}
-@media (max-width:799px){.pied-visite{grid-column:1/-1}}
+@media (min-width:800px){.pied-nav{grid-template-columns:repeat(3,1fr)}}
 .pied-nav .titre-pied{color:rgba(255,255,255,.6);font-size:.875rem;margin:0 0 .75rem}
 .pied-nav ul{display:grid;gap:.4rem}
-.pied-nav a:not(.btn){display:inline-block;padding:.1rem 0}
-.pied-visite p{margin:0 0 1rem}
-.pied-visite .btn:hover{text-decoration:none}
+/* Cibles tactiles d'au moins 24 px de haut (WCAG 2.5.8) */
+.pied-nav a{display:inline-block;padding:.2rem 0;min-height:24px}
 .pied-bas{border-top:1px solid rgba(255,255,255,.15);padding:1.5rem 0 2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.875rem;color:rgba(255,255,255,.6)}
 .pied-bas p{margin:0}
 .pied-bas a{color:rgba(255,255,255,.85)}
