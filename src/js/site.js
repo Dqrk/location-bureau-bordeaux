@@ -7,7 +7,11 @@
 
   /* Sliders de photos : boutons, points, flèches du clavier ; le défilement reste natif (glisser au doigt).
      Les boutons ne sont jamais désactivés (aria-disabled) : le focus ne se perd pas en bout de série. */
+  /* Photos du carrousel : les diapositives 2 et suivantes partent à l'approche (600 px) ou au premier clic */
+  var chargerDiapos=function(sl){sl.querySelectorAll('img[data-src]').forEach(function(im){im.srcset=im.getAttribute('data-srcset');im.src=im.getAttribute('data-src');im.removeAttribute('data-src');im.removeAttribute('data-srcset');});};
   d.querySelectorAll('.slider').forEach(function(sl){
+    if('IntersectionObserver' in window){var ob=new IntersectionObserver(function(e){if(e[0].isIntersecting){chargerDiapos(sl);ob.disconnect();}},{rootMargin:'600px'});ob.observe(sl);}else chargerDiapos(sl);
+    sl.addEventListener('pointerdown',function(){chargerDiapos(sl);},{once:true});sl.addEventListener('focusin',function(){chargerDiapos(sl);},{once:true});
     var piste=sl.querySelector('.slider-piste'),slides=piste.children,prec=sl.querySelector('.slider-prec'),suiv=sl.querySelector('.slider-suiv'),points=sl.querySelectorAll('.slider-points button'),etat=sl.querySelector('.slider-etat'),n=slides.length,courant=0,attente=0;
     var aller=function(i){i=Math.max(0,Math.min(n-1,i));piste.scrollTo({left:i*piste.clientWidth,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});};
     var maj=function(){
@@ -33,7 +37,7 @@
     b.addEventListener('click',function(){var o=n.classList.toggle('ouvert');b.setAttribute('aria-expanded',o?'true':'false');if(o){var l=n.querySelector('a');if(l)l.focus();}});
     d.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('ouvert'))fermer(true);});
     n.addEventListener('focusout',function(e){var c=e.relatedTarget;if(n.classList.contains('ouvert')&&c&&c!==b&&!n.contains(c))fermer(false);});
-    var mq=matchMedia('(min-width: 1101px)');if(mq.addEventListener)mq.addEventListener('change',function(m){if(m.matches)fermer(false);});
+    var mq=matchMedia('(min-width: 68.8125em)');if(mq.addEventListener)mq.addEventListener('change',function(m){if(m.matches)fermer(false);});
   }
 
   /* FAQ : première réponse ouverte, les autres repliées (tout reste lisible sans JavaScript) */
@@ -88,10 +92,11 @@
       if(liens.length)ch.setAttribute('aria-describedby',liens.join(' '));else ch.removeAttribute('aria-describedby');
     };
     var envoiEnCours=false,libelle=bouton.textContent;
-    var echec=function(){
+    var echec=function(statut){
       envoiEnCours=false;bouton.disabled=false;bouton.textContent=libelle;
       etat.className='envoi-etat envoi-erreur';
-      etat.innerHTML='Votre demande n’a pas pu partir (connexion ou serveur indisponible). Vos informations sont conservées dans le formulaire : réessayez dans un instant, ou contactez-nous directement au <a href="tel:'+fo.getAttribute('data-tel-intl')+'">'+fo.getAttribute('data-tel')+'</a> ou par e-mail à <a href="mailto:'+fo.getAttribute('data-email')+'">'+fo.getAttribute('data-email')+'</a>.';
+      var cause=statut===429?'Trop d’envois en peu de temps : patientez une minute avant de réessayer.':statut?'Le service d’envoi a refusé la demande (erreur '+statut+').':'Connexion ou serveur indisponible.';
+      etat.innerHTML='Votre demande n’a pas pu partir. '+cause+' Vos informations sont conservées dans le formulaire : réessayez dans un instant, ou contactez-nous directement au <a href="tel:'+fo.getAttribute('data-tel-intl')+'">'+fo.getAttribute('data-tel')+'</a> ou par e-mail à <a href="mailto:'+fo.getAttribute('data-email')+'">'+fo.getAttribute('data-email')+'</a>.';
       etat.setAttribute('tabindex','-1');etat.focus();
     };
     fo.addEventListener('submit',function(e){
@@ -105,9 +110,11 @@
       envoiEnCours=true;bouton.disabled=true;bouton.textContent='Envoi en cours…';etat.className='envoi-etat';etat.textContent='';
       var donnees=new URLSearchParams();[].forEach.call(fo.elements,function(ch){if(ch.name&&!(ch.type==='checkbox'&&!ch.checked))donnees.append(ch.name,ch.value);});
       var ctrl=window.AbortController?new AbortController():null,minuterie=setTimeout(function(){if(ctrl)ctrl.abort();},15000);
-      fetch(fo.action,{method:'POST',mode:'no-cors',body:donnees,signal:ctrl?ctrl.signal:undefined})
-        .then(function(){clearTimeout(minuterie);location.href=fo.getAttribute('data-merci');})
-        .catch(function(){clearTimeout(minuterie);echec();});
+      /* formto autorise les envois depuis un autre site (CORS) et répond en JSON avec le vrai statut :
+         on ne va sur /merci/ que si l'envoi est réellement accepté (2xx). */
+      fetch(fo.action,{method:'POST',mode:'cors',headers:{'Accept':'application/json'},body:donnees,signal:ctrl?ctrl.signal:undefined})
+        .then(function(r){clearTimeout(minuterie);if(r.ok)location.href=fo.getAttribute('data-merci');else echec(r.status);})
+        .catch(function(){clearTimeout(minuterie);echec(0);});
     });
     fo.addEventListener('change',function(e){var ch=e.target;if(ch.getAttribute('aria-invalid')==='true'&&ch.checkValidity())signaler(ch,false);});
   }

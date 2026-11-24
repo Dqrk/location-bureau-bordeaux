@@ -27,35 +27,76 @@
   --rayon:4px;             /* boutons, champs, cartes, images */
   --rayon-l:4px;
   --rayon-xl:0;            /* hero, bandeaux et pied de page à angles droits */
+
+  /* Espacements : échelle base 4 (reprise du 02/11, cran 40 px ajouté) */
+  --e-1:.25rem;  /*  4 */
+  --e-2:.5rem;   /*  8 */
+  --e-3:.75rem;  /* 12 */
+  --e-4:1rem;    /* 16 */
+  --e-5:1.5rem;  /* 24 */
+  --e-6:2rem;    /* 32 */
+  --e-7:2.5rem;  /* 40 */
+  --e-8:3rem;    /* 48 */
+  --e-9:4rem;    /* 64 */
+  --e-10:5rem;   /* 80 */
+  --section:var(--e-10);
+  --carte-pad:var(--e-6);
+  --gouttiere:var(--e-5);
+  --marge-page:20px;
+
+  /* Typographie : 10 crans */
+  --t-h1:clamp(1.9rem,4vw,3.1rem);      /* 30,4 à 49,6 */
+  --t-h2:clamp(1.6rem,2.8vw,2.25rem);   /* 25,6 à 36 */
+  --t-h2-s:1.625rem;                    /* 26 : h2 d'article, intro FAQ, numéros d'étapes */
+  --t-h3:1.25rem;                       /* 20 */
+  --t-chiffre:clamp(1.75rem,1.2rem + 1.6vw,2.4rem); /* 28 à 38,4 : prix */
+  --t-chapo:1.1875rem;                  /* 19 */
+  --t-corps:1.0625rem;                  /* 17, aussi questions FAQ et titres d'étapes */
+  --t-ui:1rem;                          /* 16 : boutons, pied, tableaux */
+  --t-petit:.9375rem;                   /* 15 : méta, unités, sur-titres, aides */
+  --t-mini:.8125rem;                    /* 13 : fil d'Ariane, ligne légale, légendes */
+  --lh-titre:1.15;
+  --lh-ui:1.35;
+  --lh-texte:1.65;
+
+  /* Mesures */
+  --mesure-courte:36rem;  /* 576 */
+  --mesure:42rem;         /* 672 */
+  --mesure-large:48rem;   /* 768 */
+
+  /* Hauteur de l'en-tête collant, filet compris (87 px en desktop, 73 px sous 620 px) : sert au défilement */
+  --entete-h:87px;
   --sortie:cubic-bezier(.16,1,.3,1);
 }
+@media (max-width:620px){:root{--section:var(--e-8);--carte-pad:var(--e-5);--entete-h:73px}}
 
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-[id]{scroll-margin-top:100px}
-body{margin:0;font-family:var(--police);font-size:1.0625rem;line-height:1.65;color:var(--texte);background:#fff;font-synthesis:none}
+/* Le défilement (ancres, focus clavier en Maj+Tab) s'arrête sous l'en-tête collant (WCAG 2.4.11) */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--entete-h) + var(--e-3))}
+body{margin:0;font-family:var(--police);font-size:var(--t-corps);line-height:var(--lh-texte);color:var(--texte);background:#fff;font-synthesis:none}
 img,svg{max-width:100%;height:auto;display:block}
 a{color:var(--rouge);text-underline-offset:3px;transition:color .15s ease,text-decoration-color .15s ease}
 a:hover{color:var(--rouge-fonce)}
 :focus-visible{outline:3px solid var(--noir);outline-offset:3px}
-.heros :focus-visible,.bandeau :focus-visible,.section-nuit :focus-visible,.pied :focus-visible{outline-color:#fff}
+.heros :focus-visible,.bandeau :focus-visible,.pied :focus-visible{outline-color:#fff}
 
-h1,h2,h3{font-family:var(--police-titre);font-weight:600;line-height:1.2;color:var(--noir);margin:0 0 .6em;letter-spacing:-.015em;text-wrap:balance}
-h1{font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.1}
-h2{font-size:clamp(1.6rem,2.8vw,2.25rem);line-height:1.15}
-h3,.h3{font-size:1.25rem}
-p{margin:0 0 1em}
-ul,ol{padding-left:1.3em}
-li{margin-bottom:.35em}
+h1,h2,h3{font-family:var(--police-titre);font-weight:600;line-height:var(--lh-titre);color:var(--noir);margin:0 0 var(--e-3);letter-spacing:-.015em;text-wrap:balance}
+h2{font-size:var(--t-h2);margin-bottom:var(--e-4)}
+h3,.h3{font-size:var(--t-h3)}
+p{margin:0 0 var(--e-4)}
+ul,ol{padding-left:var(--e-5)}
+li{margin-bottom:var(--e-2)}
+/* Les contrôles natifs héritent de la police, de la taille et de l'interlignage */
+button,input,select,textarea{font:inherit}
 strong{color:var(--noir)}
 address{font-style:normal}
 
 .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.skip{position:absolute;left:-999px;top:8px;background:var(--noir);color:#fff;padding:.6rem 1rem;z-index:1000}
+.skip{position:absolute;left:-999px;top:8px;background:var(--noir);color:#fff;padding:var(--e-2) var(--e-4);z-index:1000}
 .skip:focus{left:8px}
-.conteneur{max-width:var(--largeur);margin:0 auto;padding:0 20px}
-.espace-haut{margin-top:2rem}
-.espace-haut-s{margin-top:.8rem}
-.espace-bas{margin-bottom:3rem}
+.conteneur{max-width:var(--largeur);margin:0 auto;padding:0 var(--marge-page)}
+.espace-haut{margin-top:var(--e-6)}
+.espace-haut-s{margin-top:var(--e-3)}
+.espace-bas{margin-bottom:var(--e-8)}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}

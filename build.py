@@ -15,15 +15,17 @@ FORMTO_ENDPOINT = "https://forms.kaizen-agency.fr/f/location-bureau-bordeaux"
 ADRESSE = "9 rue André Darbon"
 CP = "33300"
 VILLE = "Bordeaux"
-DATE_MAJ = "2026-10-28"
+DATE_MAJ = "2026-11-24"
 
 SRC = os.path.dirname(os.path.abspath(__file__))
 
 # ---------------------------------------------------------------- visuels
-def visuel(titre, variante=0, ratio="4/3"):
+def visuel(titre, variante=0, ratio="4/3", plein=False):
     """Photo du lieu si elle existe, sinon illustration SVG neutre."""
     if titre in PHOTOS:
         cle, alt = PHOTOS[titre]
+        if plein: return photo(cle, alt, prioritaire=(cle == "hero"), sizes="(max-width: 1180px) calc(100vw - 40px), 1140px", plein=True)
+        if ratio == "16/9": return photo(cle, alt, sizes="(max-width: 620px) calc(100vw - 40px), (max-width: 960px) 45vw, 360px")
         return photo(cle, alt, prioritaire=(cle == "hero"))
     w, h = (800, 600) if ratio == "4/3" else (800, 450)
     fonds = ["#f4f4f4", "#ececec", "#f4f4f4"]
@@ -72,12 +74,12 @@ HERO_PHOTO = {"": "hero", "location-bureaux-bordeaux": "openspace", "coworking-b
               "contact": "hero", "merci": "hero", "mentions-legales": "plafond-vert", "politique-de-confidentialite": "plafond-vert",
               "plan-du-site": "plafond-vert"}
 PHOTO_COMPTEUR = [0]
-def photo(cle, alt, prioritaire=False, sizes="(max-width: 860px) 100vw, (max-width: 1220px) 50vw, 570px"):
+def photo(cle, alt, prioritaire=False, sizes="(max-width: 860px) 100vw, (max-width: 1220px) 50vw, 570px", plein=False):
     PHOTO_COMPTEUR[0] += 1
     if PHOTO_COMPTEUR[0] == 1: prioritaire = True
     p = PHOTO_PREFIX_ACTIF + cle
     attrs = 'fetchpriority="high" decoding="async"' if prioritaire else 'loading="lazy" decoding="async"'
-    return (f'<img src="{p}-800.webp" srcset="{p}-600.webp 600w, {p}-800.webp 800w, {p}-1000.webp 1000w, {p}-1200.webp 1200w" sizes="{sizes}" '
+    return (f'<img src="{p}-800.webp" srcset="{p}-600.webp 600w, {p}-800.webp 800w, {p}-1000.webp 1000w, {p}-1200.webp 1200w{f", {p}-1600.webp 1600w" if plein else ""}" sizes="{sizes}" '
             f'width="1000" height="667" alt="{html.escape(alt)}" {attrs}>')
 PHOTO_PREFIX_ACTIF = PHOTO_PREFIX
 
@@ -172,18 +174,6 @@ page(slug="", nav="Accueil",
       </ul>
       <div class="btn-groupe"><a class="btn" href="{u:chartrons-business-center}">Découvrir le lieu et l'accès</a></div>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="conteneur">
-    <div class="en-tete-section"><h2>L'espace en photos</h2></div>
-    <ul class="galerie galerie-seule" aria-label="Photos de l'espace">
-      <li>{photo:cuisine:Cuisine de l'espace détente avec îlot central et deux personnes qui échangent}</li>
-      <li>{photo:plafond-vert:Mur végétal suspendu au plafond de l'open space}</li>
-      <li>{photo:lounge:Salon de l'espace détente avec fauteuils et panneaux acoustiques colorés}</li>
-      <li>{photo:salle-1:Salle de réunion vitrée aux parois jaunes}</li>
-    </ul>
   </div>
 </section>
 
@@ -492,7 +482,7 @@ page(slug="tarifs", nav="Tarifs",
       <div class="tarif mis-en-avant"><span class="badge">Équipes</span><h2 class="h3">Postes supplémentaires</h2><p class="prix">300 € <small>HT</small></p><p class="unite">par mois et par poste, à partir du deuxième</p><ul class="liste-coches"><li>Mêmes prestations que le premier poste</li><li>Postes regroupés dans l'open space</li><li>Ajout d'un poste en quelques jours</li><li>Exemple : 3 postes = 950 € HT / mois</li><li>Exemple : 5 postes = 1 550 € HT / mois</li></ul><a class="btn" href="{u:contact}?besoin=equipe">Installer mon équipe</a></div>
       <div class="tarif"><h2 class="h3">Salle de réunion</h2><p class="prix">Sur devis</p><p class="unite">pour les entreprises non résidentes</p><ul class="liste-coches"><li>Grande salle d'une dizaine de places</li><li>Salles de 2 à 6 personnes, cabines d'appel</li><li>Écran, audioconférence, Wi-Fi</li><li>Toutes incluses pour les résidents</li></ul><a class="btn btn-secondaire" href="{u:salles-de-reunion-bordeaux}">Voir les salles</a></div>
     </div>
-    <div class="encadre"><h2 class="h3">Besoin d'un poste de temps en temps ?</h2><p>Le flex office loue un poste équipé en open space à la demi-journée ou à la journée, ponctuellement ou quelques jours par mois, sans engagement, pour les indépendants et les salariés de passage. Le tarif dépend du nombre de jours : <a href="{u:contact}">indiquez-nous vos dates</a>.</p></div>
+    <div class="encadre"><h2 class="h3">Besoin d'un poste de temps en temps ?</h2><p>Le flex office loue un poste équipé en open space à la demi-journée ou à la journée, ponctuellement ou quelques jours par mois, sans engagement, pour les indépendants et les salariés de passage. Le tarif dépend du nombre de jours : <a href="{u:contact}?besoin=flex">indiquez-nous vos dates</a>.</p></div>
   </div>
 </section>
 
@@ -596,7 +586,7 @@ page(slug="temoignages", nav="Témoignages",
      corps="""
 <section class="section">
   <div class="conteneur">
-    <div class="visuel espace-bas">{v:La communauté de coworkers dans l'espace détente:1}</div>
+    <div class="visuel espace-bas">{v:La communauté de coworkers dans l'espace détente:1:plein}</div>
     <h2 class="visually-hidden">Les témoignages</h2>
     <div class="grille grille-3">{temoignages:7}</div>
   </div>
@@ -721,7 +711,7 @@ ARTICLES = [
 <div class="encadre"><p>Pour comparer deux offres, ramenez tout au coût mensuel d'un poste, charges et services compris, et regardez la durée d'engagement exigée.</p></div>
 <h2>Quand le bail classique redevient pertinent</h2>
 <p>À partir d'une quinzaine de collaborateurs stables, ou si votre activité exige des locaux spécifiques (atelier, stockage, accueil du public), un bail commercial retrouve son intérêt. En dessous, une formule au poste est presque toujours plus souple et plus prévisible.</p>
-<p>Pour vérifier avec vos chiffres, <a href="{u:contact}">demandez un devis</a> : nous vous répondons dans la journée avec un montant mensuel ferme.</p>
+<p>Pour vérifier avec vos chiffres, <a href="{u:contact}?besoin=equipe">demandez un devis</a> : nous vous répondons dans la journée avec un montant mensuel ferme.</p>
 """),
  dict(slug="guide-louer-salle-de-reunion-bordeaux", date="2026-10-27", temps="4 min",
       title="Louer une salle de réunion à Bordeaux : la check-list",
@@ -812,7 +802,7 @@ page(slug="contact", nav="Contact",
   <div class="conteneur mise-en-page">
     <div>
       <h2>Votre demande</h2>
-      <form class="formulaire" action="{formto}" method="post" accept-charset="UTF-8" data-merci="{u:merci}" data-tel="{tel}" data-tel-intl="{tel_intl}" data-email="{email}">
+      <form class="formulaire" id="formulaire" action="{formto}" method="post" accept-charset="UTF-8" data-merci="{u:merci}" data-tel="{tel}" data-tel-intl="{tel_intl}" data-email="{email}">
         <div class="piege" aria-hidden="true"><label for="website">Ne pas remplir ce champ</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <p class="meta">Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span> astérisque sont obligatoires.</p>
         <div class="ligne">
@@ -859,7 +849,7 @@ page(slug="merci", nav=None, noindex=True,
      description="Votre demande a bien été envoyée à l'équipe du Chartrons Business Center. Réponse dans la journée, en semaine.",
      h1="Merci, votre demande est envoyée", chapo="Nous vous répondons dans la journée en semaine, par e-mail ou par téléphone si vous nous avez laissé un numéro. Pour une réponse immédiate, appelez-nous au " + TEL + ".",
      corps="""
-<section class="section"><div class="conteneur prose">
+<section class="section"><div class="conteneur"><div class="prose">
 <h2>En attendant notre réponse</h2>
 <ul>
 <li><a href="{u:tarifs}">Consulter les tarifs</a> des postes, bureaux et salles de réunion.</li>
@@ -867,7 +857,7 @@ page(slug="merci", nav=None, noindex=True,
 <li><a href="{u:guide}">Lire le guide</a> pour choisir entre coworking et bureau fermé.</li>
 </ul>
 <p><a class="btn" href="{u:}">Retour à l'accueil</a></p>
-</div></section>
+</div></div></section>
 """)
 
 page(slug="mentions-legales", nav=None,
@@ -875,7 +865,7 @@ page(slug="mentions-legales", nav=None,
      description="Mentions légales du site location-bureau-bordeaux.fr : éditeur Shared Values, siège à Bordeaux, directeur de la publication et hébergeur du site.",
      h1="Mentions légales", chapo="",
      corps="""
-<section class="section"><div class="conteneur prose">
+<section class="section"><div class="conteneur"><div class="prose">
 <h2>Éditeur du site</h2>
 <p>Le site location-bureau-bordeaux.fr est édité par <strong><a href="https://www.shared-values.fr/" rel="noopener">Shared Values</a></strong>, société à responsabilité limitée au capital de 52 384 €, dont le siège est situé {adresse}, {cp} {ville}, France.<br>RCS Bordeaux 751 479 585. SIREN : 751 479 585. Numéro de TVA intracommunautaire : FR75751479585. Code APE : 6420Z.<br>Téléphone : <a href="tel:{tel_intl}">{tel}</a>. E-mail : <a href="mailto:{email}">{email}</a>.</p>
 <h2>Directeur de la publication</h2>
@@ -890,14 +880,14 @@ page(slug="mentions-legales", nav=None,
 <p>Les données collectées via le formulaire de contact servent uniquement à traiter votre demande. Le détail de leur traitement, de vos droits et de l'usage des cookies figure dans la <a href="{u:politique-de-confidentialite}">politique de confidentialité</a>.</p>
 <h2>Droit applicable</h2>
 <p>Le présent site est soumis au droit français. En cas de litige, et à défaut d'accord amiable, les tribunaux de Bordeaux sont seuls compétents.</p>
-</div></section>
+</div></div></section>
 """)
 page(slug="politique-de-confidentialite", nav=None,
      title="Politique de confidentialité | Chartrons Business Center",
      description="Données collectées par le formulaire de contact, durée de conservation, destinataires, cookies et droits RGPD sur le site location-bureau-bordeaux.fr.",
      h1="Politique de confidentialité", chapo="",
      corps="""
-<section class="section"><div class="conteneur prose">
+<section class="section"><div class="conteneur"><div class="prose">
 <p class="meta">Dernière mise à jour : {date_fr}.</p>
 <h2>Responsable du traitement</h2>
 <p><a href="https://www.shared-values.fr/" rel="noopener">Shared Values</a>, {adresse}, {cp} {ville}. Contact : <a href="mailto:{email}">{email}</a>.</p>
@@ -912,13 +902,13 @@ page(slug="politique-de-confidentialite", nav=None,
 <h2 id="cookies">Cookies et contenus tiers</h2>
 <p>Ce site ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience. Aucune ressource externe n'est chargée pendant votre navigation : polices, images et feuilles de style sont servies par le site lui-même.</p>
 <p>Seule exception, à votre demande : sur la page d'accès, le plan Google Maps ne s'affiche que si vous cliquez sur « Afficher le plan Google Maps ». Ce clic vaut accord pour ce seul affichage. Google (Google LLC, États-Unis) reçoit alors votre adresse IP et l'adresse de la page, et peut déposer ses propres cookies ; ce transfert est encadré par le Data Privacy Framework. Sans ce clic, rien n'est envoyé à Google. Le lien « Calculer l'itinéraire » ouvre Google Maps dans un nouvel onglet, hors de notre site.</p>
-</div></section>
+</div></div></section>
 """)
 page(slug="plan-du-site", nav=None,
      title="Plan du site | Chartrons Business Center",
      description="Toutes les pages du site location-bureau-bordeaux.fr : bureaux, coworking, salles de réunion, services, tarifs, lieu, témoignages, FAQ, guide et contact.",
      h1="Plan du site", chapo="",
-     corps="""<section class="section"><div class="conteneur prose">{plan}</div></section>""")
+     corps="""<section class="section"><div class="conteneur"><div class="prose">{plan}</div></div></section>""")
 
 # ---------------------------------------------------------------- FAQ et témoignages
 FAQ = [
@@ -968,15 +958,27 @@ SLIDERS = {
   ("detente", "Espace détente avec canapés, à côté des postes de travail"),
   ("fenetre", "Baies vitrées de l'open space avec vue sur les toits du quartier des Chartrons"),
   ("postes", "Rangée de postes de travail équipés face aux fenêtres"),
+  ("cuisine", "Cuisine de l'espace détente avec îlot central et deux personnes qui échangent"),
+  ("plafond-vert", "Mur végétal suspendu au plafond de l'open space"),
+  ("lounge", "Salon de l'espace détente avec fauteuils et panneaux acoustiques colorés"),
+  ("salle-1", "Salle de réunion vitrée aux parois jaunes"),
  ],
 }
 FLECHE_G = "<svg viewBox='0 0 24 24' width='22' height='22' fill='none' stroke='currentColor' stroke-width='1.8' aria-hidden='true'><path d='M15 5l-7 7 7 7'/></svg>"
 FLECHE_D = "<svg viewBox='0 0 24 24' width='22' height='22' fill='none' stroke='currentColor' stroke-width='1.8' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg>"
 def slider_html(cle):
-    photos = SLIDERS[cle]; n = len(photos)
+    photos = SLIDERS[cle]; n = len(photos)  # loading="lazy" sur toutes : la piste défile en horizontal, le navigateur charge à l'approche
+    PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+    def diapo(i, c, alt):
+        img = photo(c, alt, sizes="(max-width: 860px) calc(113vw - 45px), 615px")
+        if i == 0: return img
+        # Diapositives 2 et suivantes : chargées par site.js à l'approche du carrousel, pour ne pas
+        # concurrencer la photo du haut de page ; sans JavaScript, la balise noscript prend le relais.
+        differe = re.sub(r'\bsrc="', f'src="{PIXEL}" data-src="', img, count=1).replace(' srcset="', ' data-srcset="')
+        return differe + f"<noscript>{img}</noscript>"
     slides = "".join(
         f'<figure class="slide" role="group" aria-roledescription="diapositive" aria-label="{i + 1} sur {n}">'
-        + photo(c, alt, sizes="(max-width: 860px) 113vw, 645px") + "</figure>"
+        + diapo(i, c, alt) + "</figure>"
         for i, (c, alt) in enumerate(photos))
     points = "".join(f'<button type="button" aria-label="Photo {i + 1} sur {n}"{" aria-current=\"true\"" if i == 0 else ""}></button>' for i in range(n))
     return (f'<section class="slider" aria-roledescription="carrousel" aria-label="Photos du lieu">'
@@ -1090,7 +1092,7 @@ def rendre(mode):
             cur_attr = ' aria-current="page"' if sl == cur else ""
             li.append(f'<li><a href="{u(sl)}"{cur_attr}>{lab}</a></li>')
         sec = "".join(f'<li><a href="{u(sl)}"{" aria-current=\"page\"" if sl == cur else ""}>{lab}</a></li>' for sl, lab in SECONDAIRE)
-        return "".join(li) + f'<li class="nav-secondaire"><ul>{sec}</ul></li><li class="nav-mobile-cta"><a class="tel-cta" href="tel:{TEL_INTL}">{ICONES["telico"]}<span>{TEL}</span></a><a class="btn" href="{u("contact")}?besoin=visite">Demander une visite</a></li>'
+        return "".join(li) + f'<li class="nav-secondaire"><ul>{sec}</ul></li><li class="nav-mobile-cta"><a class="tel-cta" href="tel:{TEL_INTL}">{ICONES["telico"]}<span>{TEL}</span></a><a class="btn" href="{'#formulaire' if cur == 'contact' else u("contact") + '?besoin=visite'}">Demander une visite</a></li>'
 
     def fil(p):
         items = [("Accueil", u(""))]
@@ -1117,8 +1119,8 @@ def rendre(mode):
         # substitutions
         def sub_u(m): return u(m.group(1))
         corps = re.sub(r"\{u:([a-z0-9-]*)\}", sub_u, corps)
-        def sub_v(m): return visuel(m.group(1), int(m.group(2)))
-        corps = re.sub(r"\{v:([^:}]+):(\d)\}", sub_v, corps)
+        def sub_v(m): return visuel(m.group(1), int(m.group(2)), plein=bool(m.group(3)))
+        corps = re.sub(r"\{v:([^:}]+):(\d)(:plein)?\}", sub_v, corps)
         def sub_faq(m):
             h, items = faq_html(m.group(1)); faq_items.extend(items); return h
         corps = re.sub(r'<div class="en-tete-section(?: centre)?"><span class="etiquette">Questions fréquentes</span><h2>(.*?)</h2></div>\s*<div class="faq">(\{faq:[a-z]+\})</div>',
@@ -1145,10 +1147,10 @@ def rendre(mode):
         if faq_items and slug == "faq":
             ld.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": r}} for _, q, r in faq_items]})
         if p.get("est_article"):
-            ld.append({"@context": "https://schema.org", "@type": "Article", "headline": p["h1"], "description": p["description"], "datePublished": p["date"], "dateModified": p.get("maj", p["date"]), "image": og_image, "inLanguage": "fr-FR", "mainEntityOfPage": canon(slug), "author": {"@type": "Organization", "name": NOM, "@id": DOMAINE + "/#organisation"}, "publisher": {"@id": DOMAINE + "/#organisation"}})
+            ld.append({"@context": "https://schema.org", "@type": "Article", "headline": p["h1"], "description": p["description"], "datePublished": p["date"], "dateModified": p.get("maj", p["date"]), "image": og_image, "inLanguage": "fr-FR", "mainEntityOfPage": canon(slug), "author": {"@type": "Organization", "name": NOM, "@id": DOMAINE + "/#organisation"}, "publisher": {"@type": "Organization", "name": NOM, "@id": DOMAINE + "/#organisation", "logo": DOMAINE + "/assets/img/logo.png"}})
         if slug in ("location-bureaux-bordeaux", "coworking-bordeaux-chartrons", "salles-de-reunion-bordeaux"):
             nom_service = {"location-bureaux-bordeaux": "Location de bureaux équipés", "coworking-bordeaux-chartrons": "Coworking", "salles-de-reunion-bordeaux": "Location de salles de réunion"}[slug]
-            ld.append({"@context": "https://schema.org", "@type": "Service", "name": nom_service, "serviceType": nom_service, "provider": {"@id": DOMAINE + "/#organisation"}, "areaServed": {"@type": "City", "name": "Bordeaux"}, "url": canon(slug), "description": p["description"], "offers": jsonld_org(abs_url)["makesOffer"][:2] if slug != "salles-de-reunion-bordeaux" else {"@type": "Offer", "name": "Salles de réunion de 2 à 10 personnes et cabines d'appel", "description": "Incluses pour les résidents, réservation en ligne ; sur devis pour les entreprises extérieures"}})
+            ld.append({"@context": "https://schema.org", "@type": "Service", "name": nom_service, "serviceType": nom_service, "provider": {"@type": "CoworkingSpace", "name": NOM, "@id": DOMAINE + "/#organisation"}, "areaServed": {"@type": "City", "name": "Bordeaux"}, "url": canon(slug), "description": p["description"], "offers": jsonld_org(abs_url)["makesOffer"][:2] if slug != "salles-de-reunion-bordeaux" else {"@type": "Offer", "name": "Salles de réunion de 2 à 10 personnes et cabines d'appel", "description": "Incluses pour les résidents, réservation en ligne ; sur devis pour les entreprises extérieures"}})
         ld_html = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False).replace("</", "<\\/")}</script>' for x in ld)
 
         if slug == "":
@@ -1194,7 +1196,7 @@ def rendre(mode):
 <link rel="preload" href="{A}fonts/fraunces-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{A}fonts/instrument-sans-latin-400-700.woff2" as="font" type="font/woff2" crossorigin>
 {preload_hero}
-<noscript><style>.is-preload .heros h1::before,.is-preload .heros h1::after,.is-preload .bandeau h1::before,.is-preload .bandeau h1::after{{width:100%}}</style></noscript>
+<noscript><style>.is-preload .heros h1::before,.is-preload .heros h1::after,.is-preload .bandeau h1::before,.is-preload .bandeau h1::after{{width:100%}}.slide img[data-src]{{display:none}}</style></noscript>
 <link rel="stylesheet" href="{A}{CSS_NOM}">
 {ld_html}
 </head>
@@ -1205,7 +1207,7 @@ def rendre(mode):
   <nav class="nav" id="menu-principal" aria-label="Navigation principale"><ul>{nav_html(slug)}</ul></nav>
   <div class="entete-actions">
     <a class="tel-cta" href="tel:{TEL_INTL}">{ICONES["telico"]}<span><small>Appelez&#8209;nous</small>{TEL}</span></a>
-    <a class="btn btn-cta" href="{u("contact")}?besoin=visite">Demander une visite</a>
+    <a class="btn btn-cta" href="{'#formulaire' if slug == 'contact' else u("contact") + '?besoin=visite'}">Demander une visite</a>
     <a class="tel-mobile" href="tel:{TEL_INTL}" aria-label="Appeler le {TEL}">{ICONES["telico"]}</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal"><span class="burger" aria-hidden="true"></span>Menu</button>
   </div>
@@ -1372,7 +1374,7 @@ ErrorDocument 404 /404.html
 </IfModule>
 """)
         p404 = open(os.path.join(dist, "faq", "index.html"), encoding="utf-8").read()
-        p404 = re.sub(r"<main id=\"contenu\">.*?</main>", f'<main id="contenu"><header class="bandeau hero-lounge"><div class="conteneur"><h1>Page introuvable</h1><p class="intro">La page demandée n\'existe pas ou a été déplacée. Les pages les plus utiles sont listées ci-dessous.</p></div></header><section class="section"><div class="conteneur prose">{plan_html}</div></section></main>', p404, flags=re.S)
+        p404 = re.sub(r"<main id=\"contenu\">.*?</main>", f'<main id="contenu"><header class="bandeau hero-lounge"><div class="conteneur"><h1>Page introuvable</h1><p class="intro">La page demandée n\'existe pas ou a été déplacée. Les pages les plus utiles sont listées ci-dessous.</p></div></header><section class="section"><div class="conteneur"><div class="prose">{plan_html}</div></div></section></main>', p404, flags=re.S)
         p404 = re.sub(r"<title>.*?</title>", "<title>Page introuvable | " + NOM + "</title>", p404).replace('<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">', '<meta name="robots" content="noindex">')
         p404 = re.sub(r'<link rel="canonical"[^>]*>\n', "", p404)
         p404 = re.sub(r'(<meta name="description" content=")[^"]*', r"\1Cette page n'existe pas ou a été déplacée. Retrouvez les bureaux, le coworking, les salles de réunion et les tarifs du " + NOM + ".", p404)

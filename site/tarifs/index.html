@@ -26,8 +26,8 @@
 <link rel="preload" href="/assets/fonts/fraunces-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/instrument-sans-latin-400-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/assets/img/photos/bureau-1000.webp" media="(max-width: 860px)" fetchpriority="high"><link rel="preload" as="image" href="/assets/img/photos/bureau-1600.webp" media="(min-width: 861px)" fetchpriority="high">
-<noscript><style>.is-preload .heros h1::before,.is-preload .heros h1::after,.is-preload .bandeau h1::before,.is-preload .bandeau h1::after{width:100%}</style></noscript>
-<link rel="stylesheet" href="/assets/style.4b362dc5.css">
+<noscript><style>.is-preload .heros h1::before,.is-preload .heros h1::after,.is-preload .bandeau h1::before,.is-preload .bandeau h1::after{width:100%}.slide img[data-src]{display:none}</style></noscript>
+<link rel="stylesheet" href="/assets/style.fdb14f07.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.location-bureau-bordeaux.fr/"}, {"@type": "ListItem", "position": 2, "name": "Tarifs", "item": "https://www.location-bureau-bordeaux.fr/tarifs/"}]}</script>
 </head>
 <body class="is-preload">
@@ -53,7 +53,7 @@
       <div class="tarif mis-en-avant"><span class="badge">Équipes</span><h2 class="h3">Postes supplémentaires</h2><p class="prix">300 € <small>HT</small></p><p class="unite">par mois et par poste, à partir du deuxième</p><ul class="liste-coches"><li>Mêmes prestations que le premier poste</li><li>Postes regroupés dans l'open space</li><li>Ajout d'un poste en quelques jours</li><li>Exemple : 3 postes = 950 € HT / mois</li><li>Exemple : 5 postes = 1 550 € HT / mois</li></ul><a class="btn" href="/contact/?besoin=equipe">Installer mon équipe</a></div>
       <div class="tarif"><h2 class="h3">Salle de réunion</h2><p class="prix">Sur devis</p><p class="unite">pour les entreprises non résidentes</p><ul class="liste-coches"><li>Grande salle d'une dizaine de places</li><li>Salles de 2 à 6 personnes, cabines d'appel</li><li>Écran, audioconférence, Wi-Fi</li><li>Toutes incluses pour les résidents</li></ul><a class="btn btn-secondaire" href="/salles-de-reunion-bordeaux/">Voir les salles</a></div>
     </div>
-    <div class="encadre"><h2 class="h3">Besoin d'un poste de temps en temps ?</h2><p>Le flex office loue un poste équipé en open space à la demi-journée ou à la journée, ponctuellement ou quelques jours par mois, sans engagement, pour les indépendants et les salariés de passage. Le tarif dépend du nombre de jours : <a href="/contact/">indiquez-nous vos dates</a>.</p></div>
+    <div class="encadre"><h2 class="h3">Besoin d'un poste de temps en temps ?</h2><p>Le flex office loue un poste équipé en open space à la demi-journée ou à la journée, ponctuellement ou quelques jours par mois, sans engagement, pour les indépendants et les salariés de passage. Le tarif dépend du nombre de jours : <a href="/contact/?besoin=flex">indiquez-nous vos dates</a>.</p></div>
   </div>
 </section>
 
@@ -78,7 +78,7 @@
         <tr><td data-label="Option"><strong>Couleur</strong><span>Même imprimante, scan vers e-mail gratuit</span></td><td data-label="Prix HT" class="prix">0,12 €<small> HT la page</small></td></tr>
       </tbody>
     </table></section>
-    <p class="meta">Tarifs en vigueur au 28 octobre 2026. Les prix sont exprimés hors taxes, TVA de 20 % en sus. Devis personnalisé sur demande pour les équipes de plus de cinq postes et pour la location ponctuelle de salles. Pour comparer un prix au poste et un loyer au m², lisez <a href="/guide-prix-bureau-bordeaux/">Combien coûte un bureau à Bordeaux ?</a></p>
+    <p class="meta">Tarifs en vigueur au 24 novembre 2026. Les prix sont exprimés hors taxes, TVA de 20 % en sus. Devis personnalisé sur demande pour les équipes de plus de cinq postes et pour la location ponctuelle de salles. Pour comparer un prix au poste et un loyer au m², lisez <a href="/guide-prix-bureau-bordeaux/">Combien coûte un bureau à Bordeaux ?</a></p>
   </div>
 </section>
 
@@ -136,7 +136,11 @@
 
   /* Sliders de photos : boutons, points, flèches du clavier ; le défilement reste natif (glisser au doigt).
      Les boutons ne sont jamais désactivés (aria-disabled) : le focus ne se perd pas en bout de série. */
+  /* Photos du carrousel : les diapositives 2 et suivantes partent à l'approche (600 px) ou au premier clic */
+  var chargerDiapos=function(sl){sl.querySelectorAll('img[data-src]').forEach(function(im){im.srcset=im.getAttribute('data-srcset');im.src=im.getAttribute('data-src');im.removeAttribute('data-src');im.removeAttribute('data-srcset');});};
   d.querySelectorAll('.slider').forEach(function(sl){
+    if('IntersectionObserver' in window){var ob=new IntersectionObserver(function(e){if(e[0].isIntersecting){chargerDiapos(sl);ob.disconnect();}},{rootMargin:'600px'});ob.observe(sl);}else chargerDiapos(sl);
+    sl.addEventListener('pointerdown',function(){chargerDiapos(sl);},{once:true});sl.addEventListener('focusin',function(){chargerDiapos(sl);},{once:true});
     var piste=sl.querySelector('.slider-piste'),slides=piste.children,prec=sl.querySelector('.slider-prec'),suiv=sl.querySelector('.slider-suiv'),points=sl.querySelectorAll('.slider-points button'),etat=sl.querySelector('.slider-etat'),n=slides.length,courant=0,attente=0;
     var aller=function(i){i=Math.max(0,Math.min(n-1,i));piste.scrollTo({left:i*piste.clientWidth,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});};
     var maj=function(){
@@ -162,7 +166,7 @@
     b.addEventListener('click',function(){var o=n.classList.toggle('ouvert');b.setAttribute('aria-expanded',o?'true':'false');if(o){var l=n.querySelector('a');if(l)l.focus();}});
     d.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('ouvert'))fermer(true);});
     n.addEventListener('focusout',function(e){var c=e.relatedTarget;if(n.classList.contains('ouvert')&&c&&c!==b&&!n.contains(c))fermer(false);});
-    var mq=matchMedia('(min-width: 1101px)');if(mq.addEventListener)mq.addEventListener('change',function(m){if(m.matches)fermer(false);});
+    var mq=matchMedia('(min-width: 68.8125em)');if(mq.addEventListener)mq.addEventListener('change',function(m){if(m.matches)fermer(false);});
   }
 
   /* FAQ : première réponse ouverte, les autres repliées (tout reste lisible sans JavaScript) */
@@ -217,10 +221,11 @@
       if(liens.length)ch.setAttribute('aria-describedby',liens.join(' '));else ch.removeAttribute('aria-describedby');
     };
     var envoiEnCours=false,libelle=bouton.textContent;
-    var echec=function(){
+    var echec=function(statut){
       envoiEnCours=false;bouton.disabled=false;bouton.textContent=libelle;
       etat.className='envoi-etat envoi-erreur';
-      etat.innerHTML='Votre demande n’a pas pu partir (connexion ou serveur indisponible). Vos informations sont conservées dans le formulaire : réessayez dans un instant, ou contactez-nous directement au <a href="tel:'+fo.getAttribute('data-tel-intl')+'">'+fo.getAttribute('data-tel')+'</a> ou par e-mail à <a href="mailto:'+fo.getAttribute('data-email')+'">'+fo.getAttribute('data-email')+'</a>.';
+      var cause=statut===429?'Trop d’envois en peu de temps : patientez une minute avant de réessayer.':statut?'Le service d’envoi a refusé la demande (erreur '+statut+').':'Connexion ou serveur indisponible.';
+      etat.innerHTML='Votre demande n’a pas pu partir. '+cause+' Vos informations sont conservées dans le formulaire : réessayez dans un instant, ou contactez-nous directement au <a href="tel:'+fo.getAttribute('data-tel-intl')+'">'+fo.getAttribute('data-tel')+'</a> ou par e-mail à <a href="mailto:'+fo.getAttribute('data-email')+'">'+fo.getAttribute('data-email')+'</a>.';
       etat.setAttribute('tabindex','-1');etat.focus();
     };
     fo.addEventListener('submit',function(e){
@@ -234,9 +239,11 @@
       envoiEnCours=true;bouton.disabled=true;bouton.textContent='Envoi en cours…';etat.className='envoi-etat';etat.textContent='';
       var donnees=new URLSearchParams();[].forEach.call(fo.elements,function(ch){if(ch.name&&!(ch.type==='checkbox'&&!ch.checked))donnees.append(ch.name,ch.value);});
       var ctrl=window.AbortController?new AbortController():null,minuterie=setTimeout(function(){if(ctrl)ctrl.abort();},15000);
-      fetch(fo.action,{method:'POST',mode:'no-cors',body:donnees,signal:ctrl?ctrl.signal:undefined})
-        .then(function(){clearTimeout(minuterie);location.href=fo.getAttribute('data-merci');})
-        .catch(function(){clearTimeout(minuterie);echec();});
+      /* formto autorise les envois depuis un autre site (CORS) et répond en JSON avec le vrai statut :
+         on ne va sur /merci/ que si l'envoi est réellement accepté (2xx). */
+      fetch(fo.action,{method:'POST',mode:'cors',headers:{'Accept':'application/json'},body:donnees,signal:ctrl?ctrl.signal:undefined})
+        .then(function(r){clearTimeout(minuterie);if(r.ok)location.href=fo.getAttribute('data-merci');else echec(r.status);})
+        .catch(function(){clearTimeout(minuterie);echec(0);});
     });
     fo.addEventListener('change',function(e){var ch=e.target;if(ch.getAttribute('aria-invalid')==='true'&&ch.checkValidity())signaler(ch,false);});
   }
